@@ -15,10 +15,15 @@ jobs:
         with:
           lfs: true
 
-      - name: Run n8n workflow (auto-path)
+      - name: Ensure workflow file exists
         run: |
-          docker run --rm -i \
-            -v "$GITHUB_WORKSPACE:/github/workspace" \
+          mkdir -p .n8n/workflows
+          test -f .n8n/workflows/publisher_workflow.json || { echo "publisher_workflow.json not found"; exit 1; }
+
+      - name: Publish meme via n8n (session-cookie login)
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/repo" \
             -e N8N_ENCRYPTION_KEY="${{ secrets.N8N_ENCRYPTION_KEY }}" \
             -e N8N_EMAIL_MODE=smtp \
             -e N8N_SMTP_HOST="${{ secrets.N8N_SMTP_HOST }}" \
@@ -26,9 +31,8 @@ jobs:
             -e N8N_SMTP_USER="${{ secrets.N8N_SMTP_USER }}" \
             -e N8N_SMTP_PASS="${{ secrets.N8N_SMTP_PASS }}" \
             -e N8N_SMTP_SENDER="${{ secrets.N8N_SMTP_SENDER }}" \
-            -e INSTAGRAM_USERNAME="${{ secrets.INSTAGRAM_USERNAME }}" \
-            -e INSTAGRAM_PASSWORD="${{ secrets.INSTAGRAM_PASSWORD }}" \
+            -e INSTAGRAM_SESSION_COOKIE="${{ secrets.INSTAGRAM_SESSION_COOKIE }}" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
             -e N8N_RUNNERS_ENABLED=false \
             n8nio/n8n:latest \
-            sh -c 'npx n8n execute --file=/github/workspace/.n8n/workflows/publisher_workflow.json'
+            execute --file=/repo/.n8n/workflows/publisher_workflow.json
