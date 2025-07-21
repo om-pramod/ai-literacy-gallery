@@ -3,7 +3,7 @@ name: Instagram Post Scheduler
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9,17 * * *'
+    - cron: '0 9,17 * * *'   # 09:00 & 17:00 UTC
 
 jobs:
   publish-to-instagram:
@@ -15,13 +15,13 @@ jobs:
         with:
           lfs: true
 
-      - name: Create workflow directory if missing
+      - name: Ensure workflow directory exists
         run: mkdir -p .n8n/workflows
 
       - name: Verify workflow file exists
-        run: test -f .n8n/workflows/publisher_workflow.json || { echo "Missing workflow"; exit 1; }
+        run: test -f .n8n/workflows/publisher_workflow.json || { echo "Missing publisher_workflow.json"; exit 1; }
 
-      - name: Publish meme via n8n (fixed syntax)
+      - name: Publish meme via n8n (serverless)
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/repo" \
