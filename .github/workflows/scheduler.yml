@@ -35,9 +35,11 @@ jobs:
 
       - name: Wait for n8n service to be ready
         run: |
-          # Simple check to ensure n8n is up and running
-          # You might need a more robust health check depending on n8n's startup time
-          sleep 10
+          for i in $(seq 1 30); do
+            docker exec n8n n8n --version && break
+            echo "Waiting for n8n service... ($i/30)"
+            sleep 2
+          done
 
       - name: Run n8n workflow
         run: |
