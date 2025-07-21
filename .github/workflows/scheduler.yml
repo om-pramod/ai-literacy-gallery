@@ -43,5 +43,13 @@ jobs:
 
       - name: Run n8n workflow
         run: |
-          # Execute the n8n command inside the running service container
-          docker exec n8n n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
+          # Find the container ID of the n8n service
+          N8N_CONTAINER_ID=$(docker ps -aqf "name=n8n")
+          if [ -z "$N8N_CONTAINER_ID" ]; then
+            echo "Error: n8n service container not found!"
+            exit 1
+          fi
+          echo "Found n8n container ID: $N8N_CONTAINER_ID"
+
+          # Execute the n8n command inside the running service container using its ID
+          docker exec $N8N_CONTAINER_ID n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
