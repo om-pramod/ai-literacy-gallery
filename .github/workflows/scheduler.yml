@@ -13,12 +13,13 @@ jobs:
     services:
       n8n:
         image: n8nio/n8n:latest
-        options: --user 1001:1001   # run as same UID/GID as runner
+        options: --user 1001:1001
+        ports:
+          - 5678:5678          # <-- make it reachable on the host
         volumes:
           - ${{ github.workspace }}:/data
         env:
           N8N_ENCRYPTION_KEY:   ${{ secrets.N8N_ENCRYPTION_KEY }}
-          N8N_EMAIL_MODE:       smtp
           N8N_SMTP_HOST:        ${{ secrets.N8N_SMTP_HOST }}
           N8N_SMTP_PORT:        ${{ secrets.N8N_SMTP_PORT }}
           N8N_SMTP_USER:        ${{ secrets.N8N_SMTP_USER }}
