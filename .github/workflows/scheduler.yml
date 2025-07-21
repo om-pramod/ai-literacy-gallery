@@ -52,4 +52,4 @@ jobs:
           echo "Found n8n container ID: $N8N_CONTAINER_ID"
 
           # Execute the n8n command inside the running service container using its ID
-          docker exec $N8N_CONTAINER_ID n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
+          docker exec $N8N_CONTAINER_ID sh -c "n8n --workflow=/data/.n8n/workflows/publisher_workflow.json"

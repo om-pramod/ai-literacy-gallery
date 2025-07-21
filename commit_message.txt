@@ -1,1 +1,1 @@
-fix: Remove 'user: root' from container definition to resolve YAML parsing error
+fix: Dynamically find n8n container ID for docker exec
