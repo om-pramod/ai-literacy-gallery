@@ -61,7 +61,7 @@
     },
     {
       "parameters": {
-        "functionCode": "const captionContent = $node[\"Read Caption File\"].data[0].json.data;\n\nconst regex = /🧐 For those who don't get it:\n([\s\S]*?)(?:\n\. \n\. \n\. \n🧠 Techie Deep Dive:|$)/;\nconst match = captionContent.match(regex);\n\nlet altText = \"\";\nif (match && match[1]) {\n  altText = match[1].trim().replace(/\n\. \n\. \n\./g, '');\n}\n\nconst MAX_ALT_TEXT_LENGTH = 250;\nif (altText.length > MAX_ALT_TEXT_LENGTH) {\n  altText = altText.substring(0, MAX_ALT_TEXT_LENGTH - 3) + \"...\";\n}\n\n$json.altText = altText;\nreturn $json;"
+        "functionCode": "const captionContent = $node[\"Read Caption File\"].data[0].json.data;\\n\\nconst regex = /🧐 For those who don't get it:\\n([\\s\\S]*?)(?:\\n\\. \\n\\. \\n\\. \\n🧠 Techie Deep Dive:|$)/;\\nconst match = captionContent.match(regex);\\n\\nlet altText = \"\";\\nif (match && match[1]) {\\n  altText = match[1].trim().replace(/\\n\\. \\n\\. \\n\\./g, '');\\n}\\n\\nconst MAX_ALT_TEXT_LENGTH = 250;\\nif (altText.length > MAX_ALT_TEXT_LENGTH) {\\n  altText = altText.substring(0, MAX_ALT_TEXT_LENGTH - 3) + \"...\";\\n}\\n\\n$json.altText = altText;\\nreturn $json;"
       },
       "name": "Extract Alt Text",
       "type": "n8n-nodes-base.function",
@@ -105,11 +105,11 @@
     },
     {
       "parameters": {
-        "caption": "={{$node["Read Caption File"].data[0].json.data}}",
-        "photo": "={{$node["Read Meme File (Binary)"].data[0].json.data}}",
-        "altText": "={{$node["Extract Alt Text"].json.altText}}",
+        "caption": "={{$node[\"Read Caption File\"].data[0].json.data}}",
+        "photo": "={{$node[\"Read Meme File (Binary)\"].data[0].json.data}}",
+        "altText": "={{$node[\"Extract Alt Text\"].json.altText}}",
         "options": {}
-      }
+      },
       "name": "Instagram Post",
       "type": "n8n-nodes-base.instagram",
       "typeVersion": 1,
