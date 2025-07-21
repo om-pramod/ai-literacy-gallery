@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
@@ -19,16 +19,18 @@ jobs:
         run: |
           docker run -d --name n8n \
             -p 5678:5678 \
-            -v ${{ github.workspace }}:/data \
-            -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} \
+            -v "$GITHUB_WORKSPACE:/github/workspace" \
+            -e N8N_ENCRYPTION_KEY="${{ secrets.N8N_ENCRYPTION_KEY }}" \
             -e N8N_EMAIL_MODE=smtp \
-            -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} \
-            -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} \
-            -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} \
-            -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} \
-            -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} \
-            -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
-            -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
+            -e N8N_SMTP_HOST="${{ secrets.N8N_SMTP_HOST }}" \
+            -e N8N_SMTP_PORT="${{ secrets.N8N_SMTP_PORT }}" \
+            -e N8N_SMTP_USER="${{ secrets.N8N_SMTP_USER }}" \
+            -e N8N_SMTP_PASS="${{ secrets.N8N_SMTP_PASS }}" \
+            -e N8N_SMTP_SENDER="${{ secrets.N8N_SMTP_SENDER }}" \
+            -e INSTAGRAM_USERNAME="${{ secrets.INSTAGRAM_USERNAME }}" \
+            -e INSTAGRAM_PASSWORD="${{ secrets.INSTAGRAM_PASSWORD }}" \
+            -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
+            -e N8N_RUNNERS_ENABLED=true \
             n8nio/n8n:latest
 
       - name: Wait for n8n to be ready
@@ -42,4 +44,4 @@ jobs:
       - name: Run workflow
         run: |
           docker exec n8n \
-            n8n execute --workflow=/data/.n8n/workflows/publisher_workflow.json
+            n8n execute --file=/github/workspace/.n8n/workflows/publisher_workflow.json
