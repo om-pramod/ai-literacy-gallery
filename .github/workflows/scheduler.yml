@@ -19,16 +19,15 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Run n8n workflow
-        run: |
-          docker run --rm \
-            -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} \
-            -e N8N_EMAIL_MODE=smtp \
-            -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} \
-            -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} \
-            -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} \
-            -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} \
-            -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} \
-            -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
-            -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
-            -v $(pwd):/data \
-            n8nio/n8n:latest sh -c "n8n execute --workflow=/data/.n8n/workflows/publisher_workflow.json"
+        uses: n8n-io/github-action@v1
+        with:
+          workflow_file: .n8n/workflows/publisher_workflow.json
+          n8n_encryption_key: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          n8n_email_mode: smtp
+          n8n_smtp_host: ${{ secrets.N8N_SMTP_HOST }}
+          n8n_smtp_port: ${{ secrets.N8N_SMTP_PORT }}
+          n8n_smtp_user: ${{ secrets.N8N_SMTP_USER }}
+          n8n_smtp_pass: ${{ secrets.N8N_SMTP_PASS }}
+          n8n_smtp_sender: ${{ secrets.N8N_SMTP_SENDER }}
+          instagram_username: ${{ secrets.INSTAGRAM_USERNAME }}
+          instagram_password: ${{ secrets.INSTAGRAM_PASSWORD }}
