@@ -1,55 +1,45 @@
 name: Instagram Post Scheduler
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
   schedule:
-    # Runs at 9:00 AM and 5:00 PM UTC. Adjust to your target timezone.
-    - cron: '0 9,17 * * *'
+    - cron: '0 9,17 * * *'   # 09:00 & 17:00 UTC
 
 jobs:
   publish-to-instagram:
     runs-on: ubuntu-latest
-    services:
-      n8n:
-        image: n8nio/n8n:latest
-        # Map the current working directory into the container
-        volumes:
-          - ${{ github.workspace }}:/data
-        # Pass environment variables (secrets) to the n8n service
-        env:
-          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
-          N8N_EMAIL_MODE: smtp
-          N8N_SMTP_HOST: ${{ secrets.N8N_SMTP_HOST }}
-          N8N_SMTP_PORT: ${{ secrets.N8N_SMTP_PORT }}
-          N8N_SMTP_USER: ${{ secrets.N8N_SMTP_USER }}
-          N8N_SMTP_PASS: ${{ secrets.N8N_SMTP_PASS }}
-          N8N_SMTP_SENDER: ${{ secrets.N8N_SMTP_SENDER }}
-          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
-          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Wait for n8n service to be ready
+      - name: Start n8n container
         run: |
-          for i in $(seq 1 30); do
-            docker exec n8n n8n --version && break
-            echo "Waiting for n8n service... ($i/30)"
+          docker run -d --name n8n \
+            -p 5678:5678 \
+            -v ${{ github.workspace }}:/data \
+            -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} \
+            -e N8N_EMAIL_MODE=smtp \
+            -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} \
+            -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} \
+            -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} \
+            -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} \
+            -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} \
+            -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
+            -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
+            n8nio/n8n:latest
+
+      - name: Wait for n8n to be ready
+        run: |
+          for i in {1..30}; do
+            curl -sSf http://localhost:5678/healthz && break
+            echo "Waiting for n8n … ($i/30)"
             sleep 2
           done
 
-      - name: Run n8n workflow
+      - name: Run workflow
         run: |
-          # Find the container ID of the n8n service
-          N8N_CONTAINER_ID=$(docker ps -aqf "name=n8n")
-          if [ -z "$N8N_CONTAINER_ID" ]; then
-            echo "Error: n8n service container not found!"
-            exit 1
-          fi
-          echo "Found n8n container ID: $N8N_CONTAINER_ID"
-
-          # Execute the n8n command inside the running service container using its ID
-          docker exec $N8N_CONTAINER_ID /usr/local/bin/n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
+          docker exec n8n \
+            n8n execute --workflow=/data/.n8n/workflows/publisher_workflow.json
