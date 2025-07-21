@@ -15,7 +15,7 @@ jobs:
         with:
           lfs: true
 
-      - name: Start n8n container
+      - name: Start n8n container (one-shot)
         run: |
           docker run -d --name n8n \
             -p 5678:5678 \
@@ -30,7 +30,7 @@ jobs:
             -e INSTAGRAM_USERNAME="${{ secrets.INSTAGRAM_USERNAME }}" \
             -e INSTAGRAM_PASSWORD="${{ secrets.INSTAGRAM_PASSWORD }}" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
-            -e N8N_RUNNERS_ENABLED=true \
+            -e N8N_RUNNERS_ENABLED=false \
             n8nio/n8n:latest
 
       - name: Wait for n8n to be ready
