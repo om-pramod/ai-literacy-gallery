@@ -3,7 +3,7 @@ name: Instagram Post Scheduler
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9,17 * * *'   # 09:00 & 17:00 UTC
+    - cron: '0 9,17 * * *'
 
 jobs:
   publish-to-instagram:
@@ -15,10 +15,11 @@ jobs:
         with:
           lfs: true
 
-      - name: Start n8n container (one-shot)
+      - name: Start n8n container (with task runners)
         run: |
           docker run -d --name n8n \
             -p 5678:5678 \
+            -p 5679:5679 \
             -v "$GITHUB_WORKSPACE:/github/workspace" \
             -e N8N_ENCRYPTION_KEY="${{ secrets.N8N_ENCRYPTION_KEY }}" \
             -e N8N_EMAIL_MODE=smtp \
@@ -30,7 +31,7 @@ jobs:
             -e INSTAGRAM_USERNAME="${{ secrets.INSTAGRAM_USERNAME }}" \
             -e INSTAGRAM_PASSWORD="${{ secrets.INSTAGRAM_PASSWORD }}" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
-            -e N8N_RUNNERS_ENABLED=false \
+            -e N8N_RUNNERS_ENABLED=true \
             n8nio/n8n:latest
 
       - name: Wait for n8n to be ready
