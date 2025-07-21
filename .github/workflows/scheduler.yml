@@ -15,14 +15,9 @@ jobs:
         with:
           lfs: true
 
-      - name: Kill any stale n8n container
-        run: docker rm -f n8n 2>/dev/null || true
-
-      - name: Start n8n container
+      - name: Run n8n workflow (single-shot)
         run: |
-          docker run -d --name n8n \
-            -p 5678:5678 \
-            -p 5679:5679 \
+          docker run --rm -i \
             -v "$GITHUB_WORKSPACE:/github/workspace" \
             -e N8N_ENCRYPTION_KEY="${{ secrets.N8N_ENCRYPTION_KEY }}" \
             -e N8N_EMAIL_MODE=smtp \
@@ -34,18 +29,6 @@ jobs:
             -e INSTAGRAM_USERNAME="${{ secrets.INSTAGRAM_USERNAME }}" \
             -e INSTAGRAM_PASSWORD="${{ secrets.INSTAGRAM_PASSWORD }}" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
-            -e N8N_RUNNERS_ENABLED=true \
-            n8nio/n8n:latest
-
-      - name: Wait for n8n to be ready
-        run: |
-          for i in {1..30}; do
-            curl -sSf http://localhost:5678/healthz && break
-            echo "Waiting for n8n … ($i/30)"
-            sleep 2
-          done
-
-      - name: Run workflow
-        run: |
-          docker exec n8n \
+            -e N8N_RUNNERS_ENABLED=false \
+            n8nio/n8n:latest \
             n8n execute --file=/github/workspace/.n8n/workflows/publisher_workflow.json
