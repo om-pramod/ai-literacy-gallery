@@ -31,4 +31,4 @@ jobs:
             -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
             -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
             -v $(pwd):/data \
-            n8nio/n8n:latest n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
+            n8nio/n8n:latest /bin/bash -c "n8n --workflow=/data/.n8n/workflows/publisher_workflow.json"
