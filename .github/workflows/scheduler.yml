@@ -9,23 +9,37 @@ on:
 jobs:
   publish-to-instagram:
     runs-on: ubuntu-latest
-    container:
-      image: n8nio/n8n:latest
+    services:
+      n8n:
+        image: n8nio/n8n:latest
+        # Map the current working directory into the container
+        volumes:
+          - ${{ github.workspace }}:/data
+        # Pass environment variables (secrets) to the n8n service
+        env:
+          N8N_ENCRYPTION_KEY: ${{ secrets.N8N_ENCRYPTION_KEY }}
+          N8N_EMAIL_MODE: smtp
+          N8N_SMTP_HOST: ${{ secrets.N8N_SMTP_HOST }}
+          N8N_SMTP_PORT: ${{ secrets.N8N_SMTP_PORT }}
+          N8N_SMTP_USER: ${{ secrets.N8N_SMTP_USER }}
+          N8N_SMTP_PASS: ${{ secrets.N8N_SMTP_PASS }}
+          N8N_SMTP_SENDER: ${{ secrets.N8N_SMTP_SENDER }}
+          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
           lfs: true
 
+      - name: Wait for n8n service to be ready
+        run: |
+          # Simple check to ensure n8n is up and running
+          # You might need a more robust health check depending on n8n's startup time
+          sleep 10
+
       - name: Run n8n workflow
         run: |
-          /usr/local/bin/n8n --workflow=/data/.n8n/workflows/publisher_workflow.json 
-            -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} 
-            -e N8N_EMAIL_MODE=smtp 
-            -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} 
-            -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} 
-            -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} 
-            -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} 
-            -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} 
-            -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} 
-            -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
+          # Execute the n8n command inside the running service container
+          docker exec n8n n8n --workflow=/data/.n8n/workflows/publisher_workflow.json
