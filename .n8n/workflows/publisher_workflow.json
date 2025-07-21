@@ -1,37 +1,138 @@
 {
+  "name": "Instagram Post Scheduler",
   "nodes": [
-    { "name": "Start", ... },
-    { "name": "Execute Command (Git Pull)", ... },
-    { "name": "List Files", ... },
-    { "name": "IF Node (Check for content)", ... },
-    { "name": "Function (Select Random Caption)", ... },
-    { "name": "Read Caption File", ... },
-    { "name": "Extract Alt Text", ... },
-    { "name": "Find Matching Meme File", ... },
-    { "name": "Read Meme File (Binary)", ... },
-    { "name": "IF (Image Found?)", ... },
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1
+    },
     {
       "parameters": {
-        "caption": "={{$node[\"Read Caption File\"].data[0].json.data}}",
-        "photo": "={{$node[\"Read Meme File (Binary)\"].data[0].json.data}}",
-        "altText": "={{$node[\"Extract Alt Text\"].json.altText}}"
+        "command": "cd /data/instagram_content && git pull"
       },
+      "id": "b2c3d4e5-f6a7-8901-2345-67890abcdef0",
+      "name": "Execute Command (Git Pull)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "path": "/data/captions/to_post",
+        "options": {}
+      },
+      "id": "c3d4e5f6-a7b8-9012-3456-7890abcdef01",
+      "name": "List Files",
+      "type": "n8n-nodes-base.listFiles",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.length}}",
+              "value2": "=0"
+            }
+          ]
+        }
+      },
+      "id": "d4e5f6a7-b8c9-0123-4567-890abcdef012",
+      "name": "IF Node (Check for content)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const files = $input.all();\nconst randomIndex = Math.floor(Math.random() * files.length);\nconst selectedFile = files[randomIndex];\nselectedFile.json.baseName = selectedFile.json.name.split('.md')[0];\nreturn [selectedFile];"
+      },
+      "id": "e5f6a7b8-c9d0-1234-5678-90abcdef0123",
+      "name": "Function (Select Random Caption)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "filePath": "=/data/captions/to_post/{{ $json.name }}"
+      },
+      "id": "f6a7b8c9-d0e1-2345-6789-0abcdef01234",
+      "name": "Read Caption File",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const captionContent = $(\"Read Caption File\").first().json.data;\nconst regex = /🧐 For those who don't get it:\\n([\\s\\S]*?)(?:\\n\\. \\n\\. \\n\\. \\n🧠 Techie Deep Dive:|$)/;\nconst match = captionContent.match(regex);\nlet altText = '';\nif (match && match[1]) {\n  altText = match[1].trim().replace(/\\n\\. \\n\\. \\n\\./g, '');\n}\nconst MAX = 250;\nif (altText.length > MAX) altText = altText.substring(0, MAX - 3) + '...';\nreturn { altText };"
+      },
+      "id": "h3i4j5k6-l7m8-9012-3456-7890abcdef01",
+      "name": "Extract Alt Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "path": "/data/memes",
+        "pattern": "={{$node[\"Function (Select Random Caption)\"].json.baseName}}.*"
+      },
+      "id": "a7b8c9d0-e1f2-3456-7890-abcdef012345",
+      "name": "Find Matching Meme File",
+      "type": "n8n-nodes-base.listFiles",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "filePath": "={{$json[0].path}}"
+      },
+      "id": "b8c9d0e1-f2a3-4567-8901-234567890abc",
+      "name": "Read Meme File (Binary)",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.length}}",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "e1f2a3b4-c5d6-7890-1234-567890abcdef",
+      "name": "IF (Image Found?)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "operation": "post",
+        "caption": "={{$node[\"Read Caption File\"].item.json.data}}",
+        "media": "={{$node[\"Read Meme File (Binary)\"].item.json.data}}",
+        "additionalFields": {
+          "altText": "={{$json.altText}}"
+        }
+      },
+      "id": "c9d0e1f2-a3b4-5678-9012-34567890abcd",
       "name": "Instagram Post",
       "type": "n8n-nodes-base.instagram",
       "typeVersion": 1,
-      "id": "b8c9d0e1-f2a3-4567-8901-234567890abc",
       "credentials": {
-        "instagram": "InstagramCredentialsName" // Replace with your actual credential name as saved in n8n
+        "instagramApi": {
+          "id": "={{$env.N8N_CREDENTIALS_NAME}}",
+          "name": "Instagram account"
+        }
       }
     },
     {
       "parameters": {
-        "command": "cd /data && git config --global user.email \"actions@github.com\" && git config --global user.name \"n8n-bot\" && git mv captions/to_post/{{$node[\"Function (Select Random Caption)\"].json.name}} captions/posted/ && git commit -m \"feat: Post meme {{$node[\"Function (Select Random Caption)\"].json.name}}\" && git push"
+        "command": "cd /data/instagram_content && git config --global user.email 'actions@github.com' && git config --global user.name 'n8n-bot' && git mv captions/to_post/{{$json.name}} captions/posted/{{$json.name}} && git commit -m \"feat: Post meme {{$json.name}}\" && git push"
       },
+      "id": "d0e1f2a3-b4c5-6789-0123-4567890abcde",
       "name": "Execute Command (Git Move & Commit)",
       "type": "n8n-nodes-base.executeCommand",
-      "typeVersion": 1,
-      "id": "c9d0e1f2-a3b4-5678-9012-34567890abcd"
+      "typeVersion": 1
     },
     {
       "parameters": {
@@ -40,37 +141,83 @@
         "subject": "Instagram Post Workflow Failed",
         "text": "The Instagram posting workflow failed.\n\nNode: {{$error.context.item.json.node.name}}\nError: {{$error.context.item.json.error.message}}\n\nPlease check the GitHub Actions logs for more details."
       },
+      "id": "e1f2a3b4-c5d6-7890-1234-567890abcde9",
       "name": "Send Failure Email",
       "type": "n8n-nodes-base.email",
-      "typeVersion": 1,
-      "id": "d0e1f2a3-b4c5-6789-0123-4567890abcde",
-      "errorWorkflow": true,
-      "credentials": {
-        "smtp": "SMTPCredentialsName" // Replace with your actual credential name as saved in n8n
-      }
+      "typeVersion": 2,
+      "continueOnFail": false,
+      "retryOnFail": false
     },
-    ...
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json.length}}",
+              "value2": 5,
+              "operation": "lessEqual"
+            }
+          ]
+        }
+      },
+      "id": "g2f3b4c5-d6e7-8901-2345-67890abcdef0",
+      "name": "IF (Content Low?)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "from": "alerts@your-domain.com",
+        "to": "you@your-domain.com",
+        "subject": "Warning: Instagram Content Running Low",
+        "text": "The number of memes ready to post is 5 or less. Please add more content to the captions/to_post/ directory."
+      },
+      "id": "h3i4j5k6-l7m8-9012-3456-7890abcdef01",
+      "name": "Send Low Content Warning Email",
+      "type": "n8n-nodes-base.email",
+      "typeVersion": 2
+    }
   ],
   "connections": {
-    ...
-    "IF Node (Check for content)": [
-      [
-        "Function (Select Random Caption)",
-        "false"
-      ],
-      [
-        "Send Failure Email",
-        "true"
+    "Start": { "main": [[{ "node": "Execute Command (Git Pull)", "type": "main", "index": 0 }]] },
+    "Execute Command (Git Pull)": { "main": [[{ "node": "List Files", "type": "main", "index": 0 }]] },
+    "List Files": {
+      "main": [
+        [{ "node": "IF Node (Check for content)", "type": "main", "index": 0 }],
+        [{ "node": "IF (Content Low?)", "type": "main", "index": 0 }]
       ]
-    ],
-    "Instagram Post": [
-      [
-        "Execute Command (Git Move & Commit)"
-      ],
-      [
-        "Send Failure Email",
-        "false"
+    },
+    "IF (Content Low?)": {
+      "main": [
+        [null],
+        [{ "node": "Send Low Content Warning Email", "type": "main", "index": 0 }]
       ]
-    ]
+    },
+    "IF Node (Check for content)": {
+      "main": [
+        [null],
+        [{ "node": "Function (Select Random Caption)", "type": "main", "index": 0 }]
+      ]
+    },
+    "Function (Select Random Caption)": { "main": [[{ "node": "Read Caption File", "type": "main", "index": 0 }]] },
+    "Read Caption File": { "main": [[{ "node": "Extract Alt Text", "type": "main", "index": 0 }]] },
+    "Extract Alt Text": { "main": [[{ "node": "Find Matching Meme File", "type": "main", "index": 0 }]] },
+    "Find Matching Meme File": { "main": [[{ "node": "Read Meme File (Binary)", "type": "main", "index": 0 }]] },
+    "Read Meme File (Binary)": { "main": [[{ "node": "IF (Image Found?)", "type": "main", "index": 0 }]] },
+    "IF (Image Found?)": {
+      "main": [
+        [null],
+        [{ "node": "Instagram Post", "type": "main", "index": 0 }]
+      ]
+    },
+    "Instagram Post": { "main": [[{ "node": "Execute Command (Git Move & Commit)", "type": "main", "index": 0 }]] }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1a2b3c4d-5e6f-7890-1234-567890abcdef",
+  "meta": {
+    "instanceId": "0000000000000000000000000000000000000000000000000000000000000000"
   }
 }
