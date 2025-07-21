@@ -1,60 +1,47 @@
 name: Instagram Post Scheduler
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:          # manual trigger
   schedule:
+    # 09:00 and 17:00 UTC – adjust as needed
     - cron: '0 9,17 * * *'
 
 jobs:
   publish-to-instagram:
     runs-on: ubuntu-latest
 
+    services:
+      n8n:
+        image: n8nio/n8n:latest
+        options: --user 1001:1001   # run as same UID/GID as runner
+        volumes:
+          - ${{ github.workspace }}:/data
+        env:
+          N8N_ENCRYPTION_KEY:   ${{ secrets.N8N_ENCRYPTION_KEY }}
+          N8N_EMAIL_MODE:       smtp
+          N8N_SMTP_HOST:        ${{ secrets.N8N_SMTP_HOST }}
+          N8N_SMTP_PORT:        ${{ secrets.N8N_SMTP_PORT }}
+          N8N_SMTP_USER:        ${{ secrets.N8N_SMTP_USER }}
+          N8N_SMTP_PASS:        ${{ secrets.N8N_SMTP_PASS }}
+          N8N_SMTP_SENDER:      ${{ secrets.N8N_SMTP_SENDER }}
+          INSTAGRAM_USERNAME:   ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD:   ${{ secrets.INSTAGRAM_PASSWORD }}
+
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Set up Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker-compose -y
-
-      - name: Create Docker Compose file for n8n
-        run: |
-          cat <<EOF > docker-compose.yml
-          version: '3.1'
-          services:
-            n8n:
-              image: n8nio/n8n:latest
-              volumes:
-                - ${{ github.workspace }}:/data
-              environment:
-                - N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }}
-                - N8N_EMAIL_MODE=smtp
-                - N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }}
-                - N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }}
-                - N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }}
-                - N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }}
-                - N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }}
-                - INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }}
-                - INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
-          EOF
-
-      - name: Start n8n Service
-        run: docker-compose up -d
-
       - name: Wait for n8n service to be ready
         run: |
-          for i in $(seq 1 30); do
-            docker-compose exec n8n n8n --version && break
-            echo "Waiting for n8n service... ($i/30)"
+          for i in {1..30}; do
+            curl -sSf http://localhost:5678/healthz && break
+            echo "Waiting for n8n service… ($i/30)"
             sleep 2
           done
 
       - name: Run n8n workflow
         run: |
-          docker-compose exec n8n n8n execute --file /data/.n8n/workflows/publisher_workflow.json
-
-      - name: Stop n8n service
-        run: docker-compose down
+          docker exec "$(docker ps -qf 'ancestor=n8nio/n8n')" \
+            n8n execute --workflow="/data/.n8n/workflows/publisher_workflow.json"
