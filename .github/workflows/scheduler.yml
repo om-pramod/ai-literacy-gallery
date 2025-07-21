@@ -15,7 +15,10 @@ jobs:
         with:
           lfs: true
 
-      - name: Start n8n container (with task runners)
+      - name: Kill any stale n8n container
+        run: docker rm -f n8n 2>/dev/null || true
+
+      - name: Start n8n container
         run: |
           docker run -d --name n8n \
             -p 5678:5678 \
