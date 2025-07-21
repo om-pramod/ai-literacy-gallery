@@ -21,7 +21,7 @@ jobs:
       - name: Verify workflow file exists
         run: test -f .n8n/workflows/publisher_workflow.json || { echo "Missing workflow"; exit 1; }
 
-      - name: Publish meme via n8n (cookie login)
+      - name: Publish meme via n8n (fixed syntax)
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/repo" \
@@ -36,4 +36,4 @@ jobs:
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
             -e N8N_RUNNERS_ENABLED=true \
             n8nio/n8n:latest \
-            execute --file=/repo/.n8n/workflows/publisher_workflow.json
+            execute --workflow /repo/.n8n/workflows/publisher_workflow.json
