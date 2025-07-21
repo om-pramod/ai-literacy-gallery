@@ -1,34 +1,14 @@
-name: Instagram Post Scheduler
-
-on:
-  workflow_dispatch: # Allows manual triggering
-  schedule:
-    # Runs at 9:00 AM and 5:00 PM UTC. Adjust to your target timezone.
-    - cron: '0 9,17 * * *'
-
-jobs:
-  publish-to-instagram:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
-        with:
-          lfs: true
-
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
-
-      - name: Run n8n workflow
-        run: |
-          docker run --rm \
-            -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} \
-            -e N8N_EMAIL_MODE=smtp \
-            -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} \
-            -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} \
-            -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} \
-            -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} \
-            -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} \
-            -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
-            -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
-            -v $(pwd):/data \
-            n8nio/n8n:latest bash -c "n8n execute --workflow=/data/.n8n/workflows/publisher_workflow.json"
+- name: Run n8n workflow
+  run: |
+    docker run --rm \
+      -e N8N_ENCRYPTION_KEY=${{ secrets.N8N_ENCRYPTION_KEY }} \
+      -e N8N_EMAIL_MODE=smtp \
+      -e N8N_SMTP_HOST=${{ secrets.N8N_SMTP_HOST }} \
+      -e N8N_SMTP_PORT=${{ secrets.N8N_SMTP_PORT }} \
+      -e N8N_SMTP_USER=${{ secrets.N8N_SMTP_USER }} \
+      -e N8N_SMTP_PASS=${{ secrets.N8N_SMTP_PASS }} \
+      -e N8N_SMTP_SENDER=${{ secrets.N8N_SMTP_SENDER }} \
+      -e INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }} \
+      -e INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }} \
+      -v $(pwd):/data \
+      n8nio/n8n:latest sh -c "n8n execute --workflow=/data/.n8n/workflows/publisher_workflow.json"
