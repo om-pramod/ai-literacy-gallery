@@ -1,0 +1,190 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    {
+      "parameters": {
+        "command": "cd /instagram_content && git pull"
+      },
+      "name": "Execute Command (Git Pull)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "id": "b2c3d4e5-f6a7-8901-2345-67890abcdef0"
+    },
+    {
+      "parameters": {
+        "path": "/data/captions/to_post/",
+        "options": {}
+      },
+      "name": "List Files",
+      "type": "n8n-nodes-base.listFiles",
+      "typeVersion": 1,
+      "id": "c3d4e5f6-a7b8-9012-3456-7890abcdef01"
+    },
+    {
+      "parameters": {
+        "conditions": [
+          {
+            "value1": "={{$json.length}}",
+            "value2": "=0"
+          }
+        ]
+      },
+      "name": "IF Node (Check for content)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "id": "d4e5f6a7-b8c9-0123-4567-890abcdef012"
+    },
+    {
+      "parameters": {
+        "functionCode": "const files = $input.all();\nconst randomIndex = Math.floor(Math.random() * files.length);\nconst selectedFile = files[randomIndex];\n// Extract the base name without the .md extension\nselectedFile.json.baseName = selectedFile.json.name.split('.md')[0];\nreturn [selectedFile];"
+      },
+      "name": "Function (Select Random Caption)",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "id": "e5f6a7b8-c9d0-1234-5678-90abcdef0123"
+    },
+    {
+      "parameters": {
+        "path": "=/data/captions/to_post/{{$json.name}}",
+        "options": {}
+      },
+      "name": "Read Caption File",
+      "type": "n8n-nodes-base.readFile",
+      "typeVersion": 1,
+      "id": "f6a7b8c9-d0e1-2345-6789-0abcdef01234"
+    },
+    {
+      "parameters": {
+        "path": "/data/memes/",
+        "pattern": "={{$node[\"Function (Select Random Caption)\"].json.baseName}}.*",
+        "options": {}
+      },
+      "name": "Find Matching Meme File",
+      "type": "n8n-nodes-base.listFiles",
+      "typeVersion": 1,
+      "id": "a7b8c9d0-e1f2-3456-7890-abcdef012345"
+    },
+    {
+      "parameters": {
+        "path": "={{$node[\"Find Matching Meme File\"].json.path}}",
+        "options": {}
+      },
+      "name": "Read Meme File (Binary)",
+      "type": "n8n-nodes-base.readFile",
+      "typeVersion": 1,
+      "id": "b8c9d0e1-f2a3-4567-8901-234567890abc"
+    },
+    {
+      "parameters": {
+        "conditions": [
+          {
+            "value1": "={{$json.length}}",
+            "value2": 0
+          }
+        ]
+      },
+      "name": "IF (Image Found?)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "id": "e1f2a3b4-c5d6-7890-1234-567890abcdef"
+    },
+    {
+      "parameters": {
+        "caption": "={{$node["Read Caption File"].data[0].json.data}}",
+        "photo": "={{$node["Read Meme File (Binary)"].data[0].json.data}}",
+        "options": {}
+      }
+      "name": "Instagram Post",
+      "type": "n8n-nodes-base.instagram",
+      "typeVersion": 1,
+      "id": "b8c9d0e1-f2a3-4567-8901-234567890abc",
+      "credentials": {
+        "instagram": "={{$env.N8N_CREDENTIALS_NAME}}"
+      }
+    },
+    {
+      "parameters": {
+        "command": "cd /instagram_content && git config --global user.email \"actions@github.com\" && git config --global user.name \"n8n-bot\" && git mv captions/to_post/{{$node[\"Function (Select Random Caption)\"].json.name}} captions/posted/ && git commit -m \"feat: Post meme {{$node[\"Function (Select Random Caption)\"].json.name}}\" && git push"
+      },
+      "name": "Execute Command (Git Move & Commit)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "id": "c9d0e1f2-a3b4-5678-9012-34567890abcd"
+    },
+    "parameters": {
+        "from": "alerts@your-domain.com",
+        "to": "you@your-domain.com",
+        "subject": "Instagram Post Workflow Failed",
+        "text": "The Instagram posting workflow failed. Please check the GitHub Actions logs for details.",
+        "options": {}
+      },
+      "name": "Send Failure Email",
+      "type": "n8n-nodes-base.email",
+      "typeVersion": 1,
+      "id": "d0e1f2a3-b4c5-6789-0123-4567890abcde",
+      "errorWorkflow": true,
+      "credentials": {
+        "smtp": "={{$env.N8N_CREDENTIALS_NAME}}"
+      }
+  ],
+  "connections": {
+    "Start": [
+      [
+        "Execute Command (Git Pull)"
+      ]
+    ],
+    "Execute Command (Git Pull)": [
+      [
+        "List Files"
+      ]
+    ],
+    "List Files": [
+      [
+        "IF Node (Check for content)"
+      ]
+    ],
+    "IF Node (Check for content)": [
+      [
+        "Function (Select Random Caption)",
+        "false"
+      ]
+    ],
+    "Function (Select Random Caption)": [
+      [
+        "Read Caption File"
+      ]
+    ],
+    "Read Caption File": [
+      [
+        "Find Matching Meme File"
+      ]
+    ],
+    "Find Matching Meme File": [
+      [
+        "Read Meme File (Binary)"
+      ]
+    ],
+    "Read Meme File (Binary)": [
+      [
+        "IF (Image Found?)"
+      ]
+    ],
+    "IF (Image Found?)": [
+      [
+        "Instagram Post",
+        "false"
+      ]
+    ],
+    "Instagram Post": [
+      [
+        "Execute Command (Git Move & Commit)"
+      ]
+    ]
+  }
+}
