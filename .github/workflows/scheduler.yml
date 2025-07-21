@@ -15,12 +15,13 @@ jobs:
         with:
           lfs: true
 
-      - name: Ensure workflow file exists
-        run: |
-          mkdir -p .n8n/workflows
-          test -f .n8n/workflows/publisher_workflow.json || { echo "publisher_workflow.json not found"; exit 1; }
+      - name: Create workflow directory if missing
+        run: mkdir -p .n8n/workflows
 
-      - name: Publish meme via n8n (session-cookie login)
+      - name: Verify workflow file exists
+        run: test -f .n8n/workflows/publisher_workflow.json || { echo "Missing workflow"; exit 1; }
+
+      - name: Publish meme via n8n (cookie login)
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/repo" \
@@ -33,6 +34,6 @@ jobs:
             -e N8N_SMTP_SENDER="${{ secrets.N8N_SMTP_SENDER }}" \
             -e INSTAGRAM_SESSION_COOKIE="${{ secrets.INSTAGRAM_SESSION_COOKIE }}" \
             -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
-            -e N8N_RUNNERS_ENABLED=false \
+            -e N8N_RUNNERS_ENABLED=true \
             n8nio/n8n:latest \
             execute --file=/repo/.n8n/workflows/publisher_workflow.json
