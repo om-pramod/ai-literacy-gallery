@@ -1,148 +1,137 @@
-# Instagram Automation Project
+# 🤖 AI Literacy Instagram Bot
 
-This project automates the process of posting AI and tech-related memes to Instagram, complete with intelligent captioning, image handling, and robust error management. The entire system runs serverlessly using GitHub Actions, eliminating the need for a continuously running local server.
+[![Instagram: @omritmo](https://img.shields.io/badge/Instagram-%40omritmo-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/omritmo/)
 
-## 🚀 Project Goal
+This repository houses a sophisticated, end-to-end system for creating and publishing educational AI-themed memes to Instagram. It's more than just a posting bot; it's a complete content creation and management pipeline designed to make learning about Artificial Intelligence accessible and fun.
 
-The primary goal is to create a "set it and forget it" system for consistent Instagram content delivery, focusing on:
-*   **Automation:** Posting memes on a predefined schedule.
-*   **Variety:** Randomly selecting content to keep the feed fresh.
-*   **Intelligence:** Generating meaningful captions and alt text.
-*   **Reliability:** Ensuring the system runs autonomously and notifies of issues.
-*   **Scalability:** Operating entirely in the cloud without local dependencies.
+**The Mission:** To spread AI literacy in an engaging, humorous, and digestible format, leveraging the power of automation and AI itself to manage the entire process.
 
-## 📂 Repository Structure
+---
 
-The repository is organized to clearly separate content from automation logic.
+## 🏛️ Evolution of the Architecture & Strategy
 
-```
-instagram-automation/
-├── .github/
-│   └── workflows/
-│       └── scheduler.yml           # GitHub Actions workflow for scheduling and execution
-├── .n8n/
-│   └── workflows/
-│       └── publisher_workflow.json # n8n workflow definition (the core logic)
-├── captions/
-│   ├── posted/                     # Stores markdown captions that have already been posted
-│   └── to_post/                    # Stores markdown captions ready to be posted
-│       ├── meme_1.md
-│       ├── AI cloud cost optimization backfire.md
-│       └── ...
-├── memes/                          # Stores image files (JPG, PNG) corresponding to captions
-│   ├── meme_1.jpg
-│   ├── AI cloud cost optimization backfire.png
-│   └── ...
-└── README.md                       # This project documentation
-```
-
-## 📝 Content Explanation
-
-### Captions (`captions/to_post/` and `captions/posted/`)
-These are Markdown (`.md`) files containing the text for your Instagram posts. Each file is structured to provide:
-*   The main caption text.
-*   A "For those who don't get it" section (used for intelligent alt text).
-*   A "Techie Deep Dive" section (for additional context).
-*   Relevant hashtags.
-
-**Example Content Structure (inside a `.md` file):**
-```markdown
-The main caption text goes here. It's usually short and punchy.
-
-.
-.
-.
-
-🧐 For those who don't get it:
-This section explains the meme or concept in simple terms. This content is extracted and used as the image's alt text.
-
-.
-.
-.
-
-🧠 Techie Deep Dive:
-This section provides more technical context or explanation for the meme.
-
-.
-.
-.
-
-#Hashtag1 #Hashtag2 #TechMemes #AIHumor
-```
-
-### Memes (`memes/`)
-This directory holds the image files (JPG or PNG) that correspond to your captions. The filename of the image **must match the filename of its corresponding Markdown caption file** (excluding the extension).
-*   `meme_1.md` corresponds to `meme_1.jpg` or `meme_1.png`.
-*   `AI cloud cost optimization backfire.md` corresponds to `AI cloud cost optimization backfire.png`.
-
-## 💡 Evolution of the Architecture & Strategy
-
-The project evolved through several stages to achieve its current robust and serverless state.
+The project evolved through several strategic phases to achieve its current robust and fully serverless state.
 
 ### Phase 1: Initial Local Setup (Proposed)
-*   **Concept:** Use GitHub Actions to trigger a webhook, which would then activate a locally running n8n Docker container.
-*   **Limitations:** This approach created a fragile dependency on the user's local machine (Docker had to be running 24/7, internet connection stable, etc.). If the local environment failed, the automation stopped.
+*   **Concept:** The initial idea was to use GitHub Actions merely as a trigger. A webhook would activate a locally running `n8n` Docker container, which would then execute the posting logic.
+*   **Limitations:** This approach created a fragile dependency on a local machine. It required the Docker instance to be running 24/7, a stable internet connection, and manual maintenance. If the local environment failed, the entire automation would halt.
 
 ### Phase 2: Fully Serverless with GitHub Actions (Current Implementation)
-*   **Concept:** The entire n8n workflow executes directly within GitHub Actions. GitHub Actions spins up a temporary n8n Docker container, runs the workflow, and then tears it down.
+*   **Concept:** The architecture was re-engineered to be completely serverless. The entire workflow logic was moved into Python scripts that execute directly within a temporary environment spun up by GitHub Actions.
 *   **Benefits:**
-    *   **No Local Dependency:** No need for a local Docker instance or server.
-    *   **High Reliability:** GitHub Actions handles the execution environment, retries, and scaling.
-    *   **Cost-Effective:** Resources are only consumed during the brief execution window.
-    *   **Secure:** Secrets are managed by GitHub, not exposed in code or local files.
+    *   **No Local Dependency:** The automation is entirely independent of any local machine or server.
+    *   **High Reliability:** GitHub's infrastructure handles the execution environment, scheduling, and retries, ensuring consistent operation.
+    *   **Cost-Effective:** Resources are only consumed for the few seconds the workflow runs, making it virtually free.
+    *   **Secure:** Credentials are managed using encrypted GitHub Secrets, never exposed in code or stored locally.
+
+---
 
 ## ✨ Key Features & Execution Strategies
 
-### 1. Automated Scheduling
-*   **Mechanism:** The `.github/workflows/scheduler.yml` file defines a `cron` schedule (`0 9,17 * * *`) to trigger the workflow twice daily (9 AM and 5 PM UTC). It can also be triggered manually via `workflow_dispatch`.
+*   **Intelligent Alt Text Generation:** The system automatically parses Markdown caption files, extracting a specific section to be used as accessibility alt-text, making posts more inclusive for visually impaired users.
+*   **Fully Automated Posting:** Runs on a CRON schedule using GitHub Actions to post content without any manual effort.
+*   **Self-Managed Git Repository:** After posting, the bot automatically moves the used caption file to an archive directory and commits the change, keeping the repository state perfectly in sync with the Instagram profile.
+*   **Proactive Low-Content Alerts:** A separate workflow monitors the content queue and sends an email alert if the number of pending posts falls below a defined threshold.
+*   **Emergency "Undo" Functionality:** A manually-triggered workflow that can archive the most recent post on Instagram and simultaneously move its content file back into the posting queue.
 
-### 2. Content Synchronization
-*   **Mechanism:** The n8n workflow starts with a `git pull` command (`Execute Command (Git Pull)` node) to ensure the GitHub Actions runner has the latest `captions` and `memes` from the repository.
+---
 
-### 3. Random Content Selection
-*   **Mechanism:** The `List Files` node retrieves all `.md` files from `captions/to_post/`. A `Function (Select Random Caption)` node then randomly selects one file from this list, ensuring variety in posts.
+## 🌊 The End-to-End Workflow
 
-### 4. Dynamic Image Matching
-*   **Mechanism:** After selecting a caption, the workflow extracts its base filename. The `Find Matching Meme File` node then searches the `memes/` directory for an image with the same base name, regardless of whether its extension is `.jpg` or `.png`. This prevents failures due to mismatched image formats.
+The project is divided into two main phases: the **Content Creation Pipeline** (a human-in-the-loop process for generating content) and the **Automation Engine** (a fully autonomous system for publishing it).
 
-### 5. Automated Instagram Posting
-*   **Mechanism:** The `Instagram Post` node uses the extracted caption content and the dynamically found image to publish the post to Instagram.
+```mermaid
+graph TD
+    subgraph "Phase 1: Content Creation Pipeline"
+        A[Scrape Blank Templates] --> B{Standardize Images to 1024x1024};
+        B --> C[Generate Memes via Azure Dashboard];
+        C --> D{AI-Powered Caption Generation};
+        D --> E[Format into Individual .md Files];
+    end
 
-### 6. Robust State Management
-*   **Mechanism:** After a successful post, the `Execute Command (Git Move & Commit)` node moves the posted Markdown file from `captions/to_post/` to `captions/posted/` and commits this change back to the GitHub repository. This ensures content is not re-posted and maintains a history of published memes.
+    subgraph "Phase 2: Automation Engine"
+        F[captions/to_post/] --> G{Scheduled GitHub Action};
+        G --> H[post_to_instagram.py];
+        H --> I[Post to Instagram];
+        I --> J[Move .md to /posted];
+        J --> K[Commit & Push State];
+    end
 
-### 7. Secure Credential Handling
-*   **Mechanism:** All sensitive credentials (Instagram username/password, SMTP details, n8n encryption key) are stored as GitHub Secrets. These are securely injected as environment variables into the n8n Docker container only during workflow execution.
+    E --> F;
+    style A fill:#cde4f0
+    style C fill:#cde4f0
+    style D fill:#cde4f0
+    style G fill:#fff5b1
+```
+*(Note: This diagram uses Mermaid syntax and is rendered natively by GitHub.)*
 
-### 8. Enhanced Error Handling & Notifications
-*   **Informative Failure Alerts:** If any node within the n8n workflow fails, a `Send Failure Email` node is triggered. This email includes the specific node name and the exact error message, allowing for quick diagnosis.
-*   **Low Content Warning:** The workflow includes an `IF (Content Low?)` node that checks the number of remaining captions in `captions/to_post/`. If the count falls below a threshold (e.g., 5), a `Send Low Content Warning Email` is sent, prompting the user to add more content before the supply runs out.
+### Phase 1: The Content Creation Pipeline
 
-### 9. Intelligent Alt Text Generation
-*   **Mechanism:** The `Extract Alt Text` function node parses the selected Markdown caption. It specifically extracts the content from the "🧐 For those who don't get it:" section. This extracted text is then truncated to a maximum of 250 characters (with "...") to meet Instagram's best practices for alt text length.
-*   **Benefit:** Improves accessibility for visually impaired users and enhances the discoverability of posts on Instagram.
+This is where the magic begins. Before any automation can run, the content itself must be thoughtfully created. This process was designed to be efficient and scalable.
 
-## 🛠️ Setup Instructions (for a new user)
+#### 1. Ethical Template Sourcing
+Blank meme templates were ethically sourced from public resources like Reddit and free APIs using a custom Python script.
 
-To get this automation running in a new repository:
+#### 2. Image Standardization
+A strict quality-control criterion was applied: all templates were programmatically processed and standardized to a `1024x1024` resolution, ensuring they are perfectly optimized for the Instagram feed.
 
-1.  **Clone the Repository:** `git clone [your-repo-url]`
-2.  **Add Content:** Place your Markdown captions in `captions/to_post/` and corresponding images in `memes/`.
-3.  **Add GitHub Secrets:** Go to your GitHub repository's `Settings > Secrets and variables > Actions` and add the following secrets:
-    *   `N8N_ENCRYPTION_KEY` (a random string)
-    *   `INSTAGRAM_USERNAME`
-    *   `INSTAGRAM_PASSWORD`
-    *   `N8N_SMTP_HOST`
-    *   `N8N_SMTP_PORT`
-    *   `N8N_SMTP_USER`
-    *   `N8N_SMTP_PASS` (use an App Password if 2FA is enabled)
-    *   `N8N_SMTP_SENDER`
-4.  **Trigger Workflow:** The workflow will run on its schedule, or you can manually trigger it from the GitHub Actions tab.
+#### 3. The Azure-Powered Meme Generator
+Leveraging free credits from **Microsoft Azure**, a private web dashboard was created to streamline meme generation:
+*   **Display & Decide:** The dashboard displayed a blank template.
+*   **AI-Powered Suggestions:** It generated potential meme text based on a predefined list of AI topics (e.g., "Neural Networks," "Overfitting," "LLMs").
+*   **Human-in-the-Loop:** I had full control to reposition text boxes or refresh the content until the joke landed perfectly.
+*   **Finalize & Download:** Once satisfied, the final meme was generated and downloaded locally into the project structure. This process was repeated for all templates.
 
-## 🚧 Future Considerations
+#### 4. AI-Driven Caption Generation
+To ensure captions were human-like, context-aware, and perfectly formatted, a dedicated AI pipeline was built:
+1.  **Image Analysis:** The final meme image was analyzed by an AI model (utilizing Azure AI services) to understand its content, text, and humor.
+2.  **Guided Generation:** The model generated a detailed caption strictly following a `prompt.txt` file. This prompt engineering ensured consistency in tone, structure (including the "For those who don't get it" section), and hashtag usage.
+3.  **Bulk Creation:** The output was a single, master `captions.md` file, which was then programmatically split into individual Markdown files, one for each meme.
 
-*   **More Robust Health Check:** Implement a more sophisticated health check for the n8n service (e.g., checking a specific n8n API endpoint) instead of just `sleep`.
-*   **Dynamic Hashtag Strategy:** Implement a system to dynamically select and combine hashtag groups for broader reach and less repetition.
-*   **Automated Comment Replies:** (Highly complex) Integrate LLMs and Instagram API polling to understand and reply to comments, though this requires significant development and careful ethical consideration.
+---
 
-This project provides a solid foundation for automated Instagram content delivery, built with reliability and intelligence in mind.
+## 🚀 Setup Instructions (for a new user)
+
+To get this automation running in your own repository, follow these steps:
+
+#### 1. Fork the Repository
+Click the **"Fork"** button at the top-right of this page to create a copy of this repository in your own GitHub account.
+
+#### 2. Add Your Content
+*   Place your meme images (e.g., `.jpg`, `.png`) inside the `memes/` directory.
+*   Create corresponding caption files inside the `captions/to_post/` directory.
+*   **Crucially, the filenames must match.** For `my-meme.jpg`, you must have a `my-meme.md` file.
+
+#### 3. Configure GitHub Secrets
+The automation needs your Instagram credentials to post on your behalf. These should be stored securely as GitHub Secrets.
+1.  In your forked repository, go to **Settings > Secrets and variables > Actions**.
+2.  Click **"New repository secret"** for each of the following:
+    *   `INSTAGRAM_USERNAME`: Your Instagram username.
+    *   `INSTAGRAM_PASSWORD`: Your Instagram password.
+
+#### 4. Enable Workflows
+By default, GitHub disables Actions on forked repositories for security reasons.
+1.  Go to the **"Actions"** tab in your repository.
+2.  You will see a banner that says "Workflows aren't running on this forked repository." Click the **"I understand my workflows, go ahead and enable them"** button.
+
+That's it! The bot is now live and will run on the schedules defined in the `.github/workflows/` files. You can customize the `cron` schedules in `main-workflow.yml` and `check-post-queue.yml` to fit your needs.
+
+---
+
+## 🛠️ Technology & Tools
+
+*   **Languages:** Python
+*   **Cloud & AI:** Microsoft Azure (for the generation dashboard and AI services)
+*   **Automation:** GitHub Actions
+*   **APIs & Libraries:** `instagrapi`
+*   **Developer Experience:** GitHub Copilot, Gemini CLI (for assistance during design and implementation)
+
+---
+
+## 🔮 Future Vision & Project Assets
+
+*   **Upcoming Assets:** I will soon upload the `prompt.txt` file, the list of AI topics, and a selection of blank meme templates to this repository to provide a complete picture of the content generation pipeline.
+*   **Future Scope:**
+    *   **Multi-Platform Expansion:** Adapt the posting module to support other platforms like Twitter or LinkedIn.
+    *   **Video & Reel Support:** Enhance the automation to handle `.mp4` video files and Instagram Reels.
+    *   **Interactive Content Generation:** Create a public-facing web interface (using Streamlit or Flask) that allows others to contribute by generating memes.
