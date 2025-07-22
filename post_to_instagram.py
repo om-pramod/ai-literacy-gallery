@@ -23,7 +23,7 @@ GIT_USER_EMAIL = "actions@github.com"
 
 def parse_caption_file(filepath: Path):
     """
-    MODIFIED: Parses the markdown file to extract the full caption and alt text.
+    Parses the markdown file to extract the full caption and alt text.
     The entire file content (excluding the alt-text section) is used as the caption.
     """
     content = filepath.read_text()
@@ -31,16 +31,12 @@ def parse_caption_file(filepath: Path):
     alt_text = ""
     caption_content = content
 
-    # Use regex to find and extract the alt text section
     alt_text_match = re.search(r"🧐 For those who don't get it:(.*?)🧠 Techie Deep Dive:", content, re.DOTALL)
     
     if alt_text_match:
-        # Extract the alt text
         alt_text = alt_text_match.group(1).strip()
-        # Remove the alt text section from the main caption content
         caption_content = content.replace(alt_text_match.group(0), "🧠 Techie Deep Dive:").strip()
 
-    # The remaining content is the final caption
     final_caption = caption_content.strip()
     
     return final_caption, alt_text
@@ -101,7 +97,8 @@ def main():
 
     print("Updating repository state...")
     CAPTIONS_POSTED_DIR.mkdir(exist_ok=True)
-    new_caption_path = CAPTions_POSTED_DIR / random_caption_file.name
+    # THIS LINE IS NOW FIXED
+    new_caption_path = CAPTIONS_POSTED_DIR / random_caption_file.name
     
     utc_now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     commit_message = f"chore(automation): Post '{base_filename}' on {utc_now} UTC"
