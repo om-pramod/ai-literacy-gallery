@@ -23,21 +23,19 @@ GIT_USER_EMAIL = "actions@github.com"
 
 def parse_caption_file(filepath: Path):
     """
-    Parses the markdown file to extract the full caption and alt text.
-    The entire file content (excluding the alt-text section) is used as the caption.
+    MODIFIED: Uses the ENTIRE file content for the caption, while still
+    extracting the alt text for accessibility.
     """
     content = filepath.read_text()
-    
     alt_text = ""
-    caption_content = content
 
+    # Find the alt text section to use for accessibility
     alt_text_match = re.search(r"🧐 For those who don't get it:(.*?)🧠 Techie Deep Dive:", content, re.DOTALL)
-    
     if alt_text_match:
         alt_text = alt_text_match.group(1).strip()
-        caption_content = content.replace(alt_text_match.group(0), "🧠 Techie Deep Dive:").strip()
 
-    final_caption = caption_content.strip()
+    # The final caption is the entire, unmodified file content
+    final_caption = content.strip()
     
     return final_caption, alt_text
 
@@ -97,7 +95,6 @@ def main():
 
     print("Updating repository state...")
     CAPTIONS_POSTED_DIR.mkdir(exist_ok=True)
-    # THIS LINE IS NOW FIXED
     new_caption_path = CAPTIONS_POSTED_DIR / random_caption_file.name
     
     utc_now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
