@@ -1,39 +1,41 @@
-name: Instagram Post Scheduler
+name: Instagram Post Publisher
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering
   schedule:
-    - cron: '0 9,17 * * *'   # 09:00 & 17:00 UTC
+    - cron: '0 9,17 * * *' # 09:00 & 17:00 UTC
 
 jobs:
   publish-to-instagram:
     runs-on: ubuntu-latest
 
+    # Give the job permissions to write back to the repository
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: true # Keep if you use Git LFS for large images
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip' # Cache dependencies to speed up future runs
 
-      - name: Ensure workflow directory exists
-        run: mkdir -p .n8n/workflows
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-      - name: Verify workflow file exists
-        run: test -f .n8n/workflows/publisher_workflow.json || { echo "Missing publisher_workflow.json"; exit 1; }
+      - name: Cache Instagram session
+        uses: actions/cache@v4
+        with:
+          path: session.json
+          key: ${{ runner.os }}-instasession-${{ secrets.INSTAGRAM_USERNAME }}
 
-      - name: Publish meme via n8n (serverless)
-        run: |
-          docker run --rm \
-            -v "${{ github.workspace }}:/repo" \
-            -e N8N_ENCRYPTION_KEY="${{ secrets.N8N_ENCRYPTION_KEY }}" \
-            -e N8N_EMAIL_MODE=smtp \
-            -e N8N_SMTP_HOST="${{ secrets.N8N_SMTP_HOST }}" \
-            -e N8N_SMTP_PORT="${{ secrets.N8N_SMTP_PORT }}" \
-            -e N8N_SMTP_USER="${{ secrets.N8N_SMTP_USER }}" \
-            -e N8N_SMTP_PASS="${{ secrets.N8N_SMTP_PASS }}" \
-            -e N8N_SMTP_SENDER="${{ secrets.N8N_SMTP_SENDER }}" \
-            -e INSTAGRAM_SESSION_COOKIE="${{ secrets.INSTAGRAM_SESSION_COOKIE }}" \
-            -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false \
-            -e N8N_RUNNERS_ENABLED=true \
-            n8nio/n8n:latest \
-            execute --workflow /repo/.n8n/workflows/publisher_workflow.json
+      - name: Publish to Instagram
+        env:
+          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+        run: python post_to_instagram.py
