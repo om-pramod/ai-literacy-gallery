@@ -1,1 +1,0 @@
-fix: Wrap n8n command in sh -c for correct execution via docker exec
