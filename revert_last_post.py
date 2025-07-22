@@ -30,6 +30,9 @@ def run_command(command: list):
         print(result.stdout)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
+        # Don't fail if git log returns no results
+        if e.returncode == 1 and not e.stdout and not e.stderr:
+            return ""
         print(f"Error running command:\n{e.stderr}")
         raise SystemExit(f"Command failed: {e.stderr}")
 
@@ -39,25 +42,30 @@ def main():
         raise SystemExit("Error: INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD secrets must be set.")
 
     # --- 1. Revert on GitHub ---
-    print("Step 1: Reverting the last commit on GitHub...")
+    print("Step 1: Reverting the last post on GitHub...")
     run_command(["git", "config", "user.name", GIT_USER_NAME])
     run_command(["git", "config", "user.email", GIT_USER_EMAIL])
     
-    last_commit_msg = run_command(["git", "log", f"--author={GIT_BOT_AUTHOR}", "--pretty=format:%s", "-n", "1"])
-    if not last_commit_msg:
-        raise SystemExit("Could not find any posts made by the GitHub Actions Bot.")
+    # MODIFIED: Specifically find the last commit that was a POST.
+    # This ignores any 'revert' commits.
+    last_post_commit_msg = run_command([
+        "git", "log", f"--author={GIT_BOT_AUTHOR}", "--grep=^chore(automation): Post", "--pretty=format:%s", "-n", "1"
+    ])
     
-    print(f"Found last post commit: '{last_commit_msg}'")
+    if not last_post_commit_msg:
+        raise SystemExit("Could not find any post commits made by the bot to revert.")
     
-    match = re.search(r"Post '(.*?)'", last_commit_msg)
+    print(f"Found last post commit to revert: '{last_post_commit_msg}'")
+    
+    match = re.search(r"Post '(.*?)'", last_post_commit_msg)
     if not match:
-        raise SystemExit("Could not parse the filename from the commit message.")
+        raise SystemExit(f"Could not parse filename from the commit message: '{last_post_commit_msg}'")
         
     base_filename = match.group(1)
     
     posted_file = CAPTIONS_POSTED_DIR / f"{base_filename}.md"
     if not posted_file.exists():
-        raise SystemExit(f"Error: Could not find '{posted_file}'. Already reverted?")
+        raise SystemExit(f"Error: '{posted_file}' is not in the posted folder. Has it already been reverted?")
 
     to_post_path = CAPTIONS_TO_POST_DIR / posted_file.name
     run_command(["git", "mv", str(posted_file), str(to_post_path)])
