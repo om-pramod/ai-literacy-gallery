@@ -98,7 +98,10 @@ def main():
             title=post_title,
             image_path=str(image_path.resolve()),
             comment=post_body  # Post the markdown content as the first comment
+            image_path=str(image_path.resolve())
         )
+        # Post the markdown content as the first comment
+        submission.reply(post_body)
         print(f"Post published: https://www.reddit.com{submission.permalink}")
     except Exception as e:
         raise SystemExit(f"Failed to submit post to Reddit: {e}")
