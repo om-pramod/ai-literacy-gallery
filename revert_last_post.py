@@ -1,8 +1,8 @@
 import os
 import re
 import subprocess
+import praw
 from pathlib import Path
-from instagrapi import Client
 
 # --- Configuration ---
 CAPTIONS_TO_POST_DIR = Path("captions/to_post")
@@ -11,10 +11,12 @@ GIT_BOT_AUTHOR = "GitHub Actions Bot"
 GIT_USER_NAME = "GitHub Actions Bot"
 GIT_USER_EMAIL = "actions@github.com"
 
-# --- Instagram Credentials ---
-ACCOUNT_USERNAME = os.environ.get("INSTAGRAM_USERNAME")
-ACCOUNT_PASSWORD = os.environ.get("INSTAGRAM_PASSWORD")
-SESSION_FILE = Path("session.json")
+# --- Reddit Credentials ---
+CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID")
+CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET")
+USER_AGENT = os.environ.get("REDDIT_USER_AGENT")
+USERNAME = os.environ.get("REDDIT_USERNAME")
+PASSWORD = os.environ.get("REDDIT_PASSWORD")
 
 def run_command(command: list):
     """Runs a shell command and returns its output."""
@@ -30,7 +32,6 @@ def run_command(command: list):
         print(result.stdout)
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
-        # Don't fail if git log returns no results
         if e.returncode == 1 and not e.stdout and not e.stderr:
             return ""
         print(f"Error running command:\n{e.stderr}")
@@ -38,16 +39,15 @@ def run_command(command: list):
 
 def main():
     """Main execution logic to revert the last post."""
-    if not all([ACCOUNT_USERNAME, ACCOUNT_PASSWORD]):
-        raise SystemExit("Error: INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD secrets must be set.")
+    required_creds = [CLIENT_ID, CLIENT_SECRET, USER_AGENT, USERNAME, PASSWORD]
+    if not all(required_creds):
+        raise SystemExit("Error: All Reddit credentials must be set in environment variables.")
 
     # --- 1. Revert on GitHub ---
     print("Step 1: Reverting the last post on GitHub...")
     run_command(["git", "config", "user.name", GIT_USER_NAME])
     run_command(["git", "config", "user.email", GIT_USER_EMAIL])
     
-    # MODIFIED: Specifically find the last commit that was a POST.
-    # This ignores any 'revert' commits.
     last_post_commit_msg = run_command([
         "git", "log", f"--author={GIT_BOT_AUTHOR}", "--grep=^chore(automation): Post", "--pretty=format:%s", "-n", "1"
     ])
@@ -57,7 +57,8 @@ def main():
     
     print(f"Found last post commit to revert: '{last_post_commit_msg}'")
     
-    match = re.search(r"Post '(.*?)'", last_post_commit_msg)
+    # Updated regex for the new commit message format
+    match = re.search(r"Post '(.*?)' to Reddit", last_post_commit_msg)
     if not match:
         raise SystemExit(f"Could not parse filename from the commit message: '{last_post_commit_msg}'")
         
@@ -76,32 +77,35 @@ def main():
     run_command(["git", "push"])
     print("✅ GitHub revert successful.")
 
-    # --- 2. Archive on Instagram ---
-    print("\nStep 2: Archiving the post on Instagram...")
-    cl = Client()
-    
+    # --- 2. Delete on Reddit ---
+    print("\nStep 2: Deleting the post on Reddit...")
     try:
-        print("Logging in to Instagram...")
-        if SESSION_FILE.exists(): cl.load_settings(SESSION_FILE)
-        cl.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD)
-        cl.dump_settings(SESSION_FILE)
+        reddit = praw.Reddit(
+            client_id=CLIENT_ID,
+            client_secret=CLIENT_SECRET,
+            user_agent=USER_AGENT,
+            username=USERNAME,
+            password=PASSWORD,
+        )
+        redditor = reddit.user.me()
+        print(f"Authenticated successfully as /u/{redditor.name}")
     except Exception as e:
-        raise SystemExit(f"An error occurred during Instagram login: {e}")
+        raise SystemExit(f"An error occurred during Reddit authentication: {e}")
 
-    user_id = cl.user_id_from_username(ACCOUNT_USERNAME)
-    medias = cl.user_medias(user_id, amount=1)
-    
-    if not medias:
-        raise SystemExit("Could not find any media on the Instagram account.")
+    print("Fetching the most recent submission...")
+    try:
+        last_submission = next(redditor.submissions.new(limit=1))
+    except StopIteration:
+        raise SystemExit("Could not find any submissions on the Reddit account to delete.")
         
-    last_media = medias[0]
-    print(f"Found last post: https://www.instagram.com/p/{last_media.code}/")
+    print(f"Found last post to delete: {last_submission.title} ({last_submission.shortlink})")
     
-    print("Archiving post...")
-    if cl.media_archive(last_media.pk):
-        print("✅ Instagram post archived successfully.")
-    else:
-        print("❌ Failed to archive the Instagram post.")
+    print("Deleting post...")
+    try:
+        last_submission.delete()
+        print("✅ Reddit post deleted successfully.")
+    except Exception as e:
+        print(f"❌ Failed to delete the Reddit post: {e}")
 
 if __name__ == "__main__":
     main()

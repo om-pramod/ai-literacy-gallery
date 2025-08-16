@@ -2,19 +2,22 @@ import os
 import random
 import re
 import subprocess
+import praw
 from pathlib import Path
 from datetime import datetime, timezone
-from instagrapi import Client
 
 # --- Configuration ---
 CAPTIONS_TO_POST_DIR = Path("captions/to_post")
 CAPTIONS_POSTED_DIR = Path("captions/posted")
 MEMES_DIR = Path("memes")
 
-# --- Instagram Credentials ---
-ACCOUNT_USERNAME = os.environ.get("INSTAGRAM_USERNAME")
-ACCOUNT_PASSWORD = os.environ.get("INSTAGRAM_PASSWORD")
-SESSION_FILE = Path("session.json")
+# --- Reddit Credentials ---
+CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID")
+CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET")
+USER_AGENT = os.environ.get("REDDIT_USER_AGENT")
+USERNAME = os.environ.get("REDDIT_USERNAME")
+PASSWORD = os.environ.get("REDDIT_PASSWORD")
+SUBREDDIT_NAME = os.environ.get("SUBREDDIT")
 
 # --- Git Configuration ---
 GIT_USER_NAME = "GitHub Actions Bot"
@@ -34,18 +37,6 @@ def setup_git():
     run_git_command(["git", "config", "user.name", GIT_USER_NAME])
     run_git_command(["git", "config", "user.email", GIT_USER_EMAIL])
 
-def parse_caption_file(filepath: Path):
-    """
-    Uses the ENTIRE file content for the caption, while still
-    extracting the alt text for accessibility.
-    """
-    content = filepath.read_text()
-    alt_text = ""
-    alt_text_match = re.search(r"🧐 For those who don't get it:(.*?)🧠 Techie Deep Dive:", content, re.DOTALL)
-    if alt_text_match:
-        alt_text = alt_text_match.group(1).strip()
-    return content.strip(), alt_text
-
 def find_matching_image(base_filename: str):
     """Finds a matching image file (.jpg, .png) for a given base filename."""
     for ext in ['.jpg', '.jpeg', '.png']:
@@ -53,53 +44,70 @@ def find_matching_image(base_filename: str):
             return image_path
     return None
 
+def generate_title_from_filename(filename: str) -> str:
+    """Generates a post title from the meme's filename."""
+    # Remove extension and replace hyphens/underscores with spaces
+    title = re.sub(r'[\-_]', ' ', filename)
+    # Capitalize the first letter
+    return title.capitalize()
+
 def main():
     """Main execution logic."""
-    if not all([ACCOUNT_USERNAME, ACCOUNT_PASSWORD]):
-        raise SystemExit("Error: INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD must be set.")
+    required_creds = [CLIENT_ID, CLIENT_SECRET, USER_AGENT, USERNAME, PASSWORD, SUBREDDIT_NAME]
+    if not all(required_creds):
+        raise SystemExit("Error: All Reddit credentials must be set in environment variables.")
 
     CAPTIONS_TO_POST_DIR.mkdir(exist_ok=True)
     CAPTIONS_POSTED_DIR.mkdir(exist_ok=True)
 
     md_files = list(CAPTIONS_TO_POST_DIR.glob("*.md"))
     if not md_files:
-        # This will now cause the workflow to fail as desired, sending an alert.
         raise SystemExit("No captions found in 'captions/to_post'. The queue is empty.")
 
     random_caption_file = random.choice(md_files)
     base_filename = random_caption_file.stem
     print(f"Selected content: {base_filename}")
 
-    caption, alt_text = parse_caption_file(random_caption_file)
+    post_title = generate_title_from_filename(base_filename)
+    post_body = random_caption_file.read_text()
+
     image_path = find_matching_image(base_filename)
     if not image_path:
         raise SystemExit(f"Error: No matching image found for caption '{base_filename}'.")
     
     print(f"Found matching image: {image_path}")
-    if alt_text: print("Extracted alt text for accessibility.")
+    print(f"Generated post title: {post_title}")
 
-    cl = Client()
-    print("Logging in to Instagram...")
+    print("Authenticating with Reddit...")
     try:
-        if SESSION_FILE.exists(): cl.load_settings(SESSION_FILE)
-        cl.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD)
-        cl.dump_settings(SESSION_FILE)
-        print(f"Logged in successfully as {cl.username}")
+        reddit = praw.Reddit(
+            client_id=CLIENT_ID,
+            client_secret=CLIENT_SECRET,
+            user_agent=USER_AGENT,
+            username=USERNAME,
+            password=PASSWORD,
+        )
+        print(f"Authenticated successfully as /u/{reddit.user.me()}")
+        subreddit = reddit.subreddit(SUBREDDIT_NAME)
     except Exception as e:
-        raise SystemExit(f"An error occurred during login: {e}")
+        raise SystemExit(f"An error occurred during Reddit authentication: {e}")
 
-    print("Uploading post...")
+    print(f"Uploading post to r/{SUBREDDIT_NAME}...")
     try:
-        media = cl.photo_upload(path=image_path, caption=caption, extra_data={"accessibility_caption": alt_text})
-        print(f"Post published: https://www.instagram.com/p/{media.code}/")
+        submission = subreddit.submit_image(
+            title=post_title,
+            image_path=str(image_path.resolve()),
+            comment=post_body  # Post the markdown content as the first comment
+        )
+        print(f"Post published: https://www.reddit.com{submission.permalink}")
     except Exception as e:
-        raise SystemExit(f"Failed to upload post: {e}")
+        raise SystemExit(f"Failed to submit post to Reddit: {e}")
 
     print("Updating repository state...")
     setup_git()
     new_caption_path = CAPTIONS_POSTED_DIR / random_caption_file.name
     utc_now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-    commit_message = f"chore(automation): Post '{base_filename}' on {utc_now} UTC"
+    commit_message = f"chore(automation): Post '{base_filename}' to Reddit on {utc_now} UTC"
     run_git_command(["git", "mv", str(random_caption_file), str(new_caption_path)])
     run_git_command(["git", "commit", "-m", commit_message])
     run_git_command(["git", "push"])
