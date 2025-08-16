@@ -25,7 +25,7 @@ jobs:
           path: session.json
           key: ${{ runner.os }}-instasession-${{ secrets.INSTAGRAM_USERNAME }}
 
-      - name: Run Archive Script
+      - name: Run Delete Script
         env:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
