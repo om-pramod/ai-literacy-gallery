@@ -2,19 +2,20 @@ import os
 import random
 import re
 import subprocess
+import time
 from pathlib import Path
 from datetime import datetime, timezone
-from instagrapi import Client
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 # --- Configuration ---
 CAPTIONS_TO_POST_DIR = Path("captions/to_post")
 CAPTIONS_POSTED_DIR = Path("captions/posted")
 MEMES_DIR = Path("memes")
+SCREENSHOT_DIR = Path("screenshots")
 
 # --- Instagram Credentials ---
 ACCOUNT_USERNAME = os.environ.get("INSTAGRAM_USERNAME")
 ACCOUNT_PASSWORD = os.environ.get("INSTAGRAM_PASSWORD")
-SESSION_FILE = Path("session.json")
 
 # --- Git Configuration ---
 GIT_USER_NAME = "GitHub Actions Bot"
@@ -58,12 +59,12 @@ def main():
     if not all([ACCOUNT_USERNAME, ACCOUNT_PASSWORD]):
         raise SystemExit("Error: INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD must be set.")
 
+    SCREENSHOT_DIR.mkdir(exist_ok=True)
     CAPTIONS_TO_POST_DIR.mkdir(exist_ok=True)
     CAPTIONS_POSTED_DIR.mkdir(exist_ok=True)
 
     md_files = list(CAPTIONS_TO_POST_DIR.glob("*.md"))
     if not md_files:
-        # This will now cause the workflow to fail as desired, sending an alert.
         raise SystemExit("No captions found in 'captions/to_post'. The queue is empty.")
 
     random_caption_file = random.choice(md_files)
@@ -76,24 +77,96 @@ def main():
         raise SystemExit(f"Error: No matching image found for caption '{base_filename}'.")
     
     print(f"Found matching image: {image_path}")
-    if alt_text: print("Extracted alt text for accessibility.")
+    if alt_text:
+        print("Extracted alt text for accessibility.")
 
-    cl = Client()
-    print("Logging in to Instagram...")
-    try:
-        if SESSION_FILE.exists(): cl.load_settings(SESSION_FILE)
-        cl.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD)
-        cl.dump_settings(SESSION_FILE)
-        print(f"Logged in successfully as {cl.username}")
-    except Exception as e:
-        raise SystemExit(f"An error occurred during login: {e}")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36")
+        page = context.new_page()
 
-    print("Uploading post...")
-    try:
-        media = cl.photo_upload(path=image_path, caption=caption, extra_data={"accessibility_caption": alt_text})
-        print(f"Post published: https://www.instagram.com/p/{media.code}/")
-    except Exception as e:
-        raise SystemExit(f"Failed to upload post: {e}")
+        try:
+            print("Navigating to Instagram login page...")
+            page.goto("https://www.instagram.com/accounts/login/")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/01_login_page.png")
+
+            print("Entering credentials...")
+            page.locator('input[name="username"]').fill(ACCOUNT_USERNAME)
+            page.locator('input[name="password"]').fill(ACCOUNT_PASSWORD)
+            page.screenshot(path=f"{SCREENSHOT_DIR}/02_credentials_entered.png")
+
+            print("Clicking login button...")
+            page.locator('button[type="submit"]').click()
+
+            print("Waiting for login to complete...")
+            # Wait for either a "Save your login info?" dialog or the main page content
+            page.wait_for_selector("text=Save your login info? , main", timeout=15000)
+            page.screenshot(path=f"{SCREENSHOT_DIR}/03_post_login.png")
+
+            # Handle "Save Info" dialog if it appears
+            save_info_button = page.locator('text=Save Info').or_(page.locator('text=Save info'))
+            if save_info_button.is_visible():
+                print("Handling 'Save Info' dialog...")
+                save_info_button.click()
+                page.screenshot(path=f"{SCREENSHOT_DIR}/04_save_info_dialog.png")
+
+            # Handle "Turn on Notifications" dialog if it appears
+            not_now_button = page.locator('text=Not Now')
+            if not_now_button.is_visible():
+                print("Handling 'Turn on Notifications' dialog...")
+                not_now_button.click()
+                page.screenshot(path=f"{SCREENSHOT_DIR}/05_notifications_dialog.png")
+
+            print("Login successful. Navigating to create post...")
+            # Use the SVG path to find the "New post" button
+            create_button_selector = "svg[aria-label='New post']"
+            page.wait_for_selector(create_button_selector, timeout=10000)
+            page.locator(create_button_selector).first.click()
+
+            print("Selecting image file...")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/06_create_post_dialog.png")
+
+            # The file chooser is triggered by the button inside the dialog
+            file_chooser_selector = 'input[type="file"]'
+            page.wait_for_selector(file_chooser_selector)
+            page.set_input_files(file_chooser_selector, str(image_path.resolve()))
+            page.screenshot(path=f"{SCREENSHOT_DIR}/07_file_selected.png")
+
+            print("Navigating through post creation flow...")
+            # Click "Next"
+            page.locator('div[role="dialog"] button:has-text("Next")').click()
+            page.screenshot(path=f"{SCREENSHOT_DIR}/08_filters_screen.png")
+
+            # Click "Next" again (skipping filters)
+            page.locator('div[role="dialog"] button:has-text("Next")').click()
+            page.screenshot(path=f"{SCREENSHOT_DIR}/09_caption_screen.png")
+
+            print("Writing caption and alt text...")
+            page.locator('div[aria-label="Write a caption..."]').fill(caption)
+
+            if alt_text:
+                page.locator('text=Accessibility').click()
+                page.locator('textarea[placeholder="Write alt text..."]').fill(alt_text)
+                page.screenshot(path=f"{SCREENSHOT_DIR}/10_alt_text_entered.png")
+
+            print("Sharing post...")
+            page.locator('div[role="dialog"] button:has-text("Share")').click()
+
+            # Wait for the "Post shared" confirmation
+            page.wait_for_selector("text=Post shared", timeout=30000)
+            page.screenshot(path=f"{SCREENSHOT_DIR}/11_post_shared.png")
+            print("Post successfully shared!")
+
+        except PlaywrightTimeoutError as e:
+            print(f"A timeout error occurred: {e}")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/error.png")
+            raise SystemExit(f"Script failed due to timeout. See error.png for details.")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/error.png")
+            raise SystemExit(f"Script failed unexpectedly. See error.png for details.")
+        finally:
+            browser.close()
 
     print("Updating repository state...")
     setup_git()
