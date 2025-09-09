@@ -96,8 +96,6 @@ def main():
     try:
         submission = subreddit.submit_image(
             title=post_title,
-            image_path=str(image_path.resolve()),
-            comment=post_body  # Post the markdown content as the first comment
             image_path=str(image_path.resolve())
         )
         # Post the markdown content as the first comment
