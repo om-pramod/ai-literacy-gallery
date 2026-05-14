@@ -72,9 +72,16 @@ function parseCaption(content) {
     sections.deepDive = workingContent.substring(deepDiveMarker.length).trim();
   }
 
-  // Remove leading/trailing dots and spaces
+  // CLEANUP AND FORMATTING
   Object.keys(sections).forEach(key => {
+    // Remove leading/trailing dots and spaces
     sections[key] = sections[key].replace(/^(\s|\.|\n)+|(\s|\.|\n)+$/g, '');
+    
+    // Normalize bullets for Markdown (convert • to -)
+    if (key === 'deepDive') {
+      // Ensure the parser sees bullets as a list by adding a newline if needed
+      sections[key] = sections[key].replace(/•\s*/g, '\n- ');
+    }
   });
 
   return sections;
