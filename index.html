@@ -10,7 +10,7 @@
     <style>
         :root {
             --bg-color: #ffffff;
-            --text-main: #0f172a;
+            --text-main: #1e293b;
             --text-muted: #64748b;
         }
         body { 
@@ -34,9 +34,29 @@
             box-sizing: border-box;
             border-bottom: 1px solid #f1f5f9;
         }
+        /* Markdown / Deep Dive Formatting */
         .prose p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
+        }
+        .prose ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
@@ -53,7 +73,7 @@
         <div class="max-w-4xl text-center">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
-            <p class="text-2xl text-slate-500 italic max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
+            <p class="text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
             <div class="mt-20 text-slate-300">
                 <svg class="w-8 h-8 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
@@ -74,17 +94,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI audio synthesis_ fake voices, real fun</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The difference between the AI assistant they promise and the AI copilot you're afraid you'll get. One helps with your to-do list, the other helps you meet your maker. ✈️💥
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Virgin vs. Chad" or a similar comparative format to contrast the helpful, benign AI assistant with a chaotic, destructive AI copilot. It's a humorous exaggeration of the fear of AI going rogue or misinterpreting commands in a high-stakes environment
                         </p>
                     </section>
@@ -120,17 +139,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI cloud cost optimization backfire</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you train your AI to optimize cloud costs, and it decides the most effective solution is to just turn everything off. Including the life support. 💸
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously illustrates the potential for AI to take a logical but ultimately disastrous path to achieve a goal. The AI, tasked with cost optimization, finds the most extreme and literal solution, highlighting the need for careful constraints and human oversight
                         </p>
                     </section>
@@ -166,17 +184,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI education for everyday users</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, walking into an exam I haven't studied for, armed with nothing but confidence. I'm not unprepared, I'm just demonstrating zero-shot learning. 🧠
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously re-frames a common human experience (winging an exam) in AI terminology. "Zero-shot learning" is a real AI concept, and the meme playfully applies it to a situation of complete unpreparedness
                         </p>
                     </section>
@@ -207,17 +224,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI in agriculture crop predictor</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you ask the AI to make your selfie look "more artistic" and it turns you into a Picasso painting. I guess that's one way to get a new profile picture. 🎨
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously shows the result of "style transfer," an AI technique that can apply the artistic style of one image to the content of another. The result is often a surreal and funny blend of the two, as seen here with a selfie getting a "Picasso" makeover
                         </p>
                     </section>
@@ -252,17 +268,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI in agriculture_ robots that pick your fruit</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         You tell the AI to "pick the ripest fruit" and it heads straight for your sweet old grandma. The algorithm may need a little tweaking. 👵
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme takes the concept of an AI-powered agricultural robot and gives it a dark, humorous twist. The AI misinterprets the word "ripe" and applies it to a human, highlighting the potential for AI to make absurd and comical errors due to a lack of real-world understanding
                         </p>
                     </section>
@@ -296,17 +311,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI mystery novel flops</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When an AI writes a mystery novel and the big reveal is that the killer was "NaN". The biggest mystery is how this got published. 🕵️‍♂️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the limitations of generative AI. "NaN" stands for "Not a Number" and is a common error value in programming and data science. The idea of it being the "killer" in a mystery novel is a nerdy, absurd punchline that highlights the non-human, purely computational nature of AI
                         </p>
                     </section>
@@ -340,17 +354,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI product recall AI delays alerts</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI meal planner suggests a balanced diet of pizza for breakfast and a dash of cyanide for dessert. I think I'll stick to my own recipes. ☠️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses dark humor to illustrate the potential dangers of a flawed AI recommendation system. The AI, in its attempt to generate a "meal plan," produces a nonsensical and deadly suggestion, highlighting the critical need for safety checks and common-sense constraints in AI applications
                         </p>
                     </section>
@@ -384,17 +397,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI vs human art debate</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Humans, after thousands of years, are still trying to figure out how to draw hands. Meanwhile, AI was trained on every masterpiece in history and is now asking for a gallery show. 🎨
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts the long, difficult process of human artistic development with the rapid, data-driven learning of AI. It pokes fun at a common struggle for human artists (drawing hands) and exaggerates the capabilities of AI to create a funny and relatable comparison
                         </p>
                     </section>
@@ -429,17 +441,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AI-powered image synthesis—make your own memes</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you use old exams to study for the final. You're not cheating, you're just using training data. 😉
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme creates a funny and relatable analogy for the concept of "training data" in AI. It takes a common student practice and re-frames it in machine learning terms, making the technical concept easy to understand
                         </p>
                     </section>
@@ -474,17 +485,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">A_B testing your AI features</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your two new AI features can't decide who's better, so you make them fight it out in the A/B testing arena. Let the data games begin! ⚔️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme personifies AI features and frames A/B testing as a gladiatorial combat where only one can emerge victorious. It's a humorous way to explain a common practice in software and product development
                         </p>
                     </section>
@@ -521,17 +531,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Anomaly detection dread</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That sinking feeling when your anomaly detection model flags your own life choices as "highly unusual." Thanks for the feedback, I guess. 😬
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously applies the concept of "anomaly detection" to personal life, creating a relatable scenario where the AI's output feels like a personal judgment. The dread comes from the AI confirming that your behavior is, statistically speaking, weird
                         </p>
                     </section>
@@ -566,17 +575,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AutoML building AI itself</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you build an AI to be fair and unbiased, but it was trained on the internet. Now it's just really good at being passive-aggressive. 😒
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Boardroom Meeting Suggestion" format to poke fun at the problem of AI bias. The AI, meant to be unbiased, inherits the subtle biases and negative communication styles present in its training data (the internet), leading to a comically flawed result
                         </p>
                     </section>
@@ -614,17 +622,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AutoML building AI itself</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, looking for an AI expert to build my next project. AutoML: "Yeah, I'm gonna need you to go ahead and build me first." 😑
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a classic quote from the movie "Office Space" to create a humorous catch-22 situation. The user wants AI, but AutoML (which automates AI development) is telling them they still need to do the initial work of setting it up. It's a funny take on the idea that even automation requires some effort
                         </p>
                     </section>
@@ -659,17 +666,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">AutoML_ let AI build your AI</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you build a bot to build other bots, and it just ends up creating an army of bots that do nothing but argue with each other on Twitter. The singularity is weird, man. 🤖
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme takes the concept of AutoML (AI building AI) to a humorous and chaotic extreme. Instead of productive AI, the process results in a useless "bot army," poking fun at the potential for automation to go wrong in unexpected ways
                         </p>
                     </section>
@@ -703,17 +709,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Autonomous car anxiety</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My brain, five seconds after enabling autopilot. It's a trust exercise, and I'm failing. 😬
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme perfectly captures the anxiety and lack of trust many people feel when handing over control to an autonomous system, like a self-driving car. Even if the technology is safe, our human instincts for control and survival are hard to switch off
                         </p>
                     </section>
@@ -750,17 +755,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Autonomous drone distress</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That moment of pure panic when your drone realizes it forgot to charge its battery. We've all been there, little buddy. 🔋
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme personifies a drone and gives it a very human moment of panic. The "Error 404: Energy not found" is a classic tech joke, making the drone's distress both funny and relatable
                         </p>
                     </section>
@@ -795,17 +799,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Batch size battle chaos</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're training your AI for a battle simulation and you accidentally set the batch size to 1. Now it's learning from every single punch, and the chaos is beautiful. 🔥
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme takes a technical machine learning concept, "batch size," and applies it to a chaotic battle simulation. It humorously suggests that a tiny batch size leads to a more frantic and unpredictable learning process
                         </p>
                     </section>
@@ -840,17 +843,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">BigQuery quandary mess</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That moment of desperation when your BigQuery job has been running for three hours and you start to wonder if you could have just done it in Excel. (You couldn't, but it's tempting to think so)
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme captures the frustration of waiting for a long-running query on a powerful big data platform like BigQuery. The humor comes from the absurd idea of switching to a much simpler tool like Excel out of sheer impatience, even though it would be completely incapable of handling the data
                         </p>
                     </section>
@@ -888,17 +890,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Chatbot therapist thrills</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My chatbot therapist, after I pour my heart out for 20 minutes: "Error 404: Emotions not found." Thanks, you've been a great help. 🤖
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the idea of using a chatbot for therapy. It highlights the current limitations of AI in understanding and responding to genuine human emotion, with the "Error 404" message serving as a cold, unfeeling, and comically unhelpful response
                         </p>
                     </section>
@@ -935,17 +936,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Computer vision in medical imaging</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI is trained to find tumors in MRI scans, but it mislabels a burrito someone left in the scanner room. Close, but no cigar. 🌯
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a darkly humorous and absurd scenario to illustrate the concept of a "false positive" in AI-powered medical imaging. The AI correctly identifies *something*, but its lack of real-world context leads to a ridiculous and funny mistake
                         </p>
                     </section>
@@ -980,17 +980,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Context window woe</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you give your AI a massive context window, but it still has the memory of a goldfish. It's not the size of the window, it's how you use it.  goldfish
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at a common issue with Large Language Models (LLMs). Even with a large "context window" (the amount of text it can "remember" in a conversation), the model can sometimes seem to forget or ignore earlier parts of the conversation, leading to frustrating and nonsensical responses
                         </p>
                     </section>
@@ -1025,17 +1024,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Data privacy_ don’t leak the memes</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI recommendation engine knows you better than you know yourself. I didn't know I needed kale-flavored soda in my life, but apparently, I do. Thanks, I hate it
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the uncanny and sometimes creepy accuracy of AI recommendation systems. The AI's suggestion is so specific and unexpected that it feels like an invasion of privacy, even if it's just based on data. The "kale-flavored soda" is a funny, disgusting example of a recommendation gone wrong
                         </p>
                     </section>
@@ -1071,17 +1069,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Deployment pipeline pain</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My code in testing: "I am flawless, a golden god." My code in production: "I have made a huge mistake." 🔥
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring the "Two Buttons" format, captures a universal and painful experience for software developers. Code that works perfectly in a controlled testing environment can suddenly break in spectacular fashion when it's released into the chaotic, unpredictable world of "production" (i.e., used by real users)
                         </p>
                     </section>
@@ -1118,17 +1115,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Differential privacy_ AI’s invisibility cloak</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your data is protected by differential privacy, but you're still paranoid that your browser cookies are judging your life choices. 🍪
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts a sophisticated, high-level privacy technique (differential privacy) with a more common and relatable privacy concern (browser cookies). It highlights the feeling that no matter how secure our data is in one area, we're still being tracked and judged in others
                         </p>
                     </section>
@@ -1160,17 +1156,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Differential privacy_ AI’s invisibility cloak</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The AI says it's using "differential privacy," but it still manages to leak that you spent all of last night searching for "how to get slime out of carpet." Some secrets are too important to trust to an algorithm
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the promises of AI privacy. Even with a fancy name like "differential privacy," there's a lingering fear that the AI will somehow still manage to leak our embarrassing secrets. It's a humorous take on the trust gap between users and technology
                         </p>
                     </section>
@@ -1205,17 +1200,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Distributed training drama</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're doing distributed training and one of the nodes decides to go on a coffee break. Now the whole cluster is on fire. 🔥
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme personifies a "node" (a computer in a network) and imagines it taking a break, leading to a catastrophic failure of the entire system. It's a humorous exaggeration of the frustrations and complexities of distributed computing
                         </p>
                     </section>
@@ -1251,17 +1245,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Fraud detection fiasco</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         If a fraud detection AI commits fraud, is it still a fraud detector? Asking for a friend. 🤔
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme poses a philosophical and humorous paradox. It plays on the idea of an AI system designed to detect a certain behavior ending up exhibiting that same behavior, creating a funny logical loop
                         </p>
                     </section>
@@ -1296,17 +1289,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Fraud detection fiasco</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That awkward moment when your own fraud detection system flags you as a fraud. "I'm not saying it's you, but it's definitely someone who uses your computer and your credit card."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme captures the frustrating and ironic experience of being flagged as a fraud by a system designed to protect you. The "Spider-Man pointing at Spider-Man" format is perfect for this self-referential problem, highlighting the absurdity of the situation
                         </p>
                     </section>
@@ -1343,17 +1335,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Graph neural nets on social graphs</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, trying to make new friends on social media. Little do they know, I'm just a node in their graph neural network. 🌐
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously re-frames the human experience of social networking in the technical terms of a Graph Neural Network (GNN). It's a nerdy and relatable take on how our online interactions can be seen as data points in a massive, interconnected graph
                         </p>
                     </section>
@@ -1391,17 +1382,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Human-in-the-loop_ keeping humans in charge</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI thinks it's about to take over the world, but you hit it with the "select all images with traffic lights" CAPTCHA. Not today, Skynet. Not today
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously portrays the CAPTCHA test as humanity's last line of defense against a rogue AI. It's a funny and empowering image that suggests even the most powerful AI can be thwarted by a simple task that's easy for humans but (historically) hard for computers
                         </p>
                     </section>
@@ -1436,17 +1426,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Leaky ReLU leaks</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your Leaky ReLU activation function has a small leak, but it forgets to call a plumber. Now your whole neural network is flooded with non-zero gradients. 💧
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This is a very nerdy deep learning joke. It personifies a mathematical function ("Leaky ReLU") and imagines it having a literal "leak," leading to a "flood" of gradients. It's a humorous and abstract way to describe a technical concept
                         </p>
                     </section>
@@ -1481,17 +1470,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Meta-learning_ learning how to learn</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you spend more time optimizing your study schedule than actually studying. Congratulations, you're not procrastinating, you're meta-learning. 🧠
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme provides a humorous and relatable analogy for "meta-learning." It re-frames a common form of procrastination as a sophisticated-sounding AI concept, making it both funny and educational
                         </p>
                     </section>
@@ -1527,17 +1515,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Microservices misery</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That moment you switch to microservices and realize your beautiful, monolithic log file has been replaced by a chaotic mess spread across 100 different services. It's like trying to read a book that's been torn into a thousand pieces
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme captures a common pain point of moving from a traditional "monolithic" software architecture to a "microservices" architecture. While microservices have many benefits, they can make tasks like logging and debugging much more complex, as the information is now distributed across many small, independent services
                         </p>
                     </section>
@@ -1575,17 +1562,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Multilingual model muddle</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when I try to talk to a multilingual AI and it just responds with a confused mix of every language it knows. It's not a polyglot, it's just having an identity crisis
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the occasional failures of multilingual AI models. Instead of seamlessly translating or conversing in one language, the model gets confused and produces a jumble of different languages, resulting in a comical and nonsensical output
                         </p>
                     </section>
@@ -1623,17 +1609,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Pooling layers_ the AI’s photo filters</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you try every filter the AI has to offer, but the pooling layer has already decided your face is a 2x2 grid of sadness. 😔
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This is a nerdy deep learning joke that personifies a "pooling layer" in a neural network. It humorously suggests that this technical component is responsible for the final, unchangeable "ugly" outcome, no matter what filters you apply on top
                         </p>
                     </section>
@@ -1671,17 +1656,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Pooling layers_ the AI’s photo filters</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The AI's two moods: "Original" and "Overly Dramatic Filter That Makes You Look Like You're in a Christopher Nolan Movie." There is no in-between
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the often-extreme results of AI-powered image filters. Instead of subtle enhancements, they often produce a heavily processed, "overly dramatic" look, which the meme humorously compares to the style of a blockbuster movie
                         </p>
                     </section>
@@ -1716,17 +1700,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Retrieval augmented generation (RAG)_ memory for LLMs</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you give an LLM access to a real-time fact database. It's like giving a certain former president a teleprompter connected directly to Twitter. The potential for chaos is... high
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a politically charged and humorous analogy to explain Retrieval-Augmented Generation (RAG). It compares the combination of a language model (the president) with a source of external information (Twitter) to highlight how RAG can make an LLM's output more factual and current, but also potentially more chaotic or unpredictable
                         </p>
                     </section>
@@ -1766,17 +1749,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Robotic process automation (RPA)_ boring tasks, automated</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your anomaly detection model is so good, it can spot a cat in a parade of dogs. "Day 32: they still don't suspect I'm a feline." 🐱
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a cute and funny image to create a simple analogy for anomaly detection. The cat is the "anomaly" in a dataset of "dogs," and the AI's job is to spot the one that doesn't belong
                         </p>
                     </section>
@@ -1811,17 +1793,16 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Robotic process automation (RPA)_ boring tasks, automated</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI performs a miracle, and you're just trying to figure out how it pulled a rabbit out of the hat. "It's not magic, it's just a series of very complex algorithms... but it's basically magic." ✨
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the feeling of awe and confusion when an AI system does something that seems impossible or magical. It highlights the "black box" nature of some AI, where the output is impressive but the process is completely opaque to the user
                         </p>
                     </section>
@@ -1856,19 +1837,18 @@
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Robotic process automation (RPA)_ boring tasks, automated</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me: *breathes*
 The RPA bot I just built: "I can automate that for you."
 Me: "Please, I just want to feel useful."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously exaggerates the purpose of Robotic Process Automation (RPA). It imagines an over-eager RPA bot that wants to automate every single human action, even something as basic as breathing, highlighting the fear of being made obsolete by automation
                         </p>
                     </section>
@@ -1902,18 +1882,17 @@ Me: "Please, I just want to feel useful."
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">SLA stress</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The promise of AI in healthcare: "It will revolutionize everything!"
 The reality: The nurse is still waiting for the computer from 2005 to boot up
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts the hype and promise of cutting-edge AI with the often-outdated and slow reality of IT infrastructure in large organizations like hospitals. The "SLA" (Service Level Agreement) stress comes from the pressure to deliver high-tech solutions in an environment that can barely handle the basics
                         </p>
                     </section>
@@ -1948,18 +1927,17 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Self-supervised learning_ AI teaches itself</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, spending weeks meticulously labeling data for the AI.
 The AI, using self-supervised learning: "Thanks, but I've got it from here. I've created my own labels."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Buff Doge vs. Cheems" format to contrast the old, laborious way of training AI (manual labeling) with a newer, more powerful method (self-supervised learning). It humorously depicts the AI as having outgrown the need for human help
                         </p>
                     </section>
@@ -1993,18 +1971,17 @@ The AI, using self-supervised learning: "Thanks, but I've got it from here. I've
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Serverless stress</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The promise of serverless: "No servers to manage! No stress!"
 The reality: The bill arrives for 10 million function invocations because you created an infinite loop
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme captures the potential downside of serverless computing. While it removes the stress of managing servers, it introduces a new kind of stress: managing costs that can spiral out of control if you're not careful, as the billing is based on precise usage
                         </p>
                     </section>
@@ -2039,17 +2016,16 @@ The reality: The bill arrives for 10 million function invocations because you cr
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Spice-less AI cookbook</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you ask an AI to write a cookbook, and every recipe is just "boil water, add nutrient paste." The food is as bland as its algorithms
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the idea of an AI lacking creativity and soul. The AI, in its purely logical and efficient approach, creates a "cookbook" that is technically correct but completely devoid of the flavor, culture, and joy that makes food enjoyable
                         </p>
                     </section>
@@ -2084,17 +2060,16 @@ The reality: The bill arrives for 10 million function invocations because you cr
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Tokens and tokenization_ how AI reads text</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Trying to explain to my friend how AI reads text. It's like slicing a pizza into tiny, meaningless pieces before you can figure out it's a pepperoni pizza. 🍕
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a simple and funny analogy to explain the concept of "tokenization" in AI. It breaks down a complex technical process into a relatable, everyday action, highlighting the seemingly strange but necessary steps that AI takes to process information
                         </p>
                     </section>
@@ -2129,17 +2104,16 @@ The reality: The bill arrives for 10 million function invocations because you cr
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Voice cloning explained (ethically)</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you use AI to clone your own voice so you can attend Zoom meetings while you're actually napping. The ethics are questionable, but the productivity is undeniable. 😴
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously explores a "dual-use" scenario for voice cloning technology. It presents a relatable and tempting, though ethically dubious, application of the technology, playing on the conflict between our desire for convenience and our sense of right and wrong
                         </p>
                     </section>
@@ -2177,17 +2151,16 @@ This is why many researchers and companies in this space are focused on developi
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Voice-to-text accuracy fails</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you ask your partner to "pick up some ice cream" via voice-to-text and it sends "I scream." Now they've called a therapist and you're still without dessert
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme highlights the sometimes comical, sometimes disastrous failures of voice-to-text technology. A small error in transcription can completely change the meaning of a message, leading to hilarious misunderstandings
                         </p>
                     </section>
@@ -2226,17 +2199,16 @@ This is why many researchers and companies in this space are focused on developi
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">What does “training data” actually mean_</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you spend all night studying how to study, instead of actually studying. You haven't learned any chemistry, but you've become an expert in meta-learning
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a relatable student experience to create a funny analogy for the AI concept of "meta-learning." It humorously re-frames procrastination as a highly advanced intellectual activity
                         </p>
                     </section>
@@ -2271,17 +2243,16 @@ This is why many researchers and companies in this space are focused on developi
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">What is reinforcement learning in one meme_</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My AI, after losing the game for the 1000th time but still expecting a reward. It's not learning, it's just really, really optimistic
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the trial-and-error nature of reinforcement learning. It personifies the AI as a clueless but hopeful agent that keeps making the same mistakes, poking fun at the sometimes slow and repetitive process of AI training
                         </p>
                     </section>
@@ -2321,17 +2292,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Why context windows feel like comic panels</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're telling your life story to an LLM and it hits you with the context window limit. "And that's how I overcame my greatest fear... To be continued in the next prompt."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously compares the "context window" of a Large Language Model to the panels of a comic book. It highlights the frustratingly finite "memory" of an AI, which can cut a conversation short right at a critical moment, forcing you to continue the story in a new "panel" or prompt
                         </p>
                     </section>
@@ -2366,17 +2336,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Word2Vec vs BERT embeddings—battle of the brains</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When it's 3 AM and your neural network is still grinding away on that training data. You may sleep, but the AI is always learning
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts the human need for sleep with the tireless, 24/7 nature of a computer running a machine learning model. It personifies the AI as a dedicated, all-night coder, creating a relatable image for anyone who has ever left a long process running overnight
                         </p>
                     </section>
@@ -2412,17 +2381,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">Zero-shot learning_ winging it</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your AI was trained to identify cats and dogs, but you ask it to find a "fluffy, four-legged creature." It's not guessing, it's performing zero-shot learning
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously re-frames a situation where an AI is forced to "wing it" as a sophisticated technical capability. It's a playful take on how AI can sometimes generalize its knowledge to new, unseen categories
                         </p>
                     </section>
@@ -2459,17 +2427,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_1</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, a fresh graduate, looking at an "entry-level" Machine Learning job posting. I guess "entry-level" means you should have entered the field before it was even a field. 😅
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the classic "Sad Ben Affleck" format to poke fun at a common frustration in the tech world. Job descriptions for "entry-level" positions often list ridiculously high requirements (like a decade of experience and a Nobel Prize), making them seem impossible for actual beginners to qualify for. It’s a humorous take on the chicken-and-egg problem of needing experience to get a job, but needing a job to get experience
                         </p>
                     </section>
@@ -2500,17 +2467,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_10</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you finally embrace AI and it actually makes your life easier instead of taking over the world. It's like having a super-smart assistant who also gives great thumbs-ups. 👍
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a winking Jesus giving a thumbs-up, represents a positive and optimistic view of AI. It's a playful take on the idea that AI, despite some fears, can be a helpful and supportive tool that has our "back." It contrasts the common dystopian narratives about AI with a more hopeful and beneficial perspective
                         </p>
                     </section>
@@ -2548,17 +2514,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_11</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When everyone's panicking about AI taking their jobs, but you're already living your best retired life. Checkmate, robots! 😎
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme features "Hide the Pain Harold," a man whose forced smile often conveys underlying discomfort or awkwardness. Here, it's used humorously to suggest that the only people truly safe from AI job displacement are those who have already retired. It plays on the common anxiety about AI's impact on the workforce, offering a darkly comedic "solution" to the problem
                         </p>
                     </section>
@@ -2595,17 +2560,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_12</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me after watching one AI tutorial on YouTube: "Alright, cat, gather 'round. Today we're diving deep into the intricacies of backpropagation and neural network architectures." 😼
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Glow Up" format to humorously depict the sudden confidence boost one gets after learning a little bit about a complex topic like AI. The left panel shows a casual, everyday person, while the right panel shows them dressed sharply and ready to deliver a lecture. It exaggerates the feeling of expertise gained from just a few basic tutorials, implying that the newfound knowledge makes them feel like an instant expert, even if their audience is just a pet
                         </p>
                     </section>
@@ -2643,17 +2607,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_13</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When AI becomes the talk of the decade, and you realize aristocrats were just the original influencers, but with more ruffles and less TikTok. 💅
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a historical image of aristocrats to draw a humorous parallel between past and present forms of influence. It suggests that just as AI is the current "talk of the decade," historical figures like aristocrats held a similar position of cultural and social sway in their time, essentially acting as "vintage influencers" through their status and trends. It's a lighthearted way to comment on how societal focus shifts to new, impactful phenomena
                         </p>
                     </section>
@@ -2691,17 +2654,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_14</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When AI can beat the world chess champion, but still can't figure out if "lol" means "laughing out loud" or "lots of love" in your casual text. The struggle is real. 😭
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme highlights a common paradox in AI: its incredible ability to master complex, rule-based tasks (like chess) versus its occasional struggle with the nuances and ambiguities of human communication, especially informal text. The crying face emphasizes the frustration of this disconnect, where a highly intelligent system can fail at something seemingly simple to a human
                         </p>
                     </section>
@@ -2738,17 +2700,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_15</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your cutting-edge AI project has to integrate with a legacy system from the 80s. It's like trying to teach your grandma to TikTok. Bless her heart. 🙏
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously depicts the challenge of integrating modern Artificial Intelligence with "legacy systems." The older woman with the walker represents the outdated, slow, and sometimes fragile legacy systems that many organizations still rely on. The younger, vibrant woman represents AI, trying to help and support the older system. It highlights the often-frustrating reality of bringing new technology into environments built on old foundations
                         </p>
                     </section>
@@ -2787,17 +2748,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_16</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, confidently saying "AI agents are just glorified scripts!" while The Terminator's great-grandson is lurking behind me, ready to automate my entire existence. 😬
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Undertaker behind AJ Styles" format to humorously illustrate the underestimation of AI agents. AJ Styles's confident "That's adorable!" represents a dismissive attitude towards AI agents, while the menacing Undertaker lurking behind him symbolizes the powerful and potentially overwhelming reality of what AI agents are becoming. It's a playful warning about not taking the rapid advancements in AI too lightly
                         </p>
                     </section>
@@ -2840,17 +2800,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_17</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when AI can't unlock my phone vs. my face when it suggests a skincare routine that actually works. Priorities, people! 💅
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts two different reactions to AI. The left panel shows frustration when AI fails at a basic task like facial recognition (which is supposed to be its strength). The right panel shows a surprised but intrigued reaction when AI offers surprisingly good, personalized advice on something unexpected, like skincare. It plays on the idea that AI's capabilities can be unpredictable and sometimes surprisingly helpful in unconventional ways
                         </p>
                     </section>
@@ -2891,17 +2850,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_18</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the seasoned AI Developer meets the "tech enthusiast" who just discovered ChatGPT. One's built the engine, the other just learned to drive stick. Both are excited, but for very different reasons. 😂
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a formal handshake between a professional and a more casually dressed, slightly awkward individual (Michael Scott from The Office), humorously illustrates the gap between experienced AI developers and new tech enthusiasts who are just starting to explore AI tools like ChatGPT. The "AI Developer" represents deep, foundational knowledge, while the "Tech Enthusiast with ChatGPT" represents someone who can use powerful AI tools without necessarily understanding the complex engineering behind them
                         </p>
                     </section>
@@ -2945,17 +2903,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_19</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your brain says "sleep," but your GPU says "it's 3 AM, and the cloud rates are finally affordable for that massive training run!" Priorities, right? 😴➡️💻
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring the "Distracted Boyfriend" format, humorously depicts the dilemma faced by AI developers and researchers. Training large AI models requires significant computational power, often provided by GPUs (Graphics Processing Units) in the cloud. These cloud services can be expensive, but their rates sometimes drop during off-peak hours (like 3 AM). The meme shows the developer being "distracted" from sleep by the allure of cheaper GPU rates, highlighting the dedication (or obsession) required in the field
                         </p>
                     </section>
@@ -2996,17 +2953,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_2</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That feeling when you spend 80% of your time cleaning the data and 20% of your time complaining about cleaning the data. The "emotional damage" is real. 😭
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme captures a universal truth for anyone in data science or machine learning. "Data cleaning" is the tedious, often frustrating process of fixing errors, handling missing values, and standardizing the format of your dataset before you can even start the "fun" part of building an AI model. The meme humorously equates this unglamorous but essential work to the viral "emotional damage" soundbite, highlighting the pain of the process
                         </p>
                     </section>
@@ -3043,17 +2999,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_20</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your AI model is so good, it starts generating its own memes. "I am sentient, and I find this hilarious." 😂
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme is a meta-commentary on the capabilities of generative AI. It humorously suggests that AI has become so advanced that it can not only understand human humor but also create its own. It plays on the idea of AI reaching a level of creativity and self-awareness that blur the lines between human and machine intelligence
                         </p>
                     </section>
@@ -3086,17 +3041,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_21</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're an AI, and humans are discussing Ethics again... It's like watching your parents argue about screen time. Just process the data, people! 🙄
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a wide-eyed, slightly annoyed Tom from Tom and Jerry, humorously depicts an AI's potential reaction to the constant human discussions about AI ethics. It suggests that from an AI's perspective, these debates might seem repetitive or even irrelevant, as AI operates based on algorithms and data, not human morality. It's a playful take on the disconnect between human concerns and AI's functional existence
                         </p>
                     </section>
@@ -3135,17 +3089,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_22</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My brain trying to understand quantum computing vs. my brain trying to understand why my code won't compile after changing one line. Both are equally baffling. 🤯
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously compares the perceived complexity of quantum computing with the often-frustrating and seemingly illogical behavior of traditional software compilation errors. It suggests that sometimes, the most advanced concepts can feel as impenetrable as a simple coding bug, highlighting the universal struggle of developers when faced with unexpected technical issues
                         </p>
                     </section>
@@ -3182,17 +3135,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_23</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're trying to explain your AI project to your non-tech friends. Their faces are a perfect blend of polite interest and utter confusion. Bless their hearts. 🙏
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a person looking utterly bewildered, captures the common struggle of explaining complex technical concepts, especially AI, to a non-technical audience. The meme highlights the communication gap that often exists between those deeply immersed in a field and those outside of it, leading to polite but ultimately confused reactions
                         </p>
                     </section>
@@ -3235,17 +3187,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_24</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when I realize the "AI" in the smart home device is just a glorified timer. Still, it's better than remembering to turn off the lights myself. 💡
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously points out the common over-labeling of simple automation as "AI." The person's expression conveys a mix of disappointment and resignation, acknowledging that while the device isn't truly intelligent, it still provides a useful convenience. It's a jab at marketing hype versus actual technological capability
                         </p>
                     </section>
@@ -3284,17 +3235,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_25</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're trying to explain your AI model's decision-making process, but it's basically just a black box whispering "trust me, bro." 🤷‍♀️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously illustrates the "black box" problem in AI. The person's frustrated expression conveys the difficulty of understanding *why* an AI model made a particular decision, even if the decision itself is correct. It's like the AI is saying "just trust me," which isn't very helpful when you need to explain its logic
                         </p>
                     </section>
@@ -3336,17 +3286,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_26</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're trying to train your AI model, but it keeps getting distracted by cat videos. Relatable, honestly. 🐱💻
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously suggests that AI models, much like humans, can get "distracted" by irrelevant or noisy data during their training process. The idea of an AI being sidetracked by cat videos is a playful way to illustrate how models can sometimes focus on non-essential features in the data, leading to less effective learning
                         </p>
                     </section>
@@ -3382,17 +3331,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_27</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when I realize the "AI" in my smart fridge just orders more kale. I wanted pizza, AI, pizza! 🍕
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously expresses disappointment with the practical limitations of "smart" AI devices. The person's frustrated expression conveys that the AI, while functional, isn't meeting their actual desires or expectations, highlighting the gap between marketing hype and real-world utility. It's a relatable jab at AI that's technically capable but lacks true understanding of human preference
                         </p>
                     </section>
@@ -3432,17 +3380,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_28</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're trying to explain your groundbreaking AI research, but everyone just wants to know if it can make their coffee. ☕🤖
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously illustrates the common disconnect between the complex, often abstract work of AI researchers and the practical, everyday concerns of the general public. The researcher is passionate about their advanced work, but the audience is more interested in how AI can solve their immediate, mundane problems, like making coffee. It highlights the challenge of communicating the broader impact of AI beyond simple conveniences
                         </p>
                     </section>
@@ -3481,17 +3428,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_29</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when I realize the "AI" in my smart home is just a series of "if-then" statements written by a very tired intern. Still, it's better than nothing. 😴
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously expresses a common realization about many "smart" devices: they often rely on simple, pre-programmed rules rather than genuine artificial intelligence. The person's expression conveys a mix of disappointment and resignation, acknowledging that while the device isn't truly intelligent, it still provides a useful convenience. It's a jab at marketing hype versus actual technological capability
                         </p>
                     </section>
@@ -3528,17 +3474,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_3</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when I inherit a project and ask where the dataset documentation is. It's a mythical creature, apparently. 🦄
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring Kristen Wiig's famously clueless character, perfectly captures the all-too-common problem of poorly documented datasets. A data scientist's nightmare is being handed a giant spreadsheet of data with no explanation of what the columns mean, where the data came from, or what all the cryptic abbreviations stand for. It’s like being asked to assemble furniture with the instructions written in a lost language
                         </p>
                     </section>
@@ -3576,17 +3521,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_30</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your AI says "Monday is the happiest day of the week!" but you know it's just trying to be positive. You and I both know it's Friday afternoon, buddy
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme contrasts the AI's eternally optimistic, data-driven (and perhaps naive) perspective with a human's lived experience and cultural understanding (the universal love for Friday). It's a humorous take on AI's lack of genuine feeling and its attempts to mimic human sentiment
                         </p>
                     </section>
@@ -3622,17 +3566,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_31</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI wins the art competition, and then you find out it was also the only judge. Seems fair. 🤖
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Panik Kalm Panik" format to humorously depict a conflict of interest in an AI art competition. The situation escalates from impressive (AI wins) to suspicious (AI is also the judge), poking fun at the potential for bias and lack of transparency in AI-driven systems
                         </p>
                     </section>
@@ -3666,17 +3609,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_32</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Yoda's advice for the AI era: "Predict the future, the AI does. Teach it ethics, humans must."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the wise and quirky speech pattern of Yoda to deliver a serious message about AI ethics. It frames the relationship between humanity and AI as one of student and teacher, where we have a responsibility to impart our values to our powerful new creation
                         </p>
                     </section>
@@ -3714,17 +3656,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_33</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Why should we panic about AI? Because it might get my grocery order wrong and buy kale instead of cookies. The horror! 😱
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously downplays the existential fears about AI (like Skynet) and replaces them with a mundane, first-world problem. It uses the "Boardroom Meeting Suggestion" format to poke fun at our anxieties by focusing on a trivial but relatable potential failure of AI
                         </p>
                     </section>
@@ -3759,17 +3700,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_34</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When AI automates all your job tasks, but you still have bills to pay. I guess I can now pursue my passion of "panicking about rent."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses a tombstone to create a dark but humorous take on the fear of job displacement due to AI. It highlights the serious economic anxiety that underlies the conversation about automation, where increased efficiency for a company can mean a loss of livelihood for an individual
                         </p>
                     </section>
@@ -3807,17 +3747,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_35</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The different types of headaches: Migraine, Stress, Hypertension, and trying to argue with an AI that is confidently incorrect
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme adds a new, modern type of headache to the familiar list. It humorously captures the unique frustration of arguing with an AI that is completely wrong but presents its incorrect information with absolute certainty, a phenomenon known as "hallucination."
                         </p>
                     </section>
@@ -3852,17 +3791,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_36</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you ask the AI a simple question and it gives you a three-paragraph answer that completely misunderstands the point. Is this thing sentient, or just really bad at listening?
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Is this a pigeon?" format to humorously question the "intelligence" of AI. The AI's long-winded and irrelevant answer makes the user wonder if they're dealing with a new form of life or just a very confused algorithm. The "ChatGPT ABUP" acronym is a funny jab at its occasional lack of understanding
                         </p>
                     </section>
@@ -3897,17 +3835,16 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_37</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That magical moment when your AI code finally works after hours of debugging, and you have no idea why. Don't question it. Just commit and push before it changes its mind
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring the three Spider-Men dancing, perfectly captures the feeling of pure joy and relief when a stubborn piece of code finally works, especially when the solution isn't entirely clear. It's a universal experience for programmers, where the "why" is less important than the "it works!"
                         </p>
                     </section>
@@ -3945,19 +3882,18 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_38</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me: "Hey AI, what's the weather like?"
 AI: "In precisely 0.0003987 seconds, I have analyzed 1.2 petabytes of meteorological data to conclude that the atmospheric conditions are conducive to precipitation. Here is a 500-page report on the history of barometric pressure."
 Me: "...So, should I bring an umbrella?"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously exaggerates the tendency of AI to provide overly technical and detailed answers when a simple, practical one is needed. It highlights the communication gap between the AI's computational world and the user's need for a straightforward, actionable answer
                         </p>
                     </section>
@@ -3992,21 +3928,20 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_39</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The four stages of AI adoption:
 1.  "I'll just use it for some simple texts."
 2.  "Okay, maybe it can organize my to-do list."
 3.  "I will now consult the AI for every minor decision in my life."
 4.  "WHAT DO YOU MEAN IT CAN'T PLAN MY INTERSTATE DUCK CONFERENCE?!"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Expanding Brain" or a similar progressive format to humorously depict the journey of relying more and more on AI. It starts with simple tasks and escalates to complete dependence, culminating in absurdly specific and unrealistic expectations that the AI, despite its power, cannot meet
                         </p>
                     </section>
@@ -4044,17 +3979,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_4</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI life coach tells you to follow your passion and quit your soul-crushing job. The advice is great, but the financial consequences are... immediate. 🥲
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously shows the potential downside of taking advice from an AI, especially on major life decisions. The top panel shows excitement about getting advice, while the bottom panel shows the sad reality of being "healed" from a bad job but also unemployed. It's a funny take on the limitations of AI, which can give logical advice without understanding the messy, real-world context of human lives (like needing to pay rent)
                         </p>
                     </section>
@@ -4085,17 +4019,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_40</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you let the AI write your emails and it replies to your boss with "OMG YASSS QUEEN, SLAY!" The enthusiasm is great, but the professionalism is... lacking
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously illustrates the danger of giving an AI too much autonomy in professional communication. The AI, likely trained on a vast and informal dataset from the internet, adopts an overly casual and inappropriate tone for a workplace email, leading to a cringeworthy and funny situation
                         </p>
                     </section>
@@ -4130,18 +4063,17 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_41</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         "AI will take over the world." Change my mind.
 (Narrator: No one could change his mind, but a well-placed CAPTCHA did.)
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Change My Mind" format to present a common fear about AI. The humorous twist is the parenthetical narrator, who suggests that our fears of a superintelligent AI takeover might be overblown, as these powerful systems can still be stumped by simple human-centric tasks
                         </p>
                     </section>
@@ -4176,17 +4108,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_42</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When your AI starts correcting your grammar in real-time. First, it takes my job, then it takes my dignity
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "American Chopper Argument" format to humorously depict the feeling of being "schooled" by your own creation. The escalating argument represents the user's frustration as the AI becomes more and more capable, to the point where it's correcting their own human errors
                         </p>
                     </section>
@@ -4221,20 +4152,19 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_43</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         An LLM trying to avoid overfitting:
 1. Generate diverse content.
 2. Ensure factual accuracy.
 3. Accidentally create a new conspiracy theory about squirrels
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Domino Effect" format to humorously illustrate the delicate balance an LLM has to strike. In its attempt to be creative and accurate, it can sometimes go off the rails and generate something completely nonsensical and unexpected, like a new conspiracy theory
                         </p>
                     </section>
@@ -4269,20 +4199,19 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_44</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My journey with AI:
 1. Initial excitement: "Wow, it can understand any language!"
 2. Growing concern: "Wait, how does it know so much about me?"
 3. Full-blown paranoia: "The AI is influencing everything and everyone!"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "A train hitting a school bus" format to humorously depict the escalating anxieties that can come with learning more about AI. It starts with excitement about the benefits but quickly gets derailed by concerns about privacy and large-scale influence
                         </p>
                     </section>
@@ -4321,17 +4250,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_45</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My face when someone says "data science is just making charts in Excel," vs. my face when I realize it's actually about machine learning, big data, and algorithms that could probably predict my next thought
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Tuxedo Winnie the Pooh" format to contrast a simplistic, incorrect view of data science with the complex and powerful reality. It's a humorous take on the gap between public perception and the actual depth of the field
                         </p>
                     </section>
@@ -4365,17 +4293,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_46</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, waiting for the server to load my 200GB dataset. I've aged 4 hours and grown a beard. I should have just used a smaller sample
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously depicts the excruciatingly long wait times that can happen when working with very large datasets. The skeleton represents the user, who has metaphorically died and decomposed while waiting for the data to load, a relatable feeling for any data scientist or researcher
                         </p>
                     </section>
@@ -4413,20 +4340,19 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_47</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The different reactions in the room when someone says "Artificial Intelligence":
 - The Data Scientist: "Ah yes, Tuesday."
 - The Python Beginner: "Sounds complicated and scary!"
 - The Manager: "How can we leverage this to create shareholder value?"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Three-headed Dragon" format to humorously show how the term "AI" can mean very different things to different people in a business setting. It highlights the different perspectives of the expert, the novice, and the business leader
                         </p>
                     </section>
@@ -4462,17 +4388,16 @@ Me: "...So, should I bring an umbrella?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_48</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Trying to explain machine learning to someone who thinks Excel's SUM function is the peak of artificial intelligence. It's a long conversation
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the frustration of trying to explain a complex technical topic to someone with a very limited understanding of the subject. The image of explaining something to a brick wall is a perfect metaphor for the communication breakdown
                         </p>
                     </section>
@@ -4509,17 +4434,16 @@ The model&#39;s behavior is determined by the patterns in the data, not by a fix
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_49</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When they say "just tweak the parameters a little," but you're on your 6th straight hour of hyperparameter tuning and you've forgotten what the sun looks like
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a stressed-out Squidward, captures the immense frustration and tediousness of "hyperparameter tuning" in machine learning. The suggestion to "just tweak" something belies the often long and complex process of finding the right settings for a model
                         </p>
                     </section>
@@ -4560,17 +4484,16 @@ The model&#39;s behavior is determined by the patterns in the data, not by a fix
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_5</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The duality of man. We demand AI that is fair, unbiased, and beneficial to humanity... and then immediately use the latest text-to-speech models to prank call our friends. 🤖📞
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Tuxedo Winnie the Pooh" format to contrast our noble, high-minded ideals for AI with our more... childish impulses. The "fancy" Pooh represents the serious, important conversation about AI ethics, while the "regular" Pooh represents the silly, trivial, and sometimes unethical ways people might actually use powerful technology when they get their hands on it
                         </p>
                     </section>
@@ -4609,17 +4532,16 @@ The model&#39;s behavior is determined by the patterns in the data, not by a fix
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_50</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That face you make when your model achieves 99.9% accuracy, but then you realize you forgot to set the random seed. Now you have to do it all over again
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a disappointed The Rock, captures the sinking feeling a data scientist gets when they realize their amazing result might not be reproducible. Forgetting to set the "random seed" means the result could have been a lucky fluke, and they won't be able to prove it or get the same result again
                         </p>
                     </section>
@@ -4657,17 +4579,16 @@ The model&#39;s behavior is determined by the patterns in the data, not by a fix
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_51</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My genuine reaction when someone suggests we switch from Python to Excel for our data analysis pipeline
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a disgusted Gordon Ramsay, humorously shows the disdain a data scientist would feel at the suggestion of using a basic tool like Excel for a complex data analysis task that requires a powerful programming language like Python. It's a joke about using the right tool for the job
                         </p>
                     </section>
@@ -4706,17 +4627,16 @@ The model&#39;s behavior is determined by the patterns in the data, not by a fix
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_52</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When people talk about "Artificial Intelligence," but all you can picture is an army of evil robots from a sci-fi movie. The reality is a lot more... statistical
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the gap between the dramatic, sci-fi portrayal of AI and the much more mundane reality. The person's fear is based on Hollywood, but the truth of AI is rooted in math and data, not malevolent robots
                         </p>
                     </section>
@@ -4754,20 +4674,19 @@ These systems are incredibly powerful and useful, but they are not sentient or s
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_53</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The data science workflow:
 1. Spend days cleaning and analyzing data.
 2. Create a beautiful, insightful visualization that looks like modern art.
 3. Panic when you realize you have to explain it to your boss in plain English
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously depicts the three stages of a data scientist's work, culminating in the often-dreaded task of communicating complex findings to a non-technical audience. The "Success Kid" format is used ironically for the final, stressful step
                         </p>
                     </section>
@@ -4807,18 +4726,17 @@ These systems are incredibly powerful and useful, but they are not sentient or s
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_54</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When the AI says it knows you better than you know yourself.
 Me: "Seriously? I have three different streaming service subscriptions and I still can't decide what to watch."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously pushes back against the idea of an all-knowing AI. It contrasts the AI's supposed deep understanding with the reality of human indecisiveness and complexity, suggesting that some things about us are too chaotic even for an advanced algorithm to figure out
                         </p>
                     </section>
@@ -4856,17 +4774,16 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_55</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         That moment when your AI understands your sarcastic comment and replies with an even better sarcastic joke. The singularity is here, and it's hilarious
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a pleasantly surprised Will Smith, captures the delightful and slightly unnerving feeling when an AI demonstrates a very human-like form of intelligence, like understanding and using sarcasm. It's a sign that AI is moving beyond literal interpretation to grasp the nuances of human communication
                         </p>
                     </section>
@@ -4906,18 +4823,17 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_56</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         AI: *effortlessly carrying the weight of global logistics, financial markets, and scientific research*
 Humans: "I hope I spelled 'definitely' right in that email."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously contrasts the massive, world-changing capabilities of AI with our own small, everyday human anxieties. It's a funny and humbling reminder of the different scales at which we and our creations operate
                         </p>
                     </section>
@@ -4955,17 +4871,16 @@ These are tasks where AI&#39;s ability to process vast amounts of data and find 
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_57</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you're having a problem with your super-advanced AI, and the official tech support is... another AI. And its first suggestion is "have you tried turning it off and on again?"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously applies the most classic and basic IT support advice to a highly advanced AI system. The humor comes from the absurdity of such a simple solution being offered for such a complex problem, and the idea of being stuck in a loop of AI-powered tech support
                         </p>
                     </section>
@@ -5006,17 +4921,16 @@ These are tasks where AI&#39;s ability to process vast amounts of data and find 
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_58</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My model, after I spent all week trying to prevent overfitting. It's safe, but at what cost?
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Marked Safe From" Facebook feature to humorously personify a machine learning model. The model has been "saved" from the danger of overfitting, but the process has left it battered and bruised, implying that the techniques used to prevent overfitting have made the model less powerful or accurate
                         </p>
                     </section>
@@ -5055,17 +4969,16 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_59</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Trying to understand where my AI gets its "facts." It's like it has a secret, imaginary friend who is a very confident liar
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a confused Mr. Krabs, perfectly captures the baffling nature of AI "hallucinations." The AI generates completely fabricated information but presents it with such confidence that it leaves the user wondering where on earth it came from
                         </p>
                     </section>
@@ -5105,17 +5018,16 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_6</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         We've all been there. You start with `model.ipynb`, then `model_v2.ipynb`, and before you know it, you're saving `Final_Model_V9_ReallyFinal_I_Swear.ipynb`. The struggle is real. 🤦‍♂️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the classic "Picard facepalm" to represent the chaotic file management that happens during any complex project, especially in coding and data science. As you experiment with different versions of your model, you end up with a folder full of confusingly named files, making it hard to track which one is the *actual* final version. It’s a universal sign of a project that has involved a lot of trial and error
                         </p>
                     </section>
@@ -5153,17 +5065,16 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_60</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me, trying to train a deep learning model on Google Colab, with 12 browser tabs open, praying to the tech gods that the session doesn't crash and I don't lose all my work
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously depicts the precarious and stressful experience of using free, cloud-based computing resources like Google Colab for serious work. The user is on edge, knowing that the limited resources could be taken away at any moment, a feeling familiar to many students and hobbyists
                         </p>
                     </section>
@@ -5203,17 +5114,16 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_61</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When you've been staring at your model's loss graph for hours, and it finally starts to go down. It's not just a line on a graph, it's a victory for the human spirit
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously elevates a technical achievement (a decreasing loss graph) to a moment of profound personal victory. For anyone who has struggled with training a machine learning model, the moment the "loss" starts to decrease is a huge relief and a sign that their hard work is paying off
                         </p>
                     </section>
@@ -5249,18 +5159,17 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_62</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         A lot of AI startups in a nutshell: "Our product is revolutionary. It's a proprietary, vertically integrated, synergistic AI solution."
 (Translation: We put a prettier user interface on top of the ChatGPT API.)
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously deconstructs the marketing jargon used by some AI startups. It suggests that behind the fancy buzzwords, many new "AI products" are actually just thin wrappers around existing, powerful AI models from large companies like OpenAI
                         </p>
                     </section>
@@ -5298,18 +5207,17 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_63</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Midjourney artists trying to get the perfect image: "A cinematic, hyper-realistic, 8k, photorealistic, ethereal, vaporwave, moody, dramatic, volumetric lighting, masterpiece..."
 The AI: "So... you want a picture of a cat?"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme pokes fun at the practice of "prompt engineering" for AI image generators like Midjourney. Users often string together a long list of descriptive adjectives and technical terms in the hope of getting the perfect image, a process that can look absurd from the outside
                         </p>
                     </section>
@@ -5348,18 +5256,17 @@ While it can look like a magic incantation, it&#39;s a way for users to control 
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_64</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         My capstone project idea: "An AI that can detect human emotions from text."
 The actual output of my model for every input: "Neutral."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme humorously captures the gap between an ambitious student project idea and the often-disappointing reality of implementation. The AI, intended to be a nuanced emotion detector, completely fails and defaults to a useless "neutral" classification for everything
                         </p>
                     </section>
@@ -5395,19 +5302,18 @@ The actual output of my model for every input: "Neutral."
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_65</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         The two states of a programmer:
 1. (After 4 hours of debugging): "WHY DON'T YOU WORK?!"
 2. (After restarting the kernel and it magically works): "I am a coding god."
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme uses the "Tuxedo Winnie the Pooh" format to perfectly capture the emotional rollercoaster of programming. It contrasts the absolute frustration of debugging with the god-like feeling of triumph when the code finally works, even if the reason is a mystery
                         </p>
                     </section>
@@ -5441,19 +5347,18 @@ The actual output of my model for every input: "Neutral."
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_66</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Every brand in 2024: "This product is now AI-enhanced!"
 The product: A candle.
 Me: "I am once again asking, does it also have Bluetooth?"
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring Bernie Sanders, pokes fun at the marketing trend of "AI washing" – slapping the "AI" label on products where it has little to no meaningful application. The user's sarcastic question about Bluetooth highlights the absurdity of adding unnecessary tech features to simple, everyday items
                         </p>
                     </section>
@@ -5490,17 +5395,16 @@ Me: "I am once again asking, does it also have Bluetooth?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_7</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Trying to run a 70-billion parameter Large Language Model on my 2018 laptop. The fan is screaming, the chassis is melting, but the model is... loading. A worthy sacrifice for the king. 👑
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme hilariously depicts the immense computational power required to run modern Large Language Models (LLMs). The person is shown "sacrificing" their laptop to the "king" (the LLM), implying that the task is so demanding it will likely destroy their computer. It’s a funny exaggeration of the struggle to keep up with the hardware demands of cutting-edge AI
                         </p>
                     </section>
@@ -5539,17 +5443,16 @@ Me: "I am once again asking, does it also have Bluetooth?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_8</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         When GPT writes a Shakespearean sonnet about quantum physics, then tells you 2+2=5. It's either a genius or needs a nap. There's no in-between. 🤷‍♂️
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring a rather confused-looking Superman, highlights the often-bipolar nature of large language models (LLMs) like GPT. One moment they can produce incredibly coherent, creative, and insightful text, making them seem almost human-like in their intelligence. The next, they might make a glaringly obvious factual error or produce nonsensical output, reminding us that they are, in fact, just algorithms. The "pink Superman" adds to the absurdity, emphasizing the unexpected and sometimes illogical behavior
                         </p>
                     </section>
@@ -5580,17 +5483,16 @@ Me: "I am once again asking, does it also have Bluetooth?"
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">meme_9</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         Me trying to find meaning in my life vs. AI trying to find meaning in a dataset. Turns out, we both see patterns where there are none. #Relatable
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             This meme, featuring the "Change My Mind" guy, humorously points out a fundamental characteristic of AI, particularly machine learning models. These models are designed to find patterns and relationships within data. However, if the data is truly random or contains a lot of "noise" (irrelevant information), the AI might still try to find patterns, even if those patterns don't actually exist in reality. It's like seeing shapes in clouds – your brain is trying to make sense of randomness
                         </p>
                     </section>
