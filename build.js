@@ -125,6 +125,7 @@ const htmlContent = `
             --bg-color: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
+            --accent: #0f172a;
         }
         body { 
             margin: 0;
@@ -145,7 +146,12 @@ const htmlContent = `
             justify-content: center;
             padding: 5vh 5vw;
             box-sizing: border-box;
-            border-bottom: 1px solid #f1f5f9;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease;
+        }
+        .snap-section:not(.active) {
+            opacity: 0.2;
+            filter: blur(4px);
+            pointer-events: none;
         }
         /* Markdown / Deep Dive Formatting */
         .prose p {
@@ -179,10 +185,10 @@ const htmlContent = `
 </head>
 <body>
 
-    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50" style="width: 0%"></div>
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-300" style="width: 0%"></div>
 
     <!-- Introduction Card -->
-    <section class="snap-section">
+    <section class="snap-section active">
         <div class="max-w-4xl text-center">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
@@ -195,8 +201,14 @@ const htmlContent = `
 
     ${posts.map((post, index) => `
     <article class="snap-section" id="post-${index}">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic ${String(index + 1).padStart(2, '0')} of ${String(posts.length).padStart(2, '0')}</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -246,6 +258,23 @@ const htmlContent = `
 
     <script>
         const progressBar = document.getElementById('progress-bar');
+        const sections = document.querySelectorAll('.snap-section');
+
+        const observerOptions = {
+            threshold: 0.6
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sections.forEach(s => s.classList.remove('active'));
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

@@ -12,6 +12,7 @@
             --bg-color: #ffffff;
             --text-main: #1e293b;
             --text-muted: #64748b;
+            --accent: #0f172a;
         }
         body { 
             margin: 0;
@@ -32,7 +33,12 @@
             justify-content: center;
             padding: 5vh 5vw;
             box-sizing: border-box;
-            border-bottom: 1px solid #f1f5f9;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease;
+        }
+        .snap-section:not(.active) {
+            opacity: 0.2;
+            filter: blur(4px);
+            pointer-events: none;
         }
         /* Markdown / Deep Dive Formatting */
         .prose p {
@@ -66,10 +72,10 @@
 </head>
 <body>
 
-    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50" style="width: 0%"></div>
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-300" style="width: 0%"></div>
 
     <!-- Introduction Card -->
-    <section class="snap-section">
+    <section class="snap-section active">
         <div class="max-w-4xl text-center">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
@@ -82,8 +88,14 @@
 
     
     <article class="snap-section" id="post-0">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 01 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -127,8 +139,14 @@
     </article>
     
     <article class="snap-section" id="post-1">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 02 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -172,8 +190,14 @@
     </article>
     
     <article class="snap-section" id="post-2">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 03 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -212,8 +236,14 @@
     </article>
     
     <article class="snap-section" id="post-3">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 04 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -256,8 +286,14 @@
     </article>
     
     <article class="snap-section" id="post-4">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 05 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -299,8 +335,14 @@
     </article>
     
     <article class="snap-section" id="post-5">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 06 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -342,8 +384,14 @@
     </article>
     
     <article class="snap-section" id="post-6">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 07 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -385,8 +433,14 @@
     </article>
     
     <article class="snap-section" id="post-7">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 08 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -429,8 +483,14 @@
     </article>
     
     <article class="snap-section" id="post-8">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 09 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -473,8 +533,14 @@
     </article>
     
     <article class="snap-section" id="post-9">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 10 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -523,8 +589,14 @@
     </article>
     
     <article class="snap-section" id="post-10">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 11 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -575,8 +647,14 @@
     </article>
     
     <article class="snap-section" id="post-11">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 12 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -625,8 +703,14 @@
     </article>
     
     <article class="snap-section" id="post-12">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 13 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -668,8 +752,14 @@
     </article>
     
     <article class="snap-section" id="post-13">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 14 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -719,8 +809,14 @@
     </article>
     
     <article class="snap-section" id="post-14">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 15 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -763,8 +859,14 @@
     </article>
     
     <article class="snap-section" id="post-15">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 16 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -809,8 +911,14 @@
     </article>
     
     <article class="snap-section" id="post-16">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 17 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -853,8 +961,14 @@
     </article>
     
     <article class="snap-section" id="post-17">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 18 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -907,8 +1021,14 @@
     </article>
     
     <article class="snap-section" id="post-18">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 19 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -958,8 +1078,14 @@
     </article>
     
     <article class="snap-section" id="post-19">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 20 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1002,8 +1128,14 @@
     </article>
     
     <article class="snap-section" id="post-20">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 21 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1046,8 +1178,14 @@
     </article>
     
     <article class="snap-section" id="post-21">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 22 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1091,8 +1229,14 @@
     </article>
     
     <article class="snap-section" id="post-22">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 23 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1143,8 +1287,14 @@
     </article>
     
     <article class="snap-section" id="post-23">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 24 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1184,8 +1334,14 @@
     </article>
     
     <article class="snap-section" id="post-24">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 25 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1228,8 +1384,14 @@
     </article>
     
     <article class="snap-section" id="post-25">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 26 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1273,8 +1435,14 @@
     </article>
     
     <article class="snap-section" id="post-26">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 27 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1317,8 +1485,14 @@
     </article>
     
     <article class="snap-section" id="post-27">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 28 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1367,8 +1541,14 @@
     </article>
     
     <article class="snap-section" id="post-28">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 29 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1419,8 +1599,14 @@
     </article>
     
     <article class="snap-section" id="post-29">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 30 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1463,8 +1649,14 @@
     </article>
     
     <article class="snap-section" id="post-30">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 31 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1507,8 +1699,14 @@
     </article>
     
     <article class="snap-section" id="post-31">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 32 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1547,8 +1745,14 @@
     </article>
     
     <article class="snap-section" id="post-32">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 33 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1594,8 +1798,14 @@
     </article>
     
     <article class="snap-section" id="post-33">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 34 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1640,8 +1850,14 @@
     </article>
     
     <article class="snap-section" id="post-34">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 35 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1687,8 +1903,14 @@
     </article>
     
     <article class="snap-section" id="post-35">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 36 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1734,8 +1956,14 @@
     </article>
     
     <article class="snap-section" id="post-36">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 37 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1780,8 +2008,14 @@
     </article>
     
     <article class="snap-section" id="post-37">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 38 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1828,8 +2062,14 @@
     </article>
     
     <article class="snap-section" id="post-38">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 39 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1887,8 +2127,14 @@
     </article>
     
     <article class="snap-section" id="post-39">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 40 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -1943,8 +2189,14 @@
     </article>
     
     <article class="snap-section" id="post-40">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 41 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2007,8 +2259,14 @@
     </article>
     
     <article class="snap-section" id="post-41">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 42 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2062,8 +2320,14 @@
     </article>
     
     <article class="snap-section" id="post-42">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 43 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2108,8 +2372,14 @@
     </article>
     
     <article class="snap-section" id="post-43">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 44 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2154,8 +2424,14 @@
     </article>
     
     <article class="snap-section" id="post-44">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 45 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2202,8 +2478,14 @@
     </article>
     
     <article class="snap-section" id="post-45">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 46 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2248,8 +2530,14 @@
     </article>
     
     <article class="snap-section" id="post-46">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 47 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2307,8 +2595,14 @@
     </article>
     
     <article class="snap-section" id="post-47">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 48 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2355,8 +2649,14 @@
     </article>
     
     <article class="snap-section" id="post-48">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 49 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2411,8 +2711,14 @@
     </article>
     
     <article class="snap-section" id="post-49">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 50 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2456,8 +2762,14 @@
     </article>
     
     <article class="snap-section" id="post-50">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 51 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2510,8 +2822,14 @@
     </article>
     
     <article class="snap-section" id="post-51">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 52 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2558,8 +2876,14 @@
     </article>
     
     <article class="snap-section" id="post-52">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 53 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2604,8 +2928,14 @@
     </article>
     
     <article class="snap-section" id="post-53">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 54 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2651,8 +2981,14 @@
     </article>
     
     <article class="snap-section" id="post-54">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 55 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2696,8 +3032,14 @@
     </article>
     
     <article class="snap-section" id="post-55">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 56 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2739,8 +3081,14 @@
     </article>
     
     <article class="snap-section" id="post-56">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 57 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2790,8 +3138,14 @@
     </article>
     
     <article class="snap-section" id="post-57">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 58 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2834,8 +3188,14 @@
     </article>
     
     <article class="snap-section" id="post-58">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 59 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2887,8 +3247,14 @@
     </article>
     
     <article class="snap-section" id="post-59">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 60 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2931,8 +3297,14 @@
     </article>
     
     <article class="snap-section" id="post-60">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 61 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -2975,8 +3347,14 @@
     </article>
     
     <article class="snap-section" id="post-61">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 62 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3022,8 +3400,14 @@
     </article>
     
     <article class="snap-section" id="post-62">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 63 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3068,8 +3452,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-63">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 64 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3126,8 +3516,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-64">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 65 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3166,8 +3562,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-65">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 66 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3210,8 +3612,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-66">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 67 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3255,8 +3663,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-67">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 68 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3299,8 +3713,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-68">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 69 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3346,8 +3766,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-69">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 70 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3402,8 +3828,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-70">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 71 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3445,8 +3877,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-71">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 72 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3498,8 +3936,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-72">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 73 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3546,8 +3990,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-73">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 74 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3596,8 +4046,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-74">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 75 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3657,8 +4113,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-75">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 76 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3715,8 +4177,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-76">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 77 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3769,8 +4237,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-77">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 78 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3827,8 +4301,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-78">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 79 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3879,8 +4359,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-79">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 80 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3937,8 +4423,14 @@ Me: "...So, should I bring an umbrella?"
     </article>
     
     <article class="snap-section" id="post-80">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 81 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -3991,8 +4483,14 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
     </article>
     
     <article class="snap-section" id="post-81">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 82 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4051,8 +4549,14 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
     </article>
     
     <article class="snap-section" id="post-82">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 83 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4106,8 +4610,14 @@ Humans: "I hope I spelled 'definitely' right in that email."
     </article>
     
     <article class="snap-section" id="post-83">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 84 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4168,8 +4678,14 @@ Humans: "I hope I spelled 'definitely' right in that email."
     </article>
     
     <article class="snap-section" id="post-84">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 85 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4221,8 +4737,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-85">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 86 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4281,8 +4803,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-86">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 87 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4328,8 +4856,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-87">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 88 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4389,8 +4923,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-88">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 89 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4434,8 +4974,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-89">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 90 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4487,8 +5033,14 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
     </article>
     
     <article class="snap-section" id="post-90">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 91 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4541,8 +5093,14 @@ While it can look like a magic incantation, it&#39;s a way for users to control 
     </article>
     
     <article class="snap-section" id="post-91">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 92 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4587,8 +5145,14 @@ The actual output of my model for every input: "Neutral."
     </article>
     
     <article class="snap-section" id="post-92">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 93 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4632,8 +5196,14 @@ The actual output of my model for every input: "Neutral."
     </article>
     
     <article class="snap-section" id="post-93">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 94 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4686,8 +5256,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-94">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 95 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4734,8 +5310,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-95">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 96 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4774,8 +5356,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-96">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 97 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4822,8 +5410,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-97">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 98 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4872,8 +5466,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-98">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 99 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4924,8 +5524,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-99">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 100 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -4976,8 +5582,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-100">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 101 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5027,8 +5639,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-101">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 102 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5071,8 +5689,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-102">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 103 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5132,8 +5756,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-103">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 104 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5176,8 +5806,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-104">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 105 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5225,8 +5861,14 @@ Me: "I am once again asking, does it also have Bluetooth?"
     </article>
     
     <article class="snap-section" id="post-105">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 106 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5274,8 +5916,14 @@ Me: "Please, I just want to feel useful."
     </article>
     
     <article class="snap-section" id="post-106">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 107 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5322,8 +5970,14 @@ The AI, using self-supervised learning: "Thanks, but I've got it from here. I've
     </article>
     
     <article class="snap-section" id="post-107">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 108 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5367,8 +6021,14 @@ The reality: The bill arrives for 10 million function invocations because you cr
     </article>
     
     <article class="snap-section" id="post-108">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 109 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5412,8 +6072,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-109">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 110 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5456,8 +6122,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-110">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 111 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5500,8 +6172,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-111">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 112 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5552,8 +6230,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-112">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 113 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5611,8 +6295,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-113">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 114 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5659,8 +6349,14 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
     </article>
     
     <article class="snap-section" id="post-114">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 115 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5718,8 +6414,14 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
     </article>
     
     <article class="snap-section" id="post-115">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 116 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5762,8 +6464,14 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
     </article>
     
     <article class="snap-section" id="post-116">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 117 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5807,8 +6515,14 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
     </article>
     
     <article class="snap-section" id="post-117">
-        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
+            <!-- Topic Counter (The Separator) -->
+            <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 118 of 118</span>
+                <div class="h-[0.5px] w-full bg-slate-100"></div>
+            </div>
+
             <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -5866,6 +6580,23 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
 
     <script>
         const progressBar = document.getElementById('progress-bar');
+        const sections = document.querySelectorAll('.snap-section');
+
+        const observerOptions = {
+            threshold: 0.6
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sections.forEach(s => s.classList.remove('active'));
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
