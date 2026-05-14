@@ -110,10 +110,15 @@ const htmlContent = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Literacy Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .serif { font-family: 'Lora', serif; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff;
+        }
+        h1, h2, h3, .serif { 
+            font-family: 'Playfair Display', serif; 
+        }
         .snap-container {
             scroll-snap-type: y mandatory;
             height: 100vh;
@@ -121,61 +126,93 @@ const htmlContent = `
         }
         .snap-section {
             scroll-snap-align: start;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            transition: opacity 0.5s ease;
+            padding: 4rem 2rem;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .snap-section:not(.active) {
-            opacity: 0.3;
-            filter: grayscale(0.5);
+            opacity: 0.1;
+            filter: blur(2px);
+        }
+        /* Fix spacing in deep dive */
+        .prose p {
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+        .prose li {
+            margin-bottom: 0.75rem;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e2e2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-slate-800">
 
-    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-blue-600 z-50 transition-all duration-300" style="width: 0%"></div>
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-500" style="width: 0%"></div>
 
     <div class="snap-container">
         <!-- Introduction Card -->
         <section class="snap-section active">
-            <div class="max-w-3xl text-center">
-                <h1 class="text-5xl font-bold mb-6">AI Literacy Gallery</h1>
-                <p class="text-xl text-gray-600 serif italic">A collection of AI concepts explained through memes and technical deep dives.</p>
-                <div class="mt-12 animate-bounce text-gray-400">
-                    <p>Scroll down to begin</p>
-                    <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <div class="max-w-4xl text-center">
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
+                <h1 class="text-7xl font-bold mb-8 text-slate-900">AI Literacy</h1>
+                <p class="text-2xl text-slate-500 italic max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
+                <div class="mt-20 animate-pulse text-slate-300">
+                    <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </div>
             </div>
         </section>
 
         ${posts.map((post, index) => `
         <section class="snap-section" id="post-${index}">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-5xl w-full flex flex-col md:flex-row h-full max-h-[90vh]">
+            <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                
                 <!-- Meme Column -->
-                <div class="md:w-1/2 bg-gray-100 flex items-center justify-center p-4 border-r border-gray-100">
-                    <img src="${post.memeUrl}" alt="${post.title}" class="max-h-full max-w-full object-contain shadow-sm">
+                <div class="lg:col-span-6 sticky top-20">
+                    <div class="bg-slate-50 p-4 rounded-2xl">
+                        <img src="${post.memeUrl}" alt="${post.title}" class="w-full h-auto rounded-lg shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
+                    </div>
                 </div>
                 
                 <!-- Content Column -->
-                <div class="md:w-1/2 p-8 overflow-y-auto flex flex-col bg-white">
-                    <div class="mb-6">
-                        <h2 class="text-2xl font-bold mb-4 text-gray-800">${post.title}</h2>
-                        <p class="text-lg leading-relaxed text-gray-700 serif italic">"${post.hook}"</p>
-                    </div>
+                <div class="lg:col-span-6 pt-4">
+                    <header class="mb-12">
+                        <h2 class="text-4xl font-bold mb-6 text-slate-900 leading-tight">${post.title}</h2>
+                        <div class="h-px w-20 bg-slate-200 mb-8"></div>
+                        <p class="text-xl leading-relaxed text-slate-600 italic">
+                            ${post.hook.replace(/\\n/g, '<br>')}
+                        </p>
+                    </header>
 
-                    <div class="mb-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-blue-600 mb-2">🧐 For those who don't get it</h3>
-                        <p class="text-gray-700 leading-snug">${post.explainer}</p>
-                    </div>
+                    <div class="space-y-12">
+                        <section>
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">Context</h3>
+                            <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                                ${post.explainer}
+                            </p>
+                        </section>
 
-                    <div class="prose prose-blue flex-grow">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">🧠 Techie Deep Dive</h3>
-                        <div class="text-gray-600 leading-relaxed serif">
-                            ${marked(post.deepDive)}
-                        </div>
+                        <section class="prose prose-slate max-w-none border-t border-slate-100 pt-8">
+                            <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-6">Technical Insight</h3>
+                            <div class="text-slate-600 text-[1.05rem]">
+                                ${marked(post.deepDive)}
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -185,9 +222,11 @@ const htmlContent = `
         <!-- End Card -->
         <section class="snap-section">
             <div class="max-w-2xl text-center">
-                <h2 class="text-3xl font-bold mb-4">You've reached the end!</h2>
-                <p class="text-gray-600 mb-8">Hope these memes helped shed some light on the world of AI.</p>
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition">Back to Start</button>
+                <h2 class="text-4xl font-bold mb-6 text-slate-900">Knowledge is Continuous.</h2>
+                <p class="text-slate-500 mb-12 text-lg">You've reached the end of the current collection. New concepts are added as the field evolves.</p>
+                <button onclick="document.querySelector('.snap-container').scrollTo({top: 0, behavior: 'smooth'})" class="border-2 border-slate-900 text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all duration-300">
+                    Return to Top
+                </button>
             </div>
         </section>
     </div>
@@ -199,7 +238,7 @@ const htmlContent = `
 
         const observerOptions = {
             root: container,
-            threshold: 0.6
+            threshold: 0.5
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -208,7 +247,6 @@ const htmlContent = `
                     sections.forEach(s => s.classList.remove('active'));
                     entry.target.classList.add('active');
                     
-                    // Update Progress
                     const index = Array.from(sections).indexOf(entry.target);
                     const progress = (index / (sections.length - 1)) * 100;
                     progressBar.style.width = \`\${progress}%\`;
