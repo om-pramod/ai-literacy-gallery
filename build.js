@@ -116,7 +116,7 @@ const htmlContent = `
     <style>
         :root {
             --bg-color: #ffffff;
-            --text-main: #0f172a;
+            --text-main: #1e293b;
             --text-muted: #64748b;
         }
         body { 
@@ -140,9 +140,29 @@ const htmlContent = `
             box-sizing: border-box;
             border-bottom: 1px solid #f1f5f9;
         }
+        /* Markdown / Deep Dive Formatting */
         .prose p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
+        }
+        .prose ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose ol {
+            list-style-type: decimal;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
@@ -159,7 +179,7 @@ const htmlContent = `
         <div class="max-w-4xl text-center">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
-            <p class="text-2xl text-slate-500 italic max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
+            <p class="text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
             <div class="mt-20 text-slate-300">
                 <svg class="w-8 h-8 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
@@ -180,17 +200,16 @@ const htmlContent = `
             <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
-                    <h2 class="text-4xl font-bold mb-6 leading-tight">${post.title}</h2>
-                    <div class="h-px w-16 bg-slate-200 mb-8"></div>
-                    <p class="text-xl leading-relaxed text-slate-600 italic">
+                    <p class="text-xl leading-relaxed text-slate-700 font-medium">
                         ${post.hook.replace(/\\n/g, '<br>')}
                     </p>
+                    <div class="h-px w-16 bg-slate-200 mt-8"></div>
                 </header>
 
                 <div class="space-y-10">
                     <section>
                         <h3 class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold mb-4">The Context</h3>
-                        <p class="text-lg text-slate-700 leading-relaxed font-medium">
+                        <p class="text-lg text-slate-700 leading-relaxed">
                             ${post.explainer}
                         </p>
                     </section>
