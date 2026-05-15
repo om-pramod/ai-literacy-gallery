@@ -79,7 +79,6 @@ function parseCaption(content) {
     
     // Normalize bullets for Markdown (convert • to -)
     if (key === 'deepDive') {
-      // Ensure the parser sees bullets as a list by adding a newline if needed
       sections[key] = sections[key].replace(/•\s*/g, '\n- ');
     }
   });
@@ -124,36 +123,26 @@ const htmlContent = `
         :root {
             --bg-color: #ffffff;
             --text-main: #1e293b;
-            --text-muted: #64748b;
-            --accent: #0f172a;
         }
-        body { 
+        html, body {
             margin: 0;
+            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            scroll-snap-type: y mandatory;
         }
         h1, h2, h3, .serif { 
             font-family: 'Playfair Display', serif; 
         }
-        .snap-section {
-            scroll-snap-align: start;
-            min-height: 100vh;
+        .section-container {
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 5vh 5vw;
+            padding: 8rem 5vw;
             box-sizing: border-box;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .snap-section:not(.active) {
-            opacity: 0.2;
-            filter: blur(4px);
-            pointer-events: none;
-        }
-        /* Markdown / Deep Dive Formatting */
         .prose p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
@@ -172,15 +161,6 @@ const htmlContent = `
             margin-bottom: 0.75rem;
             line-height: 1.6;
         }
-        .prose h1, .prose h2, .prose h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f8fafc; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -188,22 +168,20 @@ const htmlContent = `
     <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-300" style="width: 0%"></div>
 
     <!-- Introduction Card -->
-    <section class="snap-section active">
-        <div class="max-w-4xl text-center">
+    <header class="section-container text-center">
+        <div class="max-w-4xl">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
-            <p class="text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
-            <div class="mt-20 text-slate-300">
-                <svg class="w-8 h-8 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
+            <p class="text-2xl text-slate-500 italic max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
         </div>
-    </section>
+    </header>
 
+    <main>
     ${posts.map((post, index) => `
-    <article class="snap-section" id="post-${index}">
+    <article class="section-container" id="post-${index}">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic ${String(index + 1).padStart(2, '0')} of ${String(posts.length).padStart(2, '0')}</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -244,37 +222,21 @@ const htmlContent = `
         </div>
     </article>
     `).join('')}
+    </main>
 
     <!-- End Card -->
-    <section class="snap-section">
-        <div class="max-w-2xl text-center">
+    <footer class="section-container text-center">
+        <div class="max-w-2xl">
             <h2 class="text-4xl font-bold mb-6">Knowledge is Continuous.</h2>
             <p class="text-slate-500 mb-12 text-lg">You've reached the end of the current collection. New concepts are added as the field evolves.</p>
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="border-2 border-slate-900 text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all duration-300">
                 Return to Top
             </button>
         </div>
-    </section>
+    </footer>
 
     <script>
         const progressBar = document.getElementById('progress-bar');
-        const sections = document.querySelectorAll('.snap-section');
-
-        const observerOptions = {
-            threshold: 0.6
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    sections.forEach(s => s.classList.remove('active'));
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
