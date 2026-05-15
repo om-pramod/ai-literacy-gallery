@@ -11,7 +11,7 @@ A beautifully designed, minimalist web gallery hosted on GitHub Pages. It featur
 *   **Aesthetic:** Clean, editorial, high-readability typography.
 *   **Educational Depth:** Each entry includes a "Hook," a simple "Explainer," and a technical "Deep Dive."
 *   **Automation:** Automatically rebuilds and deploys via GitHub Actions whenever new content is added.
-*   **View it live:** `https://your-username.github.io/ai-literacy-gallery/`
+*   **View it live:** `https://om-pramod.github.io/ai-literacy-gallery/`
 
 ### 2. The Instagram Content Pipeline
 A robust, browser-based automation script that bypasses API restrictions by using **Playwright** to simulate human behavior.
