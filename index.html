@@ -11,36 +11,26 @@
         :root {
             --bg-color: #ffffff;
             --text-main: #1e293b;
-            --text-muted: #64748b;
-            --accent: #0f172a;
         }
-        body { 
+        html, body {
             margin: 0;
+            padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            scroll-snap-type: y mandatory;
         }
         h1, h2, h3, .serif { 
             font-family: 'Playfair Display', serif; 
         }
-        .snap-section {
-            scroll-snap-align: start;
-            min-height: 100vh;
+        .section-container {
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 5vh 5vw;
+            padding: 8rem 5vw;
             box-sizing: border-box;
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s ease;
+            border-bottom: 1px solid #f1f5f9;
         }
-        .snap-section:not(.active) {
-            opacity: 0.2;
-            filter: blur(4px);
-            pointer-events: none;
-        }
-        /* Markdown / Deep Dive Formatting */
         .prose p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
@@ -59,15 +49,6 @@
             margin-bottom: 0.75rem;
             line-height: 1.6;
         }
-        .prose h1, .prose h2, .prose h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f8fafc; }
-        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -75,22 +56,20 @@
     <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-300" style="width: 0%"></div>
 
     <!-- Introduction Card -->
-    <section class="snap-section active">
-        <div class="max-w-4xl text-center">
+    <header class="section-container text-center">
+        <div class="max-w-4xl">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
             <h1 class="text-7xl font-bold mb-8">AI Literacy</h1>
-            <p class="text-2xl text-slate-500 max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
-            <div class="mt-20 text-slate-300">
-                <svg class="w-8 h-8 mx-auto animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
+            <p class="text-2xl text-slate-500 italic max-w-2xl mx-auto leading-relaxed">A visual journey through complex intelligence, explained simply.</p>
         </div>
-    </section>
+    </header>
 
+    <main>
     
-    <article class="snap-section" id="post-0">
+    <article class="section-container" id="post-0">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 01 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -138,10 +117,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-1">
+    <article class="section-container" id="post-1">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 02 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -189,10 +168,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-2">
+    <article class="section-container" id="post-2">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 03 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -235,10 +214,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-3">
+    <article class="section-container" id="post-3">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 04 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -285,10 +264,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-4">
+    <article class="section-container" id="post-4">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 05 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -334,10 +313,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-5">
+    <article class="section-container" id="post-5">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 06 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -383,10 +362,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-6">
+    <article class="section-container" id="post-6">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 07 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -432,10 +411,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-7">
+    <article class="section-container" id="post-7">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 08 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -482,10 +461,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-8">
+    <article class="section-container" id="post-8">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 09 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -532,10 +511,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-9">
+    <article class="section-container" id="post-9">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 10 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -584,10 +563,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-10">
+    <article class="section-container" id="post-10">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 11 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -640,10 +619,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-11">
+    <article class="section-container" id="post-11">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 12 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -698,10 +677,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-12">
+    <article class="section-container" id="post-12">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 13 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -754,10 +733,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-13">
+    <article class="section-container" id="post-13">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 14 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -803,10 +782,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-14">
+    <article class="section-container" id="post-14">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 15 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -860,10 +839,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-15">
+    <article class="section-container" id="post-15">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 16 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -910,10 +889,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-16">
+    <article class="section-container" id="post-16">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 17 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -960,10 +939,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-17">
+    <article class="section-container" id="post-17">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 18 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1020,10 +999,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-18">
+    <article class="section-container" id="post-18">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 19 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1077,10 +1056,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-19">
+    <article class="section-container" id="post-19">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 20 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1127,10 +1106,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-20">
+    <article class="section-container" id="post-20">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 21 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1177,10 +1156,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-21">
+    <article class="section-container" id="post-21">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 22 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1228,10 +1207,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-22">
+    <article class="section-container" id="post-22">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 23 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1286,10 +1265,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-23">
+    <article class="section-container" id="post-23">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 24 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1333,10 +1312,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-24">
+    <article class="section-container" id="post-24">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 25 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1383,10 +1362,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-25">
+    <article class="section-container" id="post-25">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 26 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1434,10 +1413,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-26">
+    <article class="section-container" id="post-26">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 27 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1484,10 +1463,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-27">
+    <article class="section-container" id="post-27">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 28 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1540,10 +1519,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-28">
+    <article class="section-container" id="post-28">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 29 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1598,10 +1577,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-29">
+    <article class="section-container" id="post-29">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 30 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1648,10 +1627,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-30">
+    <article class="section-container" id="post-30">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 31 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1698,10 +1677,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-31">
+    <article class="section-container" id="post-31">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 32 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1754,10 +1733,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-32">
+    <article class="section-container" id="post-32">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 33 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1812,10 +1791,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-33">
+    <article class="section-container" id="post-33">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 34 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1870,10 +1849,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-34">
+    <article class="section-container" id="post-34">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 35 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1927,10 +1906,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-35">
+    <article class="section-container" id="post-35">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 36 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -1977,10 +1956,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-36">
+    <article class="section-container" id="post-36">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 37 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2044,10 +2023,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-37">
+    <article class="section-container" id="post-37">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 38 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2094,10 +2073,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-38">
+    <article class="section-container" id="post-38">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 39 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2149,10 +2128,10 @@
         </div>
     </article>
     
-    <article class="snap-section" id="post-39">
+    <article class="section-container" id="post-39">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 40 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2204,10 +2183,10 @@ Me: "Please, I just want to feel useful."
         </div>
     </article>
     
-    <article class="snap-section" id="post-40">
+    <article class="section-container" id="post-40">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 41 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2255,10 +2234,10 @@ The reality: The nurse is still waiting for the computer from 2005 to boot up
         </div>
     </article>
     
-    <article class="snap-section" id="post-41">
+    <article class="section-container" id="post-41">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 42 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2309,10 +2288,10 @@ The AI, using self-supervised learning: "Thanks, but I've got it from here. I've
         </div>
     </article>
     
-    <article class="snap-section" id="post-42">
+    <article class="section-container" id="post-42">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 43 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2360,10 +2339,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-43">
+    <article class="section-container" id="post-43">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 44 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2410,10 +2389,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-44">
+    <article class="section-container" id="post-44">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 45 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2460,10 +2439,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-45">
+    <article class="section-container" id="post-45">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 46 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2518,10 +2497,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-46">
+    <article class="section-container" id="post-46">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 47 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2583,10 +2562,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-47">
+    <article class="section-container" id="post-47">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 48 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2637,10 +2616,10 @@ The reality: The bill arrives for 10 million function invocations because you cr
         </div>
     </article>
     
-    <article class="snap-section" id="post-48">
+    <article class="section-container" id="post-48">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 49 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2702,10 +2681,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-49">
+    <article class="section-container" id="post-49">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 50 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2752,10 +2731,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-50">
+    <article class="section-container" id="post-50">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 51 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2803,10 +2782,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-51">
+    <article class="section-container" id="post-51">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 52 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2855,10 +2834,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-52">
+    <article class="section-container" id="post-52">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 53 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2901,10 +2880,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-53">
+    <article class="section-container" id="post-53">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 54 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -2954,10 +2933,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-54">
+    <article class="section-container" id="post-54">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 55 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3006,10 +2985,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-55">
+    <article class="section-container" id="post-55">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 56 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3059,10 +3038,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-56">
+    <article class="section-container" id="post-56">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 57 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3112,10 +3091,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-57">
+    <article class="section-container" id="post-57">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 58 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3164,10 +3143,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-58">
+    <article class="section-container" id="post-58">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 59 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3218,10 +3197,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-59">
+    <article class="section-container" id="post-59">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 60 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3283,10 +3262,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-60">
+    <article class="section-container" id="post-60">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 61 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3345,10 +3324,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-61">
+    <article class="section-container" id="post-61">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 62 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3415,10 +3394,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-62">
+    <article class="section-container" id="post-62">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 63 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3476,10 +3455,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-63">
+    <article class="section-container" id="post-63">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 64 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3528,10 +3507,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-64">
+    <article class="section-container" id="post-64">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 65 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3580,10 +3559,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-65">
+    <article class="section-container" id="post-65">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 66 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3634,10 +3613,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-66">
+    <article class="section-container" id="post-66">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 67 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3686,10 +3665,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-67">
+    <article class="section-container" id="post-67">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 68 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3751,10 +3730,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-68">
+    <article class="section-container" id="post-68">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 69 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3805,10 +3784,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-69">
+    <article class="section-container" id="post-69">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 70 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3867,10 +3846,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-70">
+    <article class="section-container" id="post-70">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 71 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3918,10 +3897,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-71">
+    <article class="section-container" id="post-71">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 72 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -3978,10 +3957,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-72">
+    <article class="section-container" id="post-72">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 73 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4032,10 +4011,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-73">
+    <article class="section-container" id="post-73">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 74 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4084,10 +4063,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-74">
+    <article class="section-container" id="post-74">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 75 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4137,10 +4116,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-75">
+    <article class="section-container" id="post-75">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 76 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4188,10 +4167,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-76">
+    <article class="section-container" id="post-76">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 77 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4237,10 +4216,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-77">
+    <article class="section-container" id="post-77">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 78 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4294,10 +4273,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-78">
+    <article class="section-container" id="post-78">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 79 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4344,10 +4323,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-79">
+    <article class="section-container" id="post-79">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 80 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4403,10 +4382,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-80">
+    <article class="section-container" id="post-80">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 81 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4453,10 +4432,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-81">
+    <article class="section-container" id="post-81">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 82 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4503,10 +4482,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-82">
+    <article class="section-container" id="post-82">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 83 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4556,10 +4535,10 @@ The AI in the meme is stuck in a loop of exploitation, repeatedly trying the sam
         </div>
     </article>
     
-    <article class="snap-section" id="post-83">
+    <article class="section-container" id="post-83">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 84 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4608,10 +4587,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-84">
+    <article class="section-container" id="post-84">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 85 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4672,10 +4651,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-85">
+    <article class="section-container" id="post-85">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 86 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4718,10 +4697,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-86">
+    <article class="section-container" id="post-86">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 87 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4768,10 +4747,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-87">
+    <article class="section-container" id="post-87">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 88 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4819,10 +4798,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-88">
+    <article class="section-container" id="post-88">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 89 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4869,10 +4848,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-89">
+    <article class="section-container" id="post-89">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 90 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4922,10 +4901,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-90">
+    <article class="section-container" id="post-90">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 91 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -4984,10 +4963,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-91">
+    <article class="section-container" id="post-91">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 92 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5033,10 +5012,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-92">
+    <article class="section-container" id="post-92">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 93 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5092,10 +5071,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-93">
+    <article class="section-container" id="post-93">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 94 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5146,10 +5125,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-94">
+    <article class="section-container" id="post-94">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 95 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5202,10 +5181,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-95">
+    <article class="section-container" id="post-95">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 96 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5269,10 +5248,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-96">
+    <article class="section-container" id="post-96">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 97 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5333,10 +5312,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-97">
+    <article class="section-container" id="post-97">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 98 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5393,10 +5372,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-98">
+    <article class="section-container" id="post-98">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 99 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5457,10 +5436,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-99">
+    <article class="section-container" id="post-99">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 100 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5515,10 +5494,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-100">
+    <article class="section-container" id="post-100">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 101 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5579,10 +5558,10 @@ Me: "...So, should I bring an umbrella?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-101">
+    <article class="section-container" id="post-101">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 102 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5639,10 +5618,10 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
         </div>
     </article>
     
-    <article class="snap-section" id="post-102">
+    <article class="section-container" id="post-102">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 103 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5705,10 +5684,10 @@ Me: "Seriously? I have three different streaming service subscriptions and I sti
         </div>
     </article>
     
-    <article class="snap-section" id="post-103">
+    <article class="section-container" id="post-103">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 104 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5766,10 +5745,10 @@ Humans: "I hope I spelled 'definitely' right in that email."
         </div>
     </article>
     
-    <article class="snap-section" id="post-104">
+    <article class="section-container" id="post-104">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 105 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5834,10 +5813,10 @@ Humans: "I hope I spelled 'definitely' right in that email."
         </div>
     </article>
     
-    <article class="snap-section" id="post-105">
+    <article class="section-container" id="post-105">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 106 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5893,10 +5872,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-106">
+    <article class="section-container" id="post-106">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 107 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -5959,10 +5938,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-107">
+    <article class="section-container" id="post-107">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 108 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6012,10 +5991,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-108">
+    <article class="section-container" id="post-108">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 109 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6079,10 +6058,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-109">
+    <article class="section-container" id="post-109">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 110 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6130,10 +6109,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-110">
+    <article class="section-container" id="post-110">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 111 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6189,10 +6168,10 @@ The &quot;cost&quot; mentioned in the meme is that if you regularize too much, y
         </div>
     </article>
     
-    <article class="snap-section" id="post-111">
+    <article class="section-container" id="post-111">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 112 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6249,10 +6228,10 @@ While it can look like a magic incantation, it&#39;s a way for users to control 
         </div>
     </article>
     
-    <article class="snap-section" id="post-112">
+    <article class="section-container" id="post-112">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 113 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6301,10 +6280,10 @@ The actual output of my model for every input: "Neutral."
         </div>
     </article>
     
-    <article class="snap-section" id="post-113">
+    <article class="section-container" id="post-113">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 114 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6352,10 +6331,10 @@ The actual output of my model for every input: "Neutral."
         </div>
     </article>
     
-    <article class="snap-section" id="post-114">
+    <article class="section-container" id="post-114">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 115 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6412,10 +6391,10 @@ Me: "I am once again asking, does it also have Bluetooth?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-115">
+    <article class="section-container" id="post-115">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 116 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6466,10 +6445,10 @@ Me: "I am once again asking, does it also have Bluetooth?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-116">
+    <article class="section-container" id="post-116">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 117 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6512,10 +6491,10 @@ Me: "I am once again asking, does it also have Bluetooth?"
         </div>
     </article>
     
-    <article class="snap-section" id="post-117">
+    <article class="section-container" id="post-117">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter (The Separator) -->
+            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic 118 of 118</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
@@ -6566,37 +6545,21 @@ Me: "I am once again asking, does it also have Bluetooth?"
         </div>
     </article>
     
+    </main>
 
     <!-- End Card -->
-    <section class="snap-section">
-        <div class="max-w-2xl text-center">
+    <footer class="section-container text-center">
+        <div class="max-w-2xl">
             <h2 class="text-4xl font-bold mb-6">Knowledge is Continuous.</h2>
             <p class="text-slate-500 mb-12 text-lg">You've reached the end of the current collection. New concepts are added as the field evolves.</p>
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="border-2 border-slate-900 text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-all duration-300">
                 Return to Top
             </button>
         </div>
-    </section>
+    </footer>
 
     <script>
         const progressBar = document.getElementById('progress-bar');
-        const sections = document.querySelectorAll('.snap-section');
-
-        const observerOptions = {
-            threshold: 0.6
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    sections.forEach(s => s.classList.remove('active'));
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => observer.observe(section));
-
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
