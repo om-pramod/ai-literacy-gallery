@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const sharp = require('sharp');
 
 const CAPTIONS_DIRS = ['captions/to_post', 'captions/posted'];
 const MEMES_DIR = 'memes';
@@ -11,21 +12,29 @@ if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR);
 }
 
-// Copy memes to docs/memes for web access
+// Ensure web memes directory exists
 const webMemesDir = path.join(OUTPUT_DIR, 'memes');
 if (!fs.existsSync(webMemesDir)) {
   fs.mkdirSync(webMemesDir);
 }
 
-function getMemePath(baseName) {
+async function processMeme(baseName) {
   const extensions = ['.png', '.jpg', '.jpeg'];
   for (const ext of extensions) {
-    const fullPath = path.join(MEMES_DIR, baseName + ext);
-    if (fs.existsSync(fullPath)) {
-      // Copy to docs/memes
-      const destPath = path.join(webMemesDir, baseName + ext);
-      fs.copyFileSync(fullPath, destPath);
-      return `memes/${baseName}${ext}`;
+    const srcPath = path.join(MEMES_DIR, baseName + ext);
+    if (fs.existsSync(srcPath)) {
+      const destPath = path.join(webMemesDir, baseName + '.webp');
+      
+      // OPTIMIZATION: Convert to WebP, resize to max 1000px, and compress
+      // This massively reduces file size while keeping text sharp.
+      if (!fs.existsSync(destPath)) {
+        await sharp(srcPath)
+          .resize(1000, null, { withoutEnlargement: true })
+          .webp({ quality: 80 })
+          .toFile(destPath);
+      }
+      
+      return `memes/${baseName}.webp`;
     }
   }
   return null;
@@ -44,7 +53,6 @@ function parseCaption(content) {
 
   let workingContent = content;
 
-  // Extract Hook
   const explainerIndex = workingContent.indexOf(explainerMarker);
   if (explainerIndex !== -1) {
     sections.hook = workingContent.substring(0, explainerIndex).trim();
@@ -54,7 +62,6 @@ function parseCaption(content) {
     return sections;
   }
 
-  // Extract Explainer
   const deepDiveIndex = workingContent.indexOf(deepDiveMarker);
   if (deepDiveIndex !== -1) {
     sections.explainer = workingContent.substring(explainerMarker.length, deepDiveIndex).trim();
@@ -64,7 +71,6 @@ function parseCaption(content) {
     return sections;
   }
 
-  // Extract Deep Dive
   const hashIndex = workingContent.indexOf(hashtagMarker);
   if (hashIndex !== -1) {
     sections.deepDive = workingContent.substring(deepDiveMarker.length, hashIndex).trim();
@@ -72,12 +78,8 @@ function parseCaption(content) {
     sections.deepDive = workingContent.substring(deepDiveMarker.length).trim();
   }
 
-  // CLEANUP AND FORMATTING
   Object.keys(sections).forEach(key => {
-    // Remove leading/trailing dots and spaces
     sections[key] = sections[key].replace(/^(\s|\.|\n)+|(\s|\.|\n)+$/g, '');
-    
-    // Normalize bullets for Markdown (convert • to -)
     if (key === 'deepDive') {
       sections[key] = sections[key].replace(/•\s*/g, '\n- ');
     }
@@ -86,31 +88,31 @@ function parseCaption(content) {
   return sections;
 }
 
-const posts = [];
+async function build() {
+  const posts = [];
 
-CAPTIONS_DIRS.forEach(dir => {
-  if (!fs.existsSync(dir)) return;
-  
-  const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-  files.forEach(file => {
-    const content = fs.readFileSync(path.join(dir, file), 'utf-8');
-    const baseName = path.basename(file, '.md');
-    const memeUrl = getMemePath(baseName);
+  for (const dir of CAPTIONS_DIRS) {
+    if (!fs.existsSync(dir)) continue;
     
-    if (memeUrl) {
-      const parsed = parseCaption(content);
-      // CLEAN TITLE: Remove trailing numbers like (1)
-      const cleanTitle = baseName.replace(/\s\(\d+\)$/, '');
-      posts.push({
-        title: cleanTitle,
-        memeUrl,
-        ...parsed
-      });
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(dir, file), 'utf-8');
+      const baseName = path.basename(file, '.md');
+      const memeUrl = await processMeme(baseName);
+      
+      if (memeUrl) {
+        const parsed = parseCaption(content);
+        const cleanTitle = baseName.replace(/\s\(\d+\)$/, '');
+        posts.push({
+          title: cleanTitle,
+          memeUrl,
+          ...parsed
+        });
+      }
     }
-  });
-});
+  }
 
-const htmlContent = `
+  const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +125,6 @@ const htmlContent = `
     <meta property="og:description" content="Complex AI concepts, explained simply through memes.">
     <meta name="robots" content="index, follow">
     
-    <!-- AEO / Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -147,6 +148,7 @@ const htmlContent = `
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
         h1, h2, h3, .serif { 
             font-family: 'Playfair Display', serif; 
@@ -184,7 +186,6 @@ const htmlContent = `
 
     <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-slate-900 z-50 transition-all duration-300" style="width: 0%"></div>
 
-    <!-- Introduction Card -->
     <header class="section-container text-center">
         <div class="max-w-4xl">
             <span class="text-xs uppercase tracking-[0.3em] text-slate-400 font-semibold mb-4 block">Curated Collection</span>
@@ -198,20 +199,18 @@ const htmlContent = `
     <article class="section-container" id="post-${index}">
         <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start relative">
             
-            <!-- Topic Counter -->
             <div class="absolute -top-12 left-0 w-full flex items-center gap-4">
                 <span class="text-[10px] uppercase tracking-[0.4em] text-slate-300 font-bold whitespace-nowrap">Topic ${String(index + 1).padStart(2, '0')} of ${String(posts.length).padStart(2, '0')}</span>
                 <div class="h-[0.5px] w-full bg-slate-100"></div>
             </div>
 
-            <!-- Meme Column -->
             <div class="lg:col-span-6 flex justify-center lg:sticky lg:top-12">
                 <div class="bg-slate-50 p-2 lg:p-4 rounded-2xl shadow-sm border border-slate-100">
-                    <img src="${post.memeUrl}" alt="${post.title}" class="w-full h-auto rounded-lg shadow-xl">
+                    <!-- Lazy Loading implemented here -->
+                    <img src="${post.memeUrl}" alt="${post.title}" loading="lazy" class="w-full h-auto rounded-lg shadow-xl">
                 </div>
             </div>
             
-            <!-- Content Column -->
             <div class="lg:col-span-6 py-4">
                 <header class="mb-10">
                     <p class="text-xl leading-relaxed text-slate-700 font-medium">
@@ -241,7 +240,6 @@ const htmlContent = `
     `).join('')}
     </main>
 
-    <!-- End Card -->
     <footer class="section-container text-center">
         <div class="max-w-2xl">
             <h2 class="text-4xl font-bold mb-6">Knowledge is Continuous.</h2>
@@ -265,5 +263,11 @@ const htmlContent = `
 </html>
 `;
 
-fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), htmlContent);
-console.log('Gallery built successfully in /docs');
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), htmlContent);
+  console.log('Gallery built successfully in /docs');
+}
+
+build().catch(err => {
+  console.error('Build failed:', err);
+  process.exit(1);
+});
