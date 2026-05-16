@@ -2,8 +2,8 @@ name: Instagram Post Publisher
 
 on:
   workflow_dispatch: # Allows manual triggering
-  schedule:
-    - cron: '0 9,17 * * *' # 09:00 & 17:00 UTC
+  # schedule:
+  #   - cron: '0 9,17 * * *' # Deactivated to prevent failed runs
 
 jobs:
   publish-to-instagram:
