@@ -23,29 +23,20 @@ GIT_USER_NAME = "GitHub Actions Bot"
 GIT_USER_EMAIL = "actions@github.com"
 
 def run_git_command(command: list):
-    """Runs a git command and checks for errors."""
     print(f"Running git command: {' '.join(command)}")
     result = subprocess.run(command, capture_output=True, text=True)
     if result.returncode != 0:
-        print(f"Error executing git command: {result.stderr}")
-        raise SystemExit(f"Git command failed: {result.stderr}")
+        print(f"Error: {result.stderr}")
+        raise SystemExit(f"Git command failed.")
     print(result.stdout)
 
 def setup_git():
-    """Configures git user name and email."""
     run_git_command(["git", "config", "user.name", GIT_USER_NAME])
     run_git_command(["git", "config", "user.email", GIT_USER_EMAIL])
 
 def clean_caption_for_instagram(text: str):
-    """
-    Removes Markdown symbols (**, ###, etc.) that Instagram doesn't support
-    to keep the captions looking professional and clean.
-    """
-    # Remove bold/italic symbols
     text = re.sub(r'[*_]{1,3}', '', text)
-    # Remove header hashes
     text = re.sub(r'#+\s', '', text)
-    # Ensure emojis and spacing are preserved
     return text.strip()
 
 def parse_caption_file(filepath: Path):
@@ -54,167 +45,153 @@ def parse_caption_file(filepath: Path):
     alt_text_match = re.search(r"🧐 For those who don't get it:(.*?)🧠 Techie Deep Dive:", content, re.DOTALL)
     if alt_text_match:
         alt_text = alt_text_match.group(1).strip()
-    
-    # Strip Markdown for the social post
-    clean_caption = clean_caption_for_instagram(content)
-    return clean_caption, alt_text
+    return clean_caption_for_instagram(content), alt_text
 
 def find_matching_image(base_filename: str):
-    for ext in ['.jpg', '.jpeg', '.png']:
+    for ext in ['.jpg', '.jpeg', '.png', '.webp']:
         if (image_path := MEMES_DIR / f"{base_filename}{ext}").exists():
             return image_path
     return None
 
 def main():
     if not all([ACCOUNT_USERNAME, ACCOUNT_PASSWORD]):
-        raise SystemExit("Error: INSTAGRAM_USERNAME and INSTAGRAM_PASSWORD must be set.")
+        raise SystemExit("Error: Credentials missing.")
 
     SCREENSHOT_DIR.mkdir(exist_ok=True)
     md_files = list(CAPTIONS_TO_POST_DIR.glob("*.md"))
     if not md_files:
-        raise SystemExit("No captions found in 'captions/to_post'. The queue is empty.")
+        raise SystemExit("Queue is empty.")
 
     random_caption_file = random.choice(md_files)
     base_filename = random_caption_file.stem
-    print(f"Selected content: {base_filename}")
+    print(f"Target: {base_filename}")
 
     caption, alt_text = parse_caption_file(random_caption_file)
     image_path = find_matching_image(base_filename)
     if not image_path:
-        raise SystemExit(f"Error: No matching image found for caption '{base_filename}'.")
+        raise SystemExit(f"Error: Image missing for {base_filename}")
     
-    print(f"Found matching image: {image_path}")
+    print(f"Image ready: {image_path}")
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        # Launching with slow_mo to mimic human typing speed
+        browser = p.chromium.launch(headless=True, slow_mo=100)
         
-        # Use a very common user agent
-        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+        # HIGH-STEALTH CONTEXT
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            viewport={'width': 1440, 'height': 900},
+            device_scale_factor=1,
+            has_touch=False,
+            is_mobile=False,
+            locale="en-US",
+            timezone_id="UTC"
+        )
         
         if SESSION_FILE.exists():
-            print("Found existing session. Attempting to resume...")
-            context = browser.new_context(storage_state=str(SESSION_FILE), user_agent=user_agent, viewport={'width': 1280, 'height': 720})
-        else:
-            print("No session found. Creating fresh context...")
-            context = browser.new_context(user_agent=user_agent, viewport={'width': 1280, 'height': 720})
+            print("Resuming session...")
+            context.add_cookies(eval(SESSION_FILE.read_text()) if SESSION_FILE.stat().st_size > 0 else [])
 
         page = context.new_page()
 
         try:
-            print("Navigating to Instagram...")
-            page.goto("https://www.instagram.com/", wait_until="networkidle", timeout=60000)
-            time.sleep(5)
+            # 1. AGGRESSIVE NAVIGATION
+            print("Opening Instagram...")
+            page.goto("https://www.instagram.com/", wait_until="networkidle", timeout=90000)
+            time.sleep(10) # Long wait for heavy JS rendering
             
-            # Check for login
-            if not page.locator("svg[aria-label='New post']").is_visible(timeout=10000):
-                print("Not logged in or session expired. Heading to login page...")
-                page.goto("https://www.instagram.com/accounts/login/", wait_until="networkidle", timeout=60000)
-                time.sleep(5)
-                page.screenshot(path=f"{SCREENSHOT_DIR}/login_page_loaded.png")
+            # Check for empty page
+            if not page.title() or "Instagram" not in page.title():
+                print("Detected blank page. Attempting refresh...")
+                page.reload(wait_until="networkidle")
+                time.sleep(10)
+
+            # 2. LOGIN CHECK & EXECUTION
+            if not page.locator("svg[aria-label='New post']").is_visible(timeout=15000):
+                print("Redirecting to login...")
+                page.goto("https://www.instagram.com/accounts/login/", wait_until="domcontentloaded", timeout=90000)
+                time.sleep(10)
                 
-                # Handle cookie consent
-                cookie_selectors = ['button:has-text("Allow all cookies")', 'button:has-text("Accept")', 'button:has-text("Allow")']
-                for sel in cookie_selectors:
+                # Handlers for "Allow Cookies" modals
+                for btn_text in ["Allow all cookies", "Allow", "Accept", "Allow essential and optional cookies"]:
                     try:
-                        if page.locator(sel).is_visible(timeout=5000):
-                            print(f"Clicking cookie button: {sel}")
-                            page.locator(sel).click()
-                            time.sleep(2)
-                            break
+                        btn = page.get_by_role("button", name=btn_text, exact=False)
+                        if btn.is_visible(timeout=5000):
+                            print(f"Clicking cookie modal: {btn_text}")
+                            btn.click()
+                            time.sleep(3)
                     except: continue
 
-                print("Searching for login fields...")
-                # Robust login field detection
-                username_selectors = [
-                    'input[name="username"]',
-                    'input[aria-label*="Phone number"]',
-                    'input[placeholder*="username"]',
-                    '//input[@name="username"]'
-                ]
-                
-                username_field = None
-                for sel in username_selectors:
-                    try:
-                        field = page.locator(sel)
-                        if field.is_visible(timeout=5000):
-                            username_field = field
-                            print(f"Found username field with: {sel}")
-                            break
-                    except: continue
+                print("Waiting for login form to manifest...")
+                # Wait for ANY input to ensure JS is running
+                try:
+                    page.wait_for_selector("input", timeout=45000)
+                except:
+                    page.screenshot(path=f"{SCREENSHOT_DIR}/login_stuck.png")
+                    print(f"Final URL: {page.url} | Title: {page.title()}")
+                    raise SystemExit("Security block: Instagram refused to render the login form.")
 
-                if not username_field:
-                    page.screenshot(path=f"{SCREENSHOT_DIR}/login_failure_context.png")
-                    print(f"Current URL: {page.url}")
-                    print(f"Page Title: {page.title()}")
-                    raise SystemExit("Could not find username field. Instagram might be blocking this runner.")
-
-                print("Entering credentials...")
-                username_field.fill(ACCOUNT_USERNAME)
-                page.locator('input[name="password"]').fill(ACCOUNT_PASSWORD)
-                page.locator('button[type="submit"]').click()
+                print("Typing credentials...")
+                page.get_by_label("Phone number, username, or email").fill(ACCOUNT_USERNAME)
+                page.get_by_label("Password").fill(ACCOUNT_PASSWORD)
+                page.get_by_role("button", name="Log in", exact=True).click()
                 
-                print("Waiting for login confirmation...")
-                page.wait_for_selector("svg[aria-label='New post'], text=Save your login info?", timeout=60000)
-                print("Login successful. Saving session...")
-                context.storage_state(path=str(SESSION_FILE))
+                # Check for Security Checkpoint
+                time.sleep(10)
+                if "checkpoint" in page.url:
+                    page.screenshot(path=f"{SCREENSHOT_DIR}/checkpoint.png")
+                    raise SystemExit("CRITICAL: Instagram triggered a security checkpoint. Open Instagram on your phone and tap 'Yes, it was me'.")
+
+                page.wait_for_selector("svg[aria-label='New post']", timeout=60000)
+                print("SUCCESS: Logged in.")
+                # Save session state
+                storage = context.storage_state(path=str(SESSION_FILE))
             else:
-                print("Already logged in via session!")
+                print("Session active. Skipping login.")
 
-            # Posting Logic
-            print("Creating new post...")
-            page.locator("svg[aria-label='New post']").first.click()
-            time.sleep(2)
-            
-            page.set_input_files('input[type="file"]', str(image_path.resolve()))
+            # 3. ROBUST POSTING
+            print("Opening post creator...")
+            page.get_by_role("link", name="New post").click()
             time.sleep(5)
+            
+            print("Uploading image...")
+            page.set_input_files('input[type="file"]', str(image_path.resolve()))
+            time.sleep(10)
 
-            # Navigation
+            # Next -> Next
             for _ in range(2):
-                next_btn = page.get_by_role("button", name="Next")
-                next_btn.wait_for(state="visible", timeout=15000)
-                next_btn.click()
-                time.sleep(2)
+                page.get_by_role("button", name="Next").click()
+                time.sleep(5)
 
-            print("Entering caption...")
-            caption_box = page.get_by_label("Write a caption...")
-            caption_box.wait_for(state="visible")
-            caption_box.fill(caption)
+            print("Finalizing caption...")
+            page.get_by_label("Write a caption...").fill(caption)
 
             if alt_text:
                 try:
-                    print("Opening Advanced Settings for Alt-Text...")
-                    # Instagram often hides Accessibility under "Advanced settings"
-                    adv_btn = page.get_by_role("button", name="Advanced settings")
-                    if adv_btn.is_visible():
-                        adv_btn.click()
-                        time.sleep(1)
-                    
-                    page.get_by_text("Write alt text").first.click()
+                    page.get_by_role("button", name="Accessibility").click()
                     page.get_by_placeholder("Write alt text...").fill(alt_text)
-                    print("Alt-text applied successfully.")
-                except:
-                    print("Could not navigate to Alt-text settings, sharing without it.")
+                except: pass
 
-            print("Sharing...")
+            print("SHARING...")
             page.get_by_role("button", name="Share").click()
             page.wait_for_selector("text=Your post has been shared", timeout=90000)
-            print("SUCCESS: Post shared to Instagram!")
+            print("🚀 POST IS LIVE!")
 
         except Exception as e:
-            page.screenshot(path=f"{SCREENSHOT_DIR}/error_state.png")
-            print(f"An error occurred: {e}")
-            raise SystemExit(f"Automation failed.")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/last_failure.png")
+            print(f"Failure: {e}")
+            raise SystemExit("Automation aborted.")
         finally:
             browser.close()
 
-    print("Updating Git repository...")
+    # 4. REPO UPDATE
     setup_git()
-    new_caption_path = CAPTIONS_POSTED_DIR / random_caption_file.name
-    utc_now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-    run_git_command(["git", "mv", str(random_caption_file), str(new_caption_path)])
-    run_git_command(["git", "commit", "-m", f"chore(automation): Post '{base_filename}' on {utc_now} UTC"])
+    new_path = CAPTIONS_POSTED_DIR / random_caption_file.name
+    utc_time = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    run_git_command(["git", "mv", str(random_caption_file), str(new_path)])
+    run_git_command(["git", "commit", "-m", f"chore(automation): Post '{base_filename}' at {utc_time} UTC"])
     run_git_command(["git", "push"])
-    print("Done.")
+    print("Repository synchronized.")
 
 if __name__ == "__main__":
     main()
