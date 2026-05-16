@@ -2,8 +2,8 @@
 
 An editorial-style web gallery and automated content pipeline that explains complex AI concepts through humor and technical deep dives.
 
-📸 **Follow the Journey on Instagram:** [@your_instagram_handle](https://instagram.com/your_instagram_handle)  
-🌐 **View the Web Gallery:** [https://your-username.github.io/ai-literacy-gallery/](https://your-username.github.io/ai-literacy-gallery/)
+📸 **Follow the Journey on Instagram:** [@omritmo](https://instagram.com/omritmo)  
+🌐 **View the Web Gallery:** [https://om-pramod.github.io/ai-literacy-gallery/](https://om-pramod.github.io/ai-literacy-gallery/)
 
 ---
 
