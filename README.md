@@ -1,6 +1,11 @@
 # AI Literacy: Meme Gallery & Automation Pipeline
 
-An editorial-style web gallery and automated content pipeline that explains complex AI concepts through humor and technical deep dives. This project is a "multimodal content engine" designed to educate both tech-savvy professionals and curious beginners.
+An editorial-style web gallery and automated content pipeline that explains complex AI concepts through humor and technical deep dives.
+
+📸 **Follow the Journey on Instagram:** [@your_instagram_handle](https://instagram.com/your_instagram_handle)  
+🌐 **View the Web Gallery:** [https://your-username.github.io/ai-literacy-gallery/](https://your-username.github.io/ai-literacy-gallery/)
+
+---
 
 ## 🚀 The Dual-Engine Project
 
@@ -26,7 +31,7 @@ ai-literacy-gallery/
 ├── .github/
 │   └── workflows/
 │       ├── deploy_gallery.yml      # Automates the Web Gallery deployment
-│       └── publisher.yml           # Automates the Instagram posting
+│       └── instagram_publisher.yml # Automates the Instagram posting
 ├── captions/
 │   ├── posted/                     # History of published AI lessons
 │   └── to_post/                    # Queue of upcoming AI literacy content
