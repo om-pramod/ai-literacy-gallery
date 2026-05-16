@@ -3,7 +3,7 @@ const path = require('path');
 const { marked } = require('marked');
 const sharp = require('sharp');
 
-const CAPTIONS_DIRS = ['captions/to_post', 'captions/posted'];
+const CAPTIONS_DIRS = ['captions'];
 const MEMES_DIR = 'memes';
 const OUTPUT_DIR = 'docs';
 
