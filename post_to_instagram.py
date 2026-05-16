@@ -36,13 +36,28 @@ def setup_git():
     run_git_command(["git", "config", "user.name", GIT_USER_NAME])
     run_git_command(["git", "config", "user.email", GIT_USER_EMAIL])
 
+def clean_caption_for_instagram(text: str):
+    """
+    Removes Markdown symbols (**, ###, etc.) that Instagram doesn't support
+    to keep the captions looking professional and clean.
+    """
+    # Remove bold/italic symbols
+    text = re.sub(r'[*_]{1,3}', '', text)
+    # Remove header hashes
+    text = re.sub(r'#+\s', '', text)
+    # Ensure emojis and spacing are preserved
+    return text.strip()
+
 def parse_caption_file(filepath: Path):
     content = filepath.read_text()
     alt_text = ""
     alt_text_match = re.search(r"🧐 For those who don't get it:(.*?)🧠 Techie Deep Dive:", content, re.DOTALL)
     if alt_text_match:
         alt_text = alt_text_match.group(1).strip()
-    return content.strip(), alt_text
+    
+    # Strip Markdown for the social post
+    clean_caption = clean_caption_for_instagram(content)
+    return clean_caption, alt_text
 
 def find_matching_image(base_filename: str):
     for ext in ['.jpg', '.jpeg', '.png']:
