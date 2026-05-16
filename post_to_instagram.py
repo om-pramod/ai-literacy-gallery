@@ -81,90 +81,134 @@ def main():
         print("Extracted alt text for accessibility.")
 
     with sync_playwright() as p:
+        # Launching with a specific slow_mo and viewport to be more "human"
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36")
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+            viewport={'width': 1280, 'height': 720}
+        )
         page = context.new_page()
 
         try:
             print("Navigating to Instagram login page...")
-            page.goto("https://www.instagram.com/accounts/login/")
-            page.screenshot(path=f"{SCREENSHOT_DIR}/01_login_page.png")
+            page.goto("https://www.instagram.com/accounts/login/", wait_until="networkidle")
+            time.sleep(5) # Give it extra time to render
+            page.screenshot(path=f"{SCREENSHOT_DIR}/01_login_page_loaded.png")
+
+            # HARDENING: Handle Cookie Consent Dialog (Common cause of failure)
+            print("Checking for cookie consent dialog...")
+            cookie_buttons = [
+                'button:has-text("Allow all cookies")',
+                'button:has-text("Allow All Cookies")',
+                'button:has-text("Accept All")',
+                'button:has-text("Accept")',
+                '//button[contains(text(), "Allow")]'
+            ]
+            for selector in cookie_buttons:
+                try:
+                    btn = page.locator(selector)
+                    if btn.is_visible(timeout=3000):
+                        print(f"Found cookie button: {selector}. Clicking...")
+                        btn.click()
+                        time.sleep(2)
+                        break
+                except:
+                    continue
 
             print("Entering credentials...")
-            page.locator('input[name="username"]').fill(ACCOUNT_USERNAME)
-            page.locator('input[name="password"]').fill(ACCOUNT_PASSWORD)
+            # Wait explicitly for the username field with a long timeout
+            username_field = page.locator('input[name="username"]')
+            username_field.wait_for(state="visible", timeout=30000)
+            username_field.fill(ACCOUNT_USERNAME)
+            
+            password_field = page.locator('input[name="password"]')
+            password_field.fill(ACCOUNT_PASSWORD)
+            
             page.screenshot(path=f"{SCREENSHOT_DIR}/02_credentials_entered.png")
 
             print("Clicking login button...")
             page.locator('button[type="submit"]').click()
 
             print("Waiting for login to complete...")
-            # Wait for either a "Save your login info?" dialog or the main page content
-            page.wait_for_selector("text=Save your login info? , main", timeout=15000)
-            page.screenshot(path=f"{SCREENSHOT_DIR}/03_post_login.png")
+            # Increased timeout and multi-selector wait
+            try:
+                page.wait_for_selector("svg[aria-label='New post'], text=Save your login info?, main", timeout=45000)
+            except PlaywrightTimeoutError:
+                print("Login wait timed out. Checking for security checks...")
+                page.screenshot(path=f"{SCREENSHOT_DIR}/error_login_timeout.png")
+                # Check for "Suspicious Login Attempt" or similar
+                if "checkpoint" in page.url:
+                    raise SystemExit("Error: Instagram triggered a security checkpoint. Manual intervention required.")
+                raise
+
+            page.screenshot(path=f"{SCREENSHOT_DIR}/03_post_login_state.png")
 
             # Handle "Save Info" dialog if it appears
-            save_info_button = page.locator('text=Save Info').or_(page.locator('text=Save info'))
-            if save_info_button.is_visible():
-                print("Handling 'Save Info' dialog...")
-                save_info_button.click()
-                page.screenshot(path=f"{SCREENSHOT_DIR}/04_save_info_dialog.png")
+            save_info_button = page.get_by_role("button", name="Save Info").or_(page.get_by_role("button", name="Not Now"))
+            if save_info_button.first.is_visible(timeout=5000):
+                print("Handling 'Save Info' or 'Not Now' dialog...")
+                save_info_button.first.click()
+                time.sleep(2)
 
             # Handle "Turn on Notifications" dialog if it appears
-            not_now_button = page.locator('text=Not Now')
-            if not_now_button.is_visible():
+            not_now_button = page.get_by_role("button", name="Not Now")
+            if not_now_button.is_visible(timeout=5000):
                 print("Handling 'Turn on Notifications' dialog...")
                 not_now_button.click()
-                page.screenshot(path=f"{SCREENSHOT_DIR}/05_notifications_dialog.png")
+                time.sleep(2)
 
             print("Login successful. Navigating to create post...")
-            # Use the SVG path to find the "New post" button
-            create_button_selector = "svg[aria-label='New post']"
-            page.wait_for_selector(create_button_selector, timeout=10000)
-            page.locator(create_button_selector).first.click()
+            create_button = page.locator("svg[aria-label='New post']").first
+            create_button.wait_for(state="visible", timeout=10000)
+            create_button.click()
 
             print("Selecting image file...")
-            page.screenshot(path=f"{SCREENSHOT_DIR}/06_create_post_dialog.png")
-
-            # The file chooser is triggered by the button inside the dialog
             file_chooser_selector = 'input[type="file"]'
-            page.wait_for_selector(file_chooser_selector)
+            page.wait_for_selector(file_chooser_selector, timeout=10000)
             page.set_input_files(file_chooser_selector, str(image_path.resolve()))
-            page.screenshot(path=f"{SCREENSHOT_DIR}/07_file_selected.png")
+            time.sleep(3)
 
             print("Navigating through post creation flow...")
-            # Click "Next"
-            page.locator('div[role="dialog"] button:has-text("Next")').click()
-            page.screenshot(path=f"{SCREENSHOT_DIR}/08_filters_screen.png")
-
-            # Click "Next" again (skipping filters)
-            page.locator('div[role="dialog"] button:has-text("Next")').click()
-            page.screenshot(path=f"{SCREENSHOT_DIR}/09_caption_screen.png")
+            # Use more robust "Next" button detection
+            next_button = page.get_by_role("button", name="Next")
+            next_button.wait_for(state="visible")
+            next_button.click()
+            time.sleep(2)
+            
+            next_button.wait_for(state="visible")
+            next_button.click()
+            time.sleep(2)
 
             print("Writing caption and alt text...")
-            page.locator('div[aria-label="Write a caption..."]').fill(caption)
+            caption_field = page.get_by_label("Write a caption...")
+            caption_field.wait_for(state="visible")
+            caption_field.fill(caption)
 
             if alt_text:
-                page.locator('text=Accessibility').click()
-                page.locator('textarea[placeholder="Write alt text..."]').fill(alt_text)
-                page.screenshot(path=f"{SCREENSHOT_DIR}/10_alt_text_entered.png")
+                try:
+                    page.get_by_text("Accessibility").click()
+                    page.get_by_placeholder("Write alt text...").fill(alt_text)
+                    print("Alt text entered successfully.")
+                except:
+                    print("Could not find Accessibility settings, skipping alt-text.")
 
             print("Sharing post...")
-            page.locator('div[role="dialog"] button:has-text("Share")').click()
+            share_button = page.get_by_role("button", name="Share")
+            share_button.click()
 
             # Wait for the "Post shared" confirmation
-            page.wait_for_selector("text=Post shared", timeout=30000)
-            page.screenshot(path=f"{SCREENSHOT_DIR}/11_post_shared.png")
+            print("Waiting for share confirmation...")
+            page.wait_for_selector("text=Your post has been shared", timeout=60000)
             print("Post successfully shared!")
 
         except PlaywrightTimeoutError as e:
             print(f"A timeout error occurred: {e}")
-            page.screenshot(path=f"{SCREENSHOT_DIR}/error.png")
-            raise SystemExit(f"Script failed due to timeout. See error.png for details.")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/error_timeout.png")
+            raise SystemExit(f"Script failed due to timeout. Screenshot saved to {SCREENSHOT_DIR}/error_timeout.png")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
-            page.screenshot(path=f"{SCREENSHOT_DIR}/error.png")
-            raise SystemExit(f"Script failed unexpectedly. See error.png for details.")
+            page.screenshot(path=f"{SCREENSHOT_DIR}/error_unexpected.png")
+            raise SystemExit(f"Script failed unexpectedly: {e}")
         finally:
             browser.close()
 
