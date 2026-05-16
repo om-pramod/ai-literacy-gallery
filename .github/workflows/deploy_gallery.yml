@@ -15,7 +15,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # Critical for deploying to gh-pages
+      contents: write     # Very important
 
     steps:
       - name: Checkout
@@ -35,6 +35,12 @@ jobs:
       - name: Build Gallery
         run: npm run build
 
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4     # Updated from v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
