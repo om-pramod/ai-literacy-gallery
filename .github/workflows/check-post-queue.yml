@@ -2,22 +2,20 @@ name: Check Post Queue Level
 
 on:
   schedule:
-    # Runs every day at 7 AM UTC. You can adjust this schedule.
-    # It's good to run this less often than your posting workflow.
     - cron: '0 7 * * *'
-  workflow_dispatch: # Allows you to run it manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   check-queue:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Count posts in the queue
         id: count_step
-        # This command counts the .md files in the to_post directory.
-        # It handles the case where the directory might not exist or is empty.
         run: |
           if [ -d "captions/to_post" ]; then
             count=$(find captions/to_post -name "*.md" | wc -l)
@@ -28,9 +26,7 @@ jobs:
           echo "count=$count" >> $GITHUB_OUTPUT
 
       - name: Check if post count is below threshold
-        # This step only runs if the count is 5 or less.
         if: steps.count_step.outputs.count <= 5
-        # The 'exit 1' command will cause the workflow to fail, triggering the alert.
         run: |
           echo "::warning::Post queue is low. Only ${{ steps.count_step.outputs.count }} posts remaining."
           exit 1

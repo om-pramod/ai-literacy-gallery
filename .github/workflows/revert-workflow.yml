@@ -6,18 +6,16 @@ on:
 jobs:
   revert-last-post:
     runs-on: ubuntu-latest
-
-    # Give the job permissions to write back to the repository
     permissions:
       contents: write
-
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Fetch all history so the script can find the last commit by the bot
           fetch-depth: 0
-          
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

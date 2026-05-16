@@ -8,11 +8,10 @@ on:
 jobs:
   publish-to-instagram:
     runs-on: ubuntu-latest
-
-    # Give the job permissions to write back to the repository
     permissions:
       contents: write
-
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
