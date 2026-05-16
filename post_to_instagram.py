@@ -167,9 +167,18 @@ def main():
 
             if alt_text:
                 try:
-                    page.get_by_text("Accessibility").click()
+                    print("Opening Advanced Settings for Alt-Text...")
+                    # Instagram often hides Accessibility under "Advanced settings"
+                    adv_btn = page.get_by_role("button", name="Advanced settings")
+                    if adv_btn.is_visible():
+                        adv_btn.click()
+                        time.sleep(1)
+                    
+                    page.get_by_text("Write alt text").first.click()
                     page.get_by_placeholder("Write alt text...").fill(alt_text)
-                except: pass
+                    print("Alt-text applied successfully.")
+                except:
+                    print("Could not navigate to Alt-text settings, sharing without it.")
 
             print("Sharing...")
             page.get_by_role("button", name="Share").click()
